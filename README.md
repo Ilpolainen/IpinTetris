@@ -1,3 +1,3 @@
 # IpinTetris
 
-Aloitin työt.
+Aloitin työt. Muokkasin tata myos varjorepotreenissa.
