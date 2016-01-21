@@ -1,5 +1,5 @@
-#Aihemaarittely
+#Aihemäärittely
 
-**Aihe:** Reaaliaikainen Tetris, jota on tarkoitus pystya pelaamaan nappaimistolta ja sen saa alkamaan Swing-kayttoliittymasta. Modifikaatioita toteutetaan taitojen mukaan.
+**Aihe:** Reaaliaikainen Tetris, jota on tarkoitus pystyä pelaamaan näppäimistoltä ja sen saa alkamaan Swing-kayttoliittymasta. Modifikaatioita, joita konfiguroidaan käyttöliittymästä, toteutetaan taitojen mukaan. Näitä ovat esimerkiksi palikoiden värien valinta, kentän koko yms..
 
-**Kayttajat:* Taman kurssin opiskelijat ja opettajat.
+**Kayttajat:** Taman kurssin opiskelijat ja opettajat.
