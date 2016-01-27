@@ -6,6 +6,8 @@
 package fi.ilmaripohjola.ipitris.application;
 
 import fi.ilmaripohjola.ipitris.entities.PieceI;
+import fi.ilmaripohjola.ipitris.entities.PieceS;
+import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import java.awt.Color;
 
 /**
@@ -18,12 +20,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        PieceI pala = new PieceI(Color.BLACK, 2, 1);
-        pala.moveDown();
-        pala.moveUp();
-        pala.moveLeft();
-        pala.moveRight();
+        PieceS pala = new PieceS(Color.BLACK, 2, 1);
+        
+        pala.rotateLeft();
+        pala.rotateRight();
         System.out.println(pala);
+        
+        
+        
         
         
         
