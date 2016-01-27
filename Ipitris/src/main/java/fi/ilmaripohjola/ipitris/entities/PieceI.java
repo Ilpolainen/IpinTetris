@@ -42,9 +42,9 @@ public class PieceI extends Piece {
             blocks[0].moveRight();
             blocks[0].moveDown();
             blocks[1].moveRight();
-            blocks[2].moveLeft();
+            blocks[2].moveUp();
             blocks[3].moveLeft();
-            blocks[3].moveLeft();
+            blocks[3].moveUp();
             blocks[3].moveUp();
             this.asento = 2;
         } else if (this.asento == 2) {
@@ -125,6 +125,40 @@ public class PieceI extends Piece {
             this.asento = 3;
         }
     }
+
+    @Override
+    public void moveUp() {
+        for (Block block : blocks) {
+            block.moveUp();
+        }
+//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void moveDown() {
+        for (Block block : blocks) {
+            block.moveDown();
+        }
+ //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void moveLeft() {
+        for (Block block : blocks) {
+            block.moveLeft();
+        }
+ //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void moveRight() {
+        for (Block block : blocks) {
+            block.moveRight();
+        }
+ //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 
     @Override
     public String toString() {
