@@ -9,8 +9,7 @@ import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import fi.ilmaripohjola.ipitris.entities.PieceT;
-import fi.ilmaripohjola.ipitris.utilities.DrawingComponent;
-import fi.ilmaripohjola.ipitris.utilities.GraphUtility;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.swing.JFrame;
