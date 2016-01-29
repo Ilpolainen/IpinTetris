@@ -8,6 +8,6 @@ Reaaliaikainen tetris.
 
 [testausdokumetaatio](dokumentointi/index.md)
 
-[luokkadiagrammi](dokumentointi/luokkadiagrammi.jpg)
+[luokkadiagrammi](dokumentointi/Luokkadiagrammi.jpg)
 
 [tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
