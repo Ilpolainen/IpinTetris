@@ -17,13 +17,23 @@ public class PieceI extends Piece {
     private Block[] blocks;
     private int asento;
 
-    public PieceI(Color color, int x, int y) {
+    public PieceI(Color color) {
         super(color);
+    }
+    
+    /**
+     *
+     * @param color
+     * @param x
+     * @param y
+     */
+    public PieceI(Color color, int x, int y) {
+        this.color = color;
         this.blocks = new Block[4];
-        this.blocks[0] = new Block(x, y, color);
-        this.blocks[1] = new Block(x, y + 1, color);
-        this.blocks[2] = new Block(x, y + 2, color);
-        this.blocks[3] = new Block(x, y + 3, color);
+        this.blocks[0] = new Block(color,x, y);
+        this.blocks[1] = new Block(color,x, y + 1);
+        this.blocks[2] = new Block(color,x, y + 2);
+        this.blocks[3] = new Block(color,x, y + 3);
         this.asento = 1;
     }
 
@@ -38,92 +48,38 @@ public class PieceI extends Piece {
     @Override
     public void rotateRight() {
         if (this.asento == 1) {
-            blocks[0].moveRight();
-            blocks[0].moveRight();
+            blocks[0].moveLeft();
             blocks[0].moveDown();
-            blocks[1].moveRight();
+            blocks[2].moveRight();
             blocks[2].moveUp();
-            blocks[3].moveLeft();
+            blocks[3].moveRight();
+            blocks[3].moveRight();
             blocks[3].moveUp();
             blocks[3].moveUp();
             this.asento = 2;
         } else if (this.asento == 2) {
-            blocks[0].moveLeft();
-            blocks[0].moveDown();
-            blocks[0].moveDown();
-            blocks[1].moveDown();
-            blocks[2].moveRight();
-            blocks[3].moveUp();
-            blocks[3].moveRight();
-            blocks[3].moveRight();
-            this.asento = 3;
-        } else if (this.asento == 3) {
-            blocks[0].moveUp();
-            blocks[0].moveLeft();
-            blocks[0].moveLeft();
-            blocks[1].moveLeft();
-            blocks[2].moveDown();
-            blocks[3].moveDown();
-            blocks[3].moveDown();
-            blocks[3].moveRight();
-            this.asento = 4;
-        } else if (this.asento == 4) {
-            blocks[0].moveRight();
-            blocks[0].moveUp();
-            blocks[0].moveUp();
-            blocks[1].moveUp();
-            blocks[2].moveLeft();
-            blocks[3].moveLeft();
-            blocks[3].moveLeft();
-            blocks[3].moveDown();
+            rotateLeft();
             this.asento = 1;
-        }
+        } 
         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void rotateLeft() {
-        if (this.asento == 1) {
-            blocks[0].moveLeft();
-            blocks[0].moveDown();
-            blocks[0].moveDown();
-            blocks[1].moveDown();
-            blocks[2].moveRight();
-            blocks[3].moveRight();
-            blocks[3].moveRight();
-            blocks[3].moveUp();
-            this.asento = 4;
-        } else if (this.asento == 2) {
-            blocks[0].moveUp();
-            blocks[0].moveLeft();
-            blocks[0].moveLeft();
-            blocks[1].moveLeft();
-            blocks[2].moveDown();
-            blocks[3].moveDown();
-            blocks[3].moveDown();
-            blocks[3].moveRight();
-            this.asento = 1;
-        } else if (this.asento == 3) {
-            blocks[0].moveUp();
+        if (this.asento == 2) {
             blocks[0].moveUp();
             blocks[0].moveRight();
-            blocks[1].moveUp();
             blocks[2].moveLeft();
+            blocks[2].moveDown();
+            blocks[3].moveLeft();
+            blocks[3].moveLeft();
             blocks[3].moveDown();
-            blocks[3].moveLeft();
-            blocks[3].moveLeft();
+            blocks[3].moveDown();
+            this.asento = 1;
+        } else if (this.asento == 1) {
+            rotateRight();
             this.asento = 2;
-        } else if (this.asento == 4) {
-            blocks[0].moveRight();
-            blocks[0].moveRight();
-            blocks[0].moveDown();
-            blocks[1].moveRight();
-            blocks[2].moveUp();
-            blocks[3].moveUp();
-            blocks[3].moveUp();
-            blocks[3].moveLeft();
-            this.asento = 3;
-        }
+        } 
     }
 
     @Override

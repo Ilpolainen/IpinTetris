@@ -6,12 +6,34 @@ public abstract class Piece implements Movable {
     
     private Color color;
     private Block[] blocks;
+    int x;
+    int y;
 
+    public Piece() {
+    }        
+    
     public Piece(Color color) {
+        this.color = color;                
+    }
+
+    public Piece(Color color, int x, int y) {
         this.color = color;
         this.blocks = new Block[4];
-        Block block = new Block(1, 1, color);
+        this.x = x;
+        this.y = y;
     }
+    
+    
+
+    public Block[] getBlocks() {
+        return blocks;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+    
+    
     
     public void rotateLeft(){
         

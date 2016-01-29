@@ -11,19 +11,19 @@ import java.awt.Color;
  *
  * @author omistaja
  */
-public class PieceS extends Piece {
-
+public class PieceZ extends Piece {
+    
     private Color color;
     private Block[] blocks;
     private int asento;
 
-    public PieceS(Color color, int x, int y) {
+    public PieceZ(Color color, int x, int y) {
         super(color);
         this.blocks = new Block[4];
         blocks[0] = new Block(color, x, y - 1);
         blocks[1] = new Block(color, x, y);
         blocks[2] = new Block(color, x - 1, y);
-        blocks[3] = new Block(color, x - 1, y + 1);
+        blocks[3] = new Block(color, x - 1, y - 1);
         this.asento = 1;
     }
 
@@ -67,18 +67,18 @@ public class PieceS extends Piece {
         if (asento == 1) {
             blocks[0].moveLeft();
             blocks[0].moveDown();
-            blocks[2].moveUp();
-            blocks[2].moveLeft();
-            blocks[3].moveUp();
-            blocks[3].moveUp();
+            blocks[2].moveDown();
+            blocks[2].moveRight();
+            blocks[3].moveRight();
+            blocks[3].moveRight();            
             asento = 2;
         } else if (asento == 2) {
             blocks[0].moveRight();
             blocks[0].moveUp();
-            blocks[2].moveDown();
-            blocks[2].moveRight();
-            blocks[3].moveDown();
-            blocks[3].moveDown();
+            blocks[2].moveUp();
+            blocks[2].moveLeft();
+            blocks[3].moveLeft();
+            blocks[3].moveLeft();
             asento = 1;
         }
         //To change body of generated methods, choose Tools | Templates.

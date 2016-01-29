@@ -8,7 +8,12 @@ package fi.ilmaripohjola.ipitris.application;
 import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
+import fi.ilmaripohjola.ipitris.entities.PieceT;
+import fi.ilmaripohjola.ipitris.utilities.DrawingComponent;
+import fi.ilmaripohjola.ipitris.utilities.GraphUtility;
 import java.awt.Color;
+import java.awt.Graphics2D;
+import javax.swing.JFrame;
 
 /**
  *
@@ -20,14 +25,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        PieceS pala = new PieceS(Color.BLACK, 2, 1);
         
-        pala.rotateLeft();
-        pala.rotateRight();
-        System.out.println(pala);
-        
-        
-        
+        Color black = Color.BLACK;
+        System.out.println(black);
         
         
         
