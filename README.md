@@ -4,7 +4,7 @@ Reaaliaikainen tetris.
 
 ##Dokumentaatio
 
-[aiheen kuvaus](dokumentointi/aiheenKuvausRakenne.md)
+[aiheen kuvaus](dokumentointi/aiheenKuvausJaRakenne.md)
 
 [testausdokumetaatio](dokumentointi/index.md)
 
