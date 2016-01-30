@@ -9,10 +9,15 @@ import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import fi.ilmaripohjola.ipitris.entities.PieceT;
+import fi.ilmaripohjola.ipitris.entities.Table;
+import fi.ilmaripohjola.ipitris.gameengine.GameEngine;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+import fi.ilmaripohjola.ipitris.interfaces.TetrisInterface;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -25,8 +30,10 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        Color black = Color.BLACK;
-        System.out.println(black);
+        Table table = new Table(10,20);
+        Logic tetris = new Logic(table);
+        TetrisInterface IF = new TetrisInterface(tetris);
+        SwingUtilities.invokeLater(IF);
         
         
         

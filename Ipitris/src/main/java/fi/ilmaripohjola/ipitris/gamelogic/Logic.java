@@ -9,6 +9,7 @@ import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.Table;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -19,11 +20,13 @@ public class Logic {
     private Table table;
     private Piece current;
     private PieceGenerator generator;
+    private boolean continues;
 
-    public Logic(Table table, PieceGenerator generator) {
+    public Logic(Table table) {
         this.table = table;
-        this.generator = generator;
+        this.generator = new PieceGenerator(new Random(), table.getWidth());
         this.current = generator.givePiece();
+        this.continues = true;
     }
 
     public void attachAndMakeNew() {
@@ -138,8 +141,20 @@ public class Logic {
             attachAndMakeNew();
         }
     }
+
+    public Table getTable() {
+        return table;
+    }
+
+    public Piece getCurrent() {
+        return current;
+    }
+    
+    public boolean getContinues() {
+        return this.continues;
+    }
     
     public void endGame() {
-        
+        this.continues = false;
     }
 }
