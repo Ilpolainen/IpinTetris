@@ -27,19 +27,22 @@ public class Renderer extends JPanel implements Updatable {
 
     @Override
     public void updateNow() {
+  
         this.repaint(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(Color.LIGHT_GRAY);
-        g.drawRect(200, 60, tetris.getTable().getWidth(), tetris.getTable().getHeight()); //To change body of generated methods, choose Tools | Templates.
+        g.setColor(Color.BLACK);        
+        g.drawRect(0, 0, tetris.getTable().getWidth()*30, tetris.getTable().getHeight()*30);
+        drawTable(g, tetris.getTable());
+        drawPiece(g, tetris.getCurrent());
     }
     
     protected void drawBlock(Graphics g, Block block) {
         g.setColor(block.getColor());
-        g.drawRect(block.getX()*30, block.getY()*30, 30, 30);
+        g.drawRect(block.getX()*15, block.getY()*15, 15, 15);
     }
     
     protected void drawPiece(Graphics g, Piece p) {

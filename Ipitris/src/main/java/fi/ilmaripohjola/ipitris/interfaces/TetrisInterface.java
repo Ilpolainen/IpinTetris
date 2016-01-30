@@ -24,7 +24,8 @@ public class TetrisInterface implements Runnable {
     private Renderer renderer;
 
     public TetrisInterface(Logic tetris) {        
-        this.tetris = tetris;        
+        this.tetris = tetris;
+        this.renderer = new Renderer(tetris);
     }
     
      @Override
@@ -44,7 +45,7 @@ public class TetrisInterface implements Runnable {
     }
 
     public void setComponents(Container container) {
-        this.renderer = new Renderer(tetris);
+        
         container.add(renderer);
         KeyPressListener kpl = new KeyPressListener(tetris);
         this.frame.addKeyListener(kpl);
@@ -52,11 +53,23 @@ public class TetrisInterface implements Runnable {
         // Luo vasta tämän jälkeen näppäimistönkuuntelija, jonka lisäät frame-oliolle
     }
 
-    public Updatable getPaivitettava() {
+    public Updatable getUpdatable() {
         return this.renderer;
     }
     
     public JFrame getFrame() {
         return frame;
     }
+
+    public Logic getLogic() {
+        return tetris;
+    }
+
+    public Renderer getRenderer() {
+        return renderer;
+    }
+    
+    
+    
+    
 }

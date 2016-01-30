@@ -31,9 +31,11 @@ public class Main {
     public static void main(String[] args) {
         
         Table table = new Table(10,20);
-        Logic tetris = new Logic(table);
+        Logic tetris = new Logic(table);       
         TetrisInterface IF = new TetrisInterface(tetris);
+        GameEngine GE = new GameEngine(table, IF.getRenderer());
         SwingUtilities.invokeLater(IF);
+        GE.start();
         
         
         

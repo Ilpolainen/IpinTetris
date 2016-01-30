@@ -54,37 +54,37 @@ public class PieceGenerator {
     }
     
     private Piece makeI() {
-        PieceI piece = new PieceI(Color.BLACK, 1, this.tableWidth/2);
+        PieceI piece = new PieceI(Color.RED, 1, this.tableWidth/2);
         return piece;
     }
     
     private Piece makeSquare() {
-        PieceSquare piece = new PieceSquare(Color.BLACK, 1, this.tableWidth/2);
+        PieceSquare piece = new PieceSquare(Color.BLUE, 1, this.tableWidth/2);
         return piece;
     }
     
     private Piece makeT() {
-        PieceT piece = new PieceT(Color.BLACK, 1, this.tableWidth/2);
+        PieceT piece = new PieceT(Color.GREEN, 1, this.tableWidth/2);
         return piece;
     }
     
     private Piece makeL() {
-        PieceL piece = new PieceL(Color.BLACK, 1, this.tableWidth/2);
+        PieceL piece = new PieceL(Color.PINK, 1, this.tableWidth/2);
         return piece;
     }
     
     private Piece makeJ() {
-        PieceJ piece = new PieceJ(Color.BLACK, 1, this.tableWidth/2);
+        PieceJ piece = new PieceJ(Color.ORANGE, 1, this.tableWidth/2);
         return piece;
     }
     
     private Piece makeS() {
-        PieceS piece = new PieceS(Color.BLACK, 1, this.tableWidth/2);
+        PieceS piece = new PieceS(Color.YELLOW, 1, this.tableWidth/2);
         return piece;
     }
     
     private Piece makeZ() {
-        PieceZ piece = new PieceZ(Color.BLACK, 1, this.tableWidth/2);
+        PieceZ piece = new PieceZ(Color.MAGENTA, 1, this.tableWidth/2);
         return piece;
     }
 }

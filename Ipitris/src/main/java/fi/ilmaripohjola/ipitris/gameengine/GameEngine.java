@@ -23,17 +23,17 @@ public class GameEngine extends Timer implements ActionListener {
     private Updatable updatable;
     private boolean continues;
 
-    public GameEngine(Table table) {
-        super(250, null);
+    public GameEngine(Table table, Updatable updatable) {
+        super(25, null);
         this.continues = true;
         this.tetris = new Logic(table);
-        this.updatable = new Renderer(tetris);
+        this.updatable = updatable;
         addActionListener(this);
-        setInitialDelay(2000);
+        setInitialDelay(1000);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {        
         updatable.updateNow();
         if (this.tetris.getContinues() == false) {
             return;

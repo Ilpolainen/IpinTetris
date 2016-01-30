@@ -7,7 +7,9 @@ package fi.ilmaripohjola.ipitris.gamelogic;
 
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
+import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.Table;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -25,7 +27,8 @@ public class Logic {
     public Logic(Table table) {
         this.table = table;
         this.generator = new PieceGenerator(new Random(), table.getWidth());
-        this.current = generator.givePiece();
+//        this.current = generator.givePiece();
+        this.current = new PieceI(Color.BLUE,3,3);
         this.continues = true;
     }
 
@@ -134,7 +137,7 @@ public class Logic {
             Block[] currentBlocks = this.current.getBlocks();
             this.current.moveUp();
             for (Block block : currentBlocks) {
-                if (block.getY() < 4) {
+                if (block.getY() < 0) {
                     endGame();
                 }
             }            
