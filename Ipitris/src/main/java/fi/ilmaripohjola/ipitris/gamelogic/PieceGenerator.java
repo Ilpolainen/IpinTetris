@@ -34,7 +34,7 @@ public class PieceGenerator {
     
     
     public Piece givePiece() {
-        int i = random.nextInt(6);
+        int i = random.nextInt(7);        
         if (i==0) {
             return makeI();
         } if (i==1) {
@@ -54,37 +54,37 @@ public class PieceGenerator {
     }
     
     private Piece makeI() {
-        PieceI piece = new PieceI(Color.RED, 1, this.tableWidth/2);
+        PieceI piece = new PieceI(Color.RED, this.tableWidth/2, 1);
         return piece;
     }
     
     private Piece makeSquare() {
-        PieceSquare piece = new PieceSquare(Color.BLUE, 1, this.tableWidth/2);
+        PieceSquare piece = new PieceSquare(Color.BLUE, this.tableWidth/2, 1);
         return piece;
     }
     
     private Piece makeT() {
-        PieceT piece = new PieceT(Color.GREEN, 1, this.tableWidth/2);
+        PieceT piece = new PieceT(Color.GREEN, this.tableWidth/2, 1);
         return piece;
     }
     
     private Piece makeL() {
-        PieceL piece = new PieceL(Color.PINK, 1, this.tableWidth/2);
+        PieceL piece = new PieceL(Color.magenta, this.tableWidth/2, 1);
         return piece;
     }
     
     private Piece makeJ() {
-        PieceJ piece = new PieceJ(Color.ORANGE, 1, this.tableWidth/2);
+        PieceJ piece = new PieceJ(Color.ORANGE, this.tableWidth/2, 1);
         return piece;
     }
     
     private Piece makeS() {
-        PieceS piece = new PieceS(Color.YELLOW, 1, this.tableWidth/2);
+        PieceS piece = new PieceS(Color.YELLOW, this.tableWidth/2, 1);
         return piece;
     }
     
     private Piece makeZ() {
-        PieceZ piece = new PieceZ(Color.MAGENTA, 1, this.tableWidth/2);
+        PieceZ piece = new PieceZ(Color.MAGENTA, this.tableWidth/2, 1);
         return piece;
     }
 }

@@ -22,20 +22,22 @@ public class TetrisInterface implements Runnable {
     private JFrame frame;
     private Logic tetris;
     private Renderer renderer;
+    private int scale;
 
-    public TetrisInterface(Logic tetris) {        
+    public TetrisInterface(Logic tetris, int scale) {        
         this.tetris = tetris;
-        this.renderer = new Renderer(tetris);
+        this.scale = scale;
+        this.renderer = new Renderer(tetris, scale);
     }
     
      @Override
     public void run() {
-        frame = new JFrame("Matopeli");
-        int width = tetris.getTable().getWidth()*30 + 40;
-        int height = tetris.getTable().getHeight()*30 +20;
+        frame = new JFrame("IPITRIS");
+        int width = tetris.getTable().getWidth()*scale+10;
+        int height = (tetris.getTable().getHeight()-4)*scale+30;
 
         frame.setPreferredSize(new Dimension(width, height));
-
+        frame.setLocation(500, 100);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         setComponents(frame.getContentPane());
@@ -49,8 +51,6 @@ public class TetrisInterface implements Runnable {
         container.add(renderer);
         KeyPressListener kpl = new KeyPressListener(tetris);
         this.frame.addKeyListener(kpl);
-        // Huom! Luo ensin piirtoalusta jonka lisäät container-olioon
-        // Luo vasta tämän jälkeen näppäimistönkuuntelija, jonka lisäät frame-oliolle
     }
 
     public Updatable getUpdatable() {

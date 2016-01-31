@@ -10,12 +10,13 @@ import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import fi.ilmaripohjola.ipitris.entities.PieceT;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gameengine.GameEngine;
+import fi.ilmaripohjola.ipitris.gameengine.ActionTrigger;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.interfaces.TetrisInterface;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.time.Clock;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -28,14 +29,13 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        
-        Table table = new Table(10,20);
+    public static void main(String[] args) {        
+        Table table = new Table(10,25);
         Logic tetris = new Logic(table);       
-        TetrisInterface IF = new TetrisInterface(tetris);
-        GameEngine GE = new GameEngine(table, IF.getRenderer());
+        TetrisInterface IF = new TetrisInterface(tetris, 30);
+        ActionTrigger AT = new ActionTrigger(tetris, IF.getRenderer());
         SwingUtilities.invokeLater(IF);
-        GE.start();
+        AT.start();
         
         
         

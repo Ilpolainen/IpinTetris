@@ -11,7 +11,7 @@ import java.awt.Color;
  *
  * @author omistaja
  */
-public class PieceL extends Piece{
+public class PieceL extends Piece {
     
     private Color color;
     private Block[] blocks;
@@ -20,10 +20,10 @@ public class PieceL extends Piece{
     public PieceL(Color color, int x, int y) {
         super(color);
         this.blocks = new Block[4];
-        this.blocks[0] = new Block(color, x - 1, y);
+        this.blocks[0] = new Block(color, x, y-1);
         this.blocks[1] = new Block(color, x, y);
         this.blocks[2] = new Block(color, x, y + 1);
-        this.blocks[3] = new Block(color, x + 1, y);
+        this.blocks[3] = new Block(color, x + 1, y+1);
         this.asento = 1;
     }
 
@@ -78,8 +78,8 @@ public class PieceL extends Piece{
             blocks[0].moveRight();
             blocks[2].moveLeft();
             blocks[2].moveUp();
-            blocks[3].moveRight();
-            blocks[3].moveRight();
+            blocks[3].moveLeft();
+            blocks[3].moveLeft();
             this.asento = 2;
         } else if (this.asento==2) {
             blocks[0].moveDown();
@@ -135,7 +135,7 @@ public class PieceL extends Piece{
             blocks[3].moveDown();
             this.asento=2;
         } else if (this.asento==4) {
-            blocks[0].moveUp();
+            blocks[0].moveDown();
             blocks[0].moveRight();
             blocks[2].moveLeft();
             blocks[2].moveUp();

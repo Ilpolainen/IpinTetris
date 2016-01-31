@@ -30,17 +30,19 @@ public class PieceI extends Piece {
     public PieceI(Color color, int x, int y) {
         this.color = color;
         this.blocks = new Block[4];
-        this.blocks[0] = new Block(color,x, y);
-        this.blocks[1] = new Block(color,x, y + 1);
-        this.blocks[2] = new Block(color,x, y + 2);
-        this.blocks[3] = new Block(color,x, y + 3);
+        this.blocks[0] = new Block(color,x, y - 1);
+        this.blocks[1] = new Block(color,x, y);
+        this.blocks[2] = new Block(color,x, y + 1);
+        this.blocks[3] = new Block(color,x, y + 2);
         this.asento = 1;
     }
 
+    @Override
     public Block[] getBlocks() {
         return blocks;
     }
 
+    @Override
     public Color getColor() {
         return color;
     }
@@ -118,14 +120,14 @@ public class PieceI extends Piece {
 
     @Override
     public String toString() {
-        String asento = "Asento: " + "\n" + 
+        String palautus = "Asento: " + "\n" + 
                 this.asento + "\n"
                 + "Koordinaatit: " + "\n" + 
                 "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n" +
                 "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n" +
                 "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n" +
                 "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
-        return asento;
+        return palautus;
     }
 }
 

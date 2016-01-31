@@ -17,19 +17,45 @@ public class PieceZ extends Piece {
     private Block[] blocks;
     private int asento;
 
+    public PieceZ(Color color) {
+        super(color);
+    }
+    
+    
+
     public PieceZ(Color color, int x, int y) {
         super(color);
         this.blocks = new Block[4];
-        blocks[0] = new Block(color, x, y - 1);
-        blocks[1] = new Block(color, x, y);
-        blocks[2] = new Block(color, x - 1, y);
-        blocks[3] = new Block(color, x - 1, y - 1);
+        this.blocks[0] = new Block(color, x, y - 1);
+        this.blocks[1] = new Block(color, x, y);
+        this.blocks[2] = new Block(color, x - 1, y);
+        this.blocks[3] = new Block(color, x - 1, y + 1);
         this.asento = 1;
     }
 
     public int getAsento() {
         return asento;
     }
+
+    @Override
+    public Block[] getBlocks() {
+        return blocks; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Color getColor() {
+        return color; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
+    
 
     @Override
     public void moveUp() {

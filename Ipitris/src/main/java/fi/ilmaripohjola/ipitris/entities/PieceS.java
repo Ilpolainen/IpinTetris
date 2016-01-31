@@ -17,19 +17,45 @@ public class PieceS extends Piece {
     private Block[] blocks;
     private int asento;
 
+    public PieceS(Color color) {
+        super(color);
+    }
+    
+    
+
     public PieceS(Color color, int x, int y) {
         super(color);
         this.blocks = new Block[4];
-        blocks[0] = new Block(color, x, y - 1);
-        blocks[1] = new Block(color, x, y);
-        blocks[2] = new Block(color, x - 1, y);
-        blocks[3] = new Block(color, x - 1, y + 1);
+        this.blocks[0] = new Block(color, x, y - 1);
+        this.blocks[1] = new Block(color, x, y);
+        this.blocks[2] = new Block(color, x + 1, y);
+        this.blocks[3] = new Block(color, x + 1, y + 1);
         this.asento = 1;
     }
 
     public int getAsento() {
         return asento;
     }
+
+    @Override
+    public Block[] getBlocks() {
+        return blocks; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Color getColor() {
+        return color; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
+      
 
     @Override
     public void moveUp() {
@@ -91,13 +117,13 @@ public class PieceS extends Piece {
 
     @Override
     public String toString() {
-        String asento = "Asento: " + "\n"
+        String palautus = "Asento: " + "\n"
                 + this.asento + "\n"
                 + "Koordinaatit: " + "\n"
                 + "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"
                 + "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n"
                 + "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n"
                 + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
-        return asento;
+        return palautus;
     }
 }

@@ -25,10 +25,10 @@ public class PieceSquare extends Piece {
     public PieceSquare(Color color, int x, int y) {
         this.color = color;
         this.blocks = new Block[4];
-        this.blocks[0] = new Block(color, x, y);
-        this.blocks[1] = new Block(color, x + 1, y);
-        this.blocks[2] = new Block(color, x, y + 1);
-        this.blocks[3] = new Block(color, x + 1, y + 1);
+        this.blocks[0] = new Block(color, x, y - 1);
+        this.blocks[1] = new Block(color, x + 1, y - 1);
+        this.blocks[2] = new Block(color, x, y);
+        this.blocks[3] = new Block(color, x + 1, y);
         this.asento = 1;
     }
 

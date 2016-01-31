@@ -35,10 +35,12 @@ public class PieceJ extends Piece {
         return asento;
     }
 
+    @Override
     public Block[] getBlocks() {
         return blocks;
     }
 
+    @Override
     public Color getColor() {
         return color;
     }

@@ -12,7 +12,7 @@ import fi.ilmaripohjola.ipitris.entities.Table;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
-
+import fi.ilmaripohjola.ipitris.entities.PieceS;
 /**
  *
  * @author omistaja
@@ -27,8 +27,8 @@ public class Logic {
     public Logic(Table table) {
         this.table = table;
         this.generator = new PieceGenerator(new Random(), table.getWidth());
-//        this.current = generator.givePiece();
-        this.current = new PieceI(Color.BLUE,3,3);
+        this.current = generator.givePiece();
+//        this.current = new PieceI(Color.BLUE,3,3);
         this.continues = true;
     }
 
@@ -38,36 +38,43 @@ public class Logic {
             this.table.getBlocks()[block.getX()][block.getY()] = block;
         }
         this.current = generator.givePiece();
+        if (this.connects()) {
+            endGame();
+        }
     }
 
     public boolean connects() {
         Block[] currentBlocks = this.current.getBlocks();        
 
         for (Block block : currentBlocks) {
-            if (this.table.getBlocks()[block.getX()][block.getY()] == null) {
+            if (this.table.getBlocks()[block.getX()][block.getY()] != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean pieceWithinLimits() {
+        Block[] currentBlocks = this.current.getBlocks();
+        for (Block block : currentBlocks) {
+            if (!blockWithinLimits(block.getX(),block.getY())) {
                 return false;
             }
         }
         return true;
     }
 
-    public boolean pieceWithinLimits() {
-        Block[] currentBlocks = this.current.getBlocks();
-        for (Block block : currentBlocks) {
-            return blockWithinLimits(block.getX(), block.getY());
-        }
-        return false;
-    }
-
     public boolean blockWithinLimits(int x, int y) {
         if (x < 0 || x >= this.table.getWidth()) {
             return false;
         }
-        if (x < 0 || y >= this.table.getHeight()) {
+        if (y < 0 || y >= this.table.getHeight()) {
             return false;
         }
         return true;
     }
+    
+    
     
     public void destroyRows() {
         ArrayList<Integer> rowsToDestroy = searchFullRows();
@@ -77,15 +84,25 @@ public class Logic {
     }
     
     public void destroyRow(int i) {
+        System.out.println(i);
         for (int j = 0; j < table.getWidth(); j++) {
             this.table.getBlocks()[j][i]=null;
+        }
+        for (int j = i; j >= 0; j--) {
+            for (int k = 0; k < table.getWidth(); k++) {
+                if (this.table.getBlocks()[k][j]!=null) {
+                    this.table.getBlocks()[k][j].moveDown();
+                    this.table.getBlocks()[k][j+1]=this.table.getBlocks()[k][j];
+                    this.table.getBlocks()[k][j]=null;
+                }
+            }
         }
     }
 
     public ArrayList searchFullRows() {
         ArrayList<Integer> rowsToDestroy = new ArrayList<>();
         int piecesInRow = 0;
-        for (int i = 0; i < table.getHeight()-4; i++) {
+        for (int i = 0; i < table.getHeight(); i++) {
             for (int j = 0; j < table.getWidth(); j++) {
                 if (this.table.getBlocks()[j][i]!= null) {
                     piecesInRow++;
@@ -128,21 +145,26 @@ public class Logic {
     }
     
     public void moveDown() {
-        this.current.moveDown();
-        if (!pieceWithinLimits()) {
-            this.current.moveUp();
-            attachAndMakeNew();
-        }
+        this.current.moveDown();        
         if (connects()) {
             Block[] currentBlocks = this.current.getBlocks();
             this.current.moveUp();
             for (Block block : currentBlocks) {
-                if (block.getY() < 0) {
+                if (block.getY() < 4) {
                     endGame();
                 }
-            }            
-            attachAndMakeNew();
+            }
+            if (continues!=false) {
+                attachAndMakeNew();
+                destroyRows();
+            }                        
         }
+        if (!pieceWithinLimits()) {
+            this.current.moveUp();
+            attachAndMakeNew();
+            destroyRows();
+        }
+        
     }
 
     public Table getTable() {
@@ -158,6 +180,7 @@ public class Logic {
     }
     
     public void endGame() {
+        
         this.continues = false;
     }
 }

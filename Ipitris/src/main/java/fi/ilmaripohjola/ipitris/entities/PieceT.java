@@ -17,13 +17,19 @@ public class PieceT extends Piece {
     private Block[] blocks;
     private int asento;
 
+    public PieceT(Color color) {
+        super(color);
+    }
+    
+    
+
     public PieceT(Color color, int x, int y) {
         super(color);
         this.blocks = new Block[4];
-        this.blocks[0] = new Block(color, x - 1, y);
-        this.blocks[1] = new Block(color, x, y);
-        this.blocks[2] = new Block(color, x, y + 1);
-        this.blocks[3] = new Block(color, x + 1, y);
+        this.blocks[0] = new Block(color, x - 1, y-1);
+        this.blocks[1] = new Block(color, x, y - 1);
+        this.blocks[2] = new Block(color, x, y);
+        this.blocks[3] = new Block(color, x + 1, y - 1);
         this.asento = 1;
     }
 

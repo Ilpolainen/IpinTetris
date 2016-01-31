@@ -20,14 +20,15 @@ import javax.swing.JPanel;
 public class Renderer extends JPanel implements Updatable {
     
     private Logic tetris;
+    private int scale;
 
-    public Renderer(Logic tetris) {
+    public Renderer(Logic tetris, int scale) {
         this.tetris = tetris;
+        this.scale = scale;
     }
 
     @Override
-    public void updateNow() {
-  
+    public void updateNow() {  
         this.repaint(); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -35,32 +36,36 @@ public class Renderer extends JPanel implements Updatable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLACK);        
-        g.drawRect(0, 0, tetris.getTable().getWidth()*30, tetris.getTable().getHeight()*30);
+        g.drawRect(0, 0, tetris.getTable().getWidth()*scale, (tetris.getTable().getHeight()-4)*scale);
         drawTable(g, tetris.getTable());
         drawPiece(g, tetris.getCurrent());
     }
     
-    protected void drawBlock(Graphics g, Block block) {
+    protected void drawBlock(Graphics g, Block block) {        
+        g.setColor(Color.BLACK);
+        g.drawRect(block.getX()*scale, (block.getY()-4)*scale, scale, scale);
         g.setColor(block.getColor());
-        g.drawRect(block.getX()*15, block.getY()*15, 15, 15);
+        g.fillRect(block.getX()*scale+1, (block.getY()-4)*scale+1, scale-1, scale-1);
     }
     
     protected void drawPiece(Graphics g, Piece p) {
         Block[] blocks = p.getBlocks();
         g.setColor(p.getColor());
         for (Block block : blocks) {
-            drawBlock(g, block);
+            if (block.getY()>=4) {
+                 drawBlock(g, block);
+            }           
         }
     }
     
     protected void drawTable(Graphics g, Table t) {
         Block[][] blocks = t.getBlocks();
         for (int i = 0; i < t.getWidth(); i++) {
-            for (int j = 0; j < t.getHeight(); j++) {
-                if (blocks[i][j]!=null) {
+            for (int j = 4; j < t.getHeight(); j++) {
+                if (blocks[i][j]!=null && blocks[i][j].getY()>=4) {
                     drawBlock(g, blocks[i][j]);
                 }
             }
-        }
+        }        
     }
 }

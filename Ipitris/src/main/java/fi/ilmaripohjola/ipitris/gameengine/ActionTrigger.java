@@ -11,33 +11,37 @@ import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import fi.ilmaripohjola.ipitris.utilities.Updatable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.Clock;
 import javax.swing.Timer;
 
 /**
  *
  * @author omistaja
  */
-public class GameEngine extends Timer implements ActionListener {
+public class ActionTrigger extends Timer implements ActionListener {
 
     private Logic tetris;
     private Updatable updatable;
     private boolean continues;
+   
 
-    public GameEngine(Table table, Updatable updatable) {
+    public ActionTrigger(Logic tetris, Updatable updatable) {
         super(25, null);
-        this.continues = true;
-        this.tetris = new Logic(table);
+        this.tetris = tetris;
+        this.continues = true;        
         this.updatable = updatable;
         addActionListener(this);
         setInitialDelay(1000);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {        
-        updatable.updateNow();
+    public void actionPerformed(ActionEvent e) {
         if (this.tetris.getContinues() == false) {
-            return;
-        }
-
+            this.stop();
+                System.out.println("END");
+            }
+        updatable.updateNow();                
     }
+    
+    
 }
