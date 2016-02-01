@@ -113,6 +113,7 @@ public class Logic {
             }
             piecesInRow=0;
         }
+        
         return rowsToDestroy;
     }
     
@@ -182,5 +183,11 @@ public class Logic {
     public void endGame() {
         
         this.continues = false;
+    }
+    
+    public void loop() {
+        while (true) {
+            System.out.println("Jee");
+        }
     }
 }

@@ -27,7 +27,7 @@ public class KeyPressListener implements KeyListener {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {        
         if (e.getKeyCode() == VK_SPACE) {
             tetris.rotateRight();
         }
@@ -40,6 +40,7 @@ public class KeyPressListener implements KeyListener {
         if (e.getKeyCode() == VK_RIGHT) {
             tetris.moveRight();
         }
+        
     }
 
     @Override

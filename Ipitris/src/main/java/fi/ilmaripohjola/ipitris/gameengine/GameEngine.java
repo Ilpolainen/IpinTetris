@@ -18,20 +18,24 @@ import javax.swing.Timer;
  *
  * @author omistaja
  */
-public class ActionTrigger extends Timer implements ActionListener {
+public class GameEngine extends Timer implements ActionListener {
 
     private Logic tetris;
     private Updatable updatable;
     private boolean continues;
+    private int round;
+    private int speed;
    
 
-    public ActionTrigger(Logic tetris, Updatable updatable) {
+    public GameEngine(Logic tetris, Updatable updatable) {
         super(25, null);
         this.tetris = tetris;
         this.continues = true;        
         this.updatable = updatable;
         addActionListener(this);
         setInitialDelay(1000);
+        this.round=0;
+        this.speed=18;
     }
 
     @Override
@@ -40,7 +44,25 @@ public class ActionTrigger extends Timer implements ActionListener {
             this.stop();
                 System.out.println("END");
             }
+        if (this.round==20-this.speed) {
+            tetris.moveDown();
+            this.round=0;
+        } else {
+            this.round=this.round+1;
+        }        
         updatable.updateNow();                
+    }
+
+    public void setSpeed(int speed) {
+        if (speed>19) {
+            this.speed = speed;
+        }        
+    }
+    
+    public void increaseSpeed() {
+        if (this.speed<19) {
+            this.speed=this.speed+1;
+        }        
     }
     
     

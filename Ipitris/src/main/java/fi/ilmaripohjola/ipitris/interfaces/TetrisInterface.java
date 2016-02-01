@@ -61,6 +61,8 @@ public class TetrisInterface implements Runnable {
         return frame;
     }
 
+    
+    
     public Logic getLogic() {
         return tetris;
     }
