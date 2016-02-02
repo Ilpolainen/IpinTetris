@@ -17,16 +17,11 @@ public class PieceI extends Piece {
     private Block[] blocks;
     private int asento;
 
-    public PieceI(Color color) {
-        super(color);
+    public PieceI() {
     }
+
     
-    /**
-     *
-     * @param color
-     * @param x
-     * @param y
-     */
+    
     public PieceI(Color color, int x, int y) {
         this.color = color;
         this.blocks = new Block[4];
@@ -39,13 +34,40 @@ public class PieceI extends Piece {
 
     @Override
     public Block[] getBlocks() {
-        return blocks;
+        return this.blocks; 
+    } 
+    
+    
+
+    @Override
+    public void moveLeft() {
+         for (Block block : blocks) {
+            block.moveLeft();
+        }
     }
 
     @Override
-    public Color getColor() {
-        return color;
+    public void moveRight() {
+        for (Block block : blocks) {
+            block.moveRight();
+        }
     }
+
+     @Override
+    public void moveUp() {
+        for (Block block : blocks) {
+            block.moveUp();
+        }
+    }
+
+    @Override
+    public void moveDown() {
+        for (Block block : blocks) {
+            block.moveDown();
+        }
+    }
+    
+    
 
     @Override
     public void rotateRight() {
@@ -83,40 +105,6 @@ public class PieceI extends Piece {
             this.asento = 2;
         } 
     }
-
-    @Override
-    public void moveUp() {
-        for (Block block : blocks) {
-            block.moveUp();
-        }
-//To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveDown() {
-        for (Block block : blocks) {
-            block.moveDown();
-        }
- //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveLeft() {
-        for (Block block : blocks) {
-            block.moveLeft();
-        }
- //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveRight() {
-        for (Block block : blocks) {
-            block.moveRight();
-        }
- //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
 
     @Override
     public String toString() {

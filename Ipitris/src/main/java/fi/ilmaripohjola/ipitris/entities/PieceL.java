@@ -18,7 +18,7 @@ public class PieceL extends Piece {
     private int asento;
 
     public PieceL(Color color, int x, int y) {
-        super(color);
+        this.color = color;
         this.blocks = new Block[4];
         this.blocks[0] = new Block(color, x, y-1);
         this.blocks[1] = new Block(color, x, y);
@@ -26,33 +26,17 @@ public class PieceL extends Piece {
         this.blocks[3] = new Block(color, x + 1, y+1);
         this.asento = 1;
     }
-
-    public int getAsento() {
-        return asento;
-    }
-
+    
+    @Override
     public Block[] getBlocks() {
-        return blocks;
+        return this.blocks; 
     }
-
-    public Color getColor() {
-        return color;
-    }
-
+    
     @Override
-    public void moveDown() {
-        for (Block block : blocks) {
-            block.moveDown();
+    public void moveLeft() {
+         for (Block block : blocks) {
+            block.moveLeft();
         }
- //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveUp() {
-        for (Block block : blocks) {
-            block.moveUp();
-        }
- //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -60,15 +44,20 @@ public class PieceL extends Piece {
         for (Block block : blocks) {
             block.moveRight();
         }
- //To change body of generated methods, choose Tools | Templates.
+    }
+
+     @Override
+    public void moveUp() {
+        for (Block block : blocks) {
+            block.moveUp();
+        }
     }
 
     @Override
-    public void moveLeft() {
+    public void moveDown() {
         for (Block block : blocks) {
-            block.moveLeft();
+            block.moveDown();
         }
- //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

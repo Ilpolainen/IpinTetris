@@ -17,14 +17,10 @@ public class PieceS extends Piece {
     private Block[] blocks;
     private int asento;
 
-    public PieceS(Color color) {
-        super(color);
-    }
-    
-    
+     
 
     public PieceS(Color color, int x, int y) {
-        super(color);
+        this.color = color;
         this.blocks = new Block[4];
         this.blocks[0] = new Block(color, x, y - 1);
         this.blocks[1] = new Block(color, x, y);
@@ -32,30 +28,11 @@ public class PieceS extends Piece {
         this.blocks[3] = new Block(color, x + 1, y + 1);
         this.asento = 1;
     }
-
-    public int getAsento() {
-        return asento;
-    }
-
+    
     @Override
     public Block[] getBlocks() {
-        return blocks; //To change body of generated methods, choose Tools | Templates.
+        return this.blocks; 
     }
-
-    @Override
-    public Color getColor() {
-        return color; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-    
-      
 
     @Override
     public void moveUp() {

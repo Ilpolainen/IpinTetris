@@ -39,7 +39,7 @@ public class TetrisInterface implements Runnable {
         frame.setPreferredSize(new Dimension(width, height));
         frame.setLocation(500, 100);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+        
         setComponents(frame.getContentPane());
 
         frame.pack();

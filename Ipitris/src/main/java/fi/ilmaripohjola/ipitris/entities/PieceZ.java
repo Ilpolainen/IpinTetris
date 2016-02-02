@@ -16,15 +16,9 @@ public class PieceZ extends Piece {
     private Color color;
     private Block[] blocks;
     private int asento;
-
-    public PieceZ(Color color) {
-        super(color);
-    }
-    
-    
-
+ 
     public PieceZ(Color color, int x, int y) {
-        super(color);
+        this.color = color;
         this.blocks = new Block[4];
         this.blocks[0] = new Block(color, x, y - 1);
         this.blocks[1] = new Block(color, x, y);
@@ -32,59 +26,37 @@ public class PieceZ extends Piece {
         this.blocks[3] = new Block(color, x - 1, y + 1);
         this.asento = 1;
     }
-
-    public int getAsento() {
-        return asento;
-    }
-
+    
     @Override
     public Block[] getBlocks() {
-        return blocks; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Color getColor() {
-        return color; //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+        return this.blocks; 
     }
     
-    
-
-    @Override
-    public void moveUp() {
-        for (Block block : blocks) {
-            block.moveUp();
-        }
-//To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveDown() {
-        for (Block block : blocks) {
-            block.moveDown();
-        }
-        //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public void moveLeft() {
-        for (Block block : blocks) {
+         for (Block block : blocks) {
             block.moveLeft();
         }
-        //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void moveRight() {
         for (Block block : blocks) {
             block.moveRight();
+        }
+    }
+
+     @Override
+    public void moveUp() {
+        for (Block block : blocks) {
+            block.moveUp();
+        }
+    }
+
+    @Override
+    public void moveDown() {
+        for (Block block : blocks) {
+            block.moveDown();
         }
     }
 

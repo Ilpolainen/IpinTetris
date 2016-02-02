@@ -6,11 +6,12 @@
 package fi.ilmaripohjola.ipitris.application;
 
 import fi.ilmaripohjola.ipitris.entities.PieceI;
+import fi.ilmaripohjola.ipitris.entities.PieceJ;
 import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import fi.ilmaripohjola.ipitris.entities.PieceT;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gameengine.GameEngine;
+import fi.ilmaripohjola.ipitris.gameengine.GameLoop;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.interfaces.TetrisInterface;
 
@@ -30,10 +31,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {        
-        Table table = new Table(10,25);
-        Logic tetris = new Logic(table);       
+        Table table = new Table(10,25);        
+        Logic tetris = new Logic(table, 1);       
         TetrisInterface IF = new TetrisInterface(tetris, 30);
-        GameEngine AT = new GameEngine(tetris, IF.getRenderer());
+        GameLoop AT = new GameLoop(tetris, IF.getRenderer());
         SwingUtilities.invokeLater(IF);
         AT.start();
         

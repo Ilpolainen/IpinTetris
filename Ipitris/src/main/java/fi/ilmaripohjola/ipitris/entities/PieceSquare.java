@@ -16,12 +16,6 @@ public class PieceSquare extends Piece {
     private Block[] blocks;
     private int asento;
 
-    public PieceSquare(Color color) {
-        super(color);
-    }
-    
-    
-
     public PieceSquare(Color color, int x, int y) {
         this.color = color;
         this.blocks = new Block[4];
@@ -31,33 +25,17 @@ public class PieceSquare extends Piece {
         this.blocks[3] = new Block(color, x + 1, y);
         this.asento = 1;
     }
-
-    public int getAsento() {
-        return asento;
-    }
-
+    
+    @Override
     public Block[] getBlocks() {
-        return blocks;
+        return this.blocks; 
     }
-
-    public Color getColor() {
-        return color;
-    }
-
+    
     @Override
-    public void moveDown() {
-        for (Block block : blocks) {
-            block.moveDown();
+    public void moveLeft() {
+         for (Block block : blocks) {
+            block.moveLeft();
         }
- //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveUp() {
-        for (Block block : blocks) {
-            block.moveUp();
-        }
- //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -65,23 +43,20 @@ public class PieceSquare extends Piece {
         for (Block block : blocks) {
             block.moveRight();
         }
- //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void moveLeft() {
+     @Override
+    public void moveUp() {
         for (Block block : blocks) {
-            block.moveLeft();
+            block.moveUp();
         }
- //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void rotateRight() {
-    }
-
-    @Override
-    public void rotateLeft() {
+    public void moveDown() {
+        for (Block block : blocks) {
+            block.moveDown();
+        }
     }
 
     @Override
