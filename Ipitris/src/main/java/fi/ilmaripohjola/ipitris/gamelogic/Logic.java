@@ -43,16 +43,47 @@ public class Logic {
         this.commands[3] = new CommandRotateRight(this);
     }
 
+     public Table getTable() {
+        return table;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public void setCurrent(Piece current) {
+        this.current = current;
+    }        
+     
+    public Piece getCurrent() {
+        return current;
+    }
+
+    public PieceGenerator getGenerator() {
+        return generator;
+    }
+        
+    
+    public boolean getContinues() {
+        return this.continues;
+    }
+    
     public Command[] getCommands() {
         return commands;
     }
 
-    public void setCommands(Command[] commands) {
-        this.commands = commands;
+    public void setCommand(int i, Command command) {
+        if (i<this.commands.length && i>=0) {
+            this.commands[i] = command;
+        }        
     }
 
     public int getPoints() {
         return points;
+    }
+
+    public int getRowsDestroyed() {
+        return rowsDestroyed;
     }
     
     
@@ -163,64 +194,7 @@ public class Logic {
         return rowsToDestroy;
     }
     
-    
-    
-//    public void moveRight() {
-//        this.current.moveRight();
-//        if (!pieceWithinLimits() || connects()) {
-//            this.current.moveLeft();
-//        }
-//    }
-    
-//    public void moveLeft() {
-//        this.current.moveLeft();
-//        if (!pieceWithinLimits() || connects()) {
-//            this.current.moveRight();
-//        }
-//    }
-    
-//    public void rotateLeft() {
-//        this.current.rotateLeft();
-//        if (!pieceWithinLimits() || connects()) {
-//            this.current.rotateRight();
-//        }
-//    }
-    
-//    public void rotateRight() {
-//        this.current.rotateRight();
-//        if (!pieceWithinLimits() || connects()) {
-//            this.current.rotateLeft();
-//        }
-//    }
-    
-    
-//    public void moveDown() {
-//        this.current.moveDown();        
-//        if (connects()) {
-//            Block[] currentBlocks = this.current.getBlocks();
-//            this.current.moveUp();
-//            for (Block block : currentBlocks) {
-//                if (block.getY() < 4) {
-//                    endGame();
-//                }
-//            }
-//            if (continues!=false) {
-//                attachAndMakeNew();
-//                destroyRows();
-//            }                        
-//        }
-//        if (!pieceWithinLimits()) {
-//            this.current.moveUp();
-//            attachAndMakeNew();
-//            destroyRows();
-//        }
-//        
-//    }
-
-    public int getLevel() {
-        return this.level;
-    }
-
+        
     public void setSpeed(int level) {
         if (level < 0) {
             level = 0;
@@ -237,17 +211,7 @@ public class Logic {
         }
     }
 
-    public Table getTable() {
-        return table;
-    }
-
-    public Piece getCurrent() {
-        return current;
-    }
-    
-    public boolean getContinues() {
-        return this.continues;
-    }
+   
     
     public void endGame() {        
         this.continues = false;

@@ -22,6 +22,12 @@ public abstract class Command {
     public Command(Logic tetris) {
         this.tetris = tetris;
     }
+
+    public Logic getTetris() {
+        return tetris;
+    }
+    
+    
     
     public void runCommand() {
         

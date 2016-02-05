@@ -12,12 +12,6 @@ import java.awt.Color;
  * @author omistaja
  */
 public class PieceI extends Piece {
-
-
-
-    public PieceI() {
-    }
-
     
     
     public PieceI(Color color, int x, int y) {
@@ -41,10 +35,9 @@ public class PieceI extends Piece {
             super.blocks[3].moveUp();
             super.asento = 2;
         } else if (super.asento == 2) {
-            rotateLeft();
-            super.asento = 1;
+            rotateLeft();            
         } 
-        //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
@@ -61,7 +54,6 @@ public class PieceI extends Piece {
             super.asento = 1;
         } else if (super.asento == 1) {
             rotateRight();
-            super.asento = 2;
         } 
     }
 

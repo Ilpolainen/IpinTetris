@@ -31,6 +31,10 @@ public class PieceGenerator {
         this.tableWidth = tableWidth;
     }
 
+    public int getTableWidth() {
+        return tableWidth;
+    }
+
     
     
     public Piece givePiece() {

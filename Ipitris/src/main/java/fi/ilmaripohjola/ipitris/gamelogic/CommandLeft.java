@@ -11,19 +11,19 @@ package fi.ilmaripohjola.ipitris.gamelogic;
  */
 public class CommandLeft extends Command {
 
-    private Logic tetris;
+
 
     public CommandLeft(Logic tetris) {
-        this.tetris=tetris;
+        super(tetris);
     }
     
     
     
     @Override
     public void runCommand() {
-        this.tetris.getCurrent().moveLeft();
-        if (!tetris.pieceWithinLimits() || tetris.connects()) {
-            tetris.getCurrent().moveRight();
+        super.getTetris().getCurrent().moveLeft();
+        if (!super.getTetris().pieceWithinLimits() || super.getTetris().connects()) {
+            super.getTetris().getCurrent().moveRight();
         }
     }
     

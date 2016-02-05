@@ -32,19 +32,21 @@ public class PieceLTest {
     }
     
     @Test
-    public void constructorSetsColorRight() {
-        Color color = pieceL.getColor();
-        String colorString = color.toString();
-        assertEquals("java.awt.Color[r=0,g=0,b=0]", colorString);
-    }
-
-    @Test
     public void constructorSetsPositionRight() {
         assertEquals("2,1", this.pieceL.getBlocks()[0].toString());
         assertEquals("2,2", this.pieceL.getBlocks()[1].toString());
         assertEquals("2,3", this.pieceL.getBlocks()[2].toString());
         assertEquals("3,3", this.pieceL.getBlocks()[3].toString());
     }
+    
+    @Test
+    public void constructorSetsColorRight() {
+        Color color = pieceL.getColor();
+        String colorString = color.toString();
+        assertEquals("java.awt.Color[r=0,g=0,b=0]", colorString);
+    }
+
+    
 
     @Test
     public void moveDownWorks() {

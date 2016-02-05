@@ -19,8 +19,8 @@ public class Table {
             width = 4;
         } 
         this.width = width;
-        if (height < 4) {
-            height = 4;
+        if (height < 8) {
+            height = 8;
         }
         this.height = height;
         this.blocks = new Block[width][height+4];

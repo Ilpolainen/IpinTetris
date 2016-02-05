@@ -11,22 +11,15 @@ package fi.ilmaripohjola.ipitris.gamelogic;
  */
 public class CommandRotateRight extends Command {
 
-    private Logic tetris;
-    
-    public CommandRotateRight() {
-    }
-
     public CommandRotateRight(Logic tetris) {        
-        this.tetris = tetris;        
+        super(tetris);        
     }
-    
-    
     
     @Override
     public void runCommand() {
-        tetris.getCurrent().rotateRight();
-        if (!tetris.pieceWithinLimits() || tetris.connects()) {
-            this.tetris.getCurrent().rotateLeft();
+        super.getTetris().getCurrent().rotateRight();
+        if (!super.getTetris().pieceWithinLimits() || super.getTetris().connects()) {
+            super.getTetris().getCurrent().rotateLeft();
         } //To change body of generated methods, choose Tools | Templates.
     }
     

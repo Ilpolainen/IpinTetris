@@ -13,38 +13,31 @@ import fi.ilmaripohjola.ipitris.entities.Block;
  */
 public class CommandDown extends Command {
 
-    private Logic tetris;
-
-    public CommandDown() {
-    }
-    
-    
-
     public CommandDown(Logic tetris) {
-        this.tetris=tetris;
+        super(tetris);
     }
         
 
     @Override
     public void runCommand() {
-        this.tetris.getCurrent().moveDown();
-        if (this.tetris.connects()) {
-            Block[] currentBlocks = this.tetris.getCurrent().getBlocks();
-            this.tetris.getCurrent().moveUp();
+        super.getTetris().getCurrent().moveDown();
+        if (super.getTetris().connects()) {
+            Block[] currentBlocks = super.getTetris().getCurrent().getBlocks();
+            super.getTetris().getCurrent().moveUp();
             for (Block block : currentBlocks) {
                 if (block.getY() < 4) {
-                    this.tetris.endGame();
+                    super.getTetris().endGame();
                 }
             }
-            if (this.tetris.getContinues() != false) {
-                this.tetris.attachAndMakeNew();
-                this.tetris.destroyRows();
+            if (super.getTetris().getContinues() != false) {
+                super.getTetris().attachAndMakeNew();
+                super.getTetris().destroyRows();
             }
         }
-        if (!this.tetris.pieceWithinLimits()) {
-            this.tetris.getCurrent().moveUp();
-            this.tetris.attachAndMakeNew();
-            this.tetris.destroyRows();
+        if (!super.getTetris().pieceWithinLimits()) {
+            super.getTetris().getCurrent().moveUp();
+            super.getTetris().attachAndMakeNew();
+            super.getTetris().destroyRows();
         }
 
     }

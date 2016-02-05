@@ -10,22 +10,20 @@ package fi.ilmaripohjola.ipitris.gamelogic;
  * @author omistaja
  */
 public class CommandRight extends Command {
-
-    private Logic tetris;
     
     public CommandRight() {
     }
 
     public CommandRight(Logic tetris) {
-        this.tetris = tetris;
+         super(tetris);
     }
     
     
     @Override
     public void runCommand() {
-        tetris.getCurrent().moveRight();
-        if (!tetris.pieceWithinLimits() || tetris.connects()) {
-            tetris.getCurrent().moveLeft();
+        super.getTetris().getCurrent().moveRight();
+        if (!super.getTetris().pieceWithinLimits() || super.getTetris().connects()) {
+            super.getTetris().getCurrent().moveLeft();
         } //To change body of generated methods, choose Tools | Templates.
     }
     
