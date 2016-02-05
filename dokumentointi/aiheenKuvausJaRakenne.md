@@ -15,4 +15,4 @@
 - Palasen tippumisnopeuden lis‰‰minen
 - Pelin keskeytt‰minen
 
-[luokkadiagrammi](dokumentointi/Luokkadiagrammi.jpg)
+[luokkadiagrammi](Luokkadiagrammi.jpg)
