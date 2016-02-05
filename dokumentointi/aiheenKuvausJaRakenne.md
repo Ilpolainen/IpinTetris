@@ -15,5 +15,5 @@
 - Palasen tippumisnopeuden lis‰‰minen
 - Pelin keskeytt‰minen
 
-![Alt luokkadiagrammi](IpinTetris/Luokkadiagrammi.jpg)
+![luokkadiagrammi](Luokkadiagrammi.jpg)
 
