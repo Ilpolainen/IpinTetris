@@ -8,4 +8,4 @@ Reaaliaikainen tetris.
 
 [tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
 
-[pit-dokumentit](dokumentointi/Pit)
+[pit](dokumentointi/Pit/201602051859/pit.md)
