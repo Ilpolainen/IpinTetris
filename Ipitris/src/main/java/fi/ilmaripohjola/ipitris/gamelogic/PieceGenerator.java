@@ -64,7 +64,7 @@ public class PieceGenerator {
     }
     
     private Piece makeT() {
-        PieceT piece = new PieceT(Color.GREEN, this.tableWidth/2, 3);
+        PieceT piece = new PieceT(Color.GREEN, this.tableWidth/2, 2);
         return piece;
     }
     

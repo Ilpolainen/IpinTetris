@@ -88,15 +88,4 @@ public class PieceS extends Piece {
         rotateLeft(); //To change body of generated methods, choose Tools | Templates.
     }
 
-//    @Override
-//    public String toString() {
-//        String palautus = "Asento: " + "\n"
-//                + this.asento + "\n"
-//                + "Koordinaatit: " + "\n"
-//                + "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"
-//                + "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n"
-//                + "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n"
-//                + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
-//        return palautus;
-//    }
 }
