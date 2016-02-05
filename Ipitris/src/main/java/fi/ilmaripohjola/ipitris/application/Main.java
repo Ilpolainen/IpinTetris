@@ -11,7 +11,7 @@ import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import fi.ilmaripohjola.ipitris.entities.PieceT;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gameengine.GameLoop;
+import fi.ilmaripohjola.ipitris.gameloop.GameLoop;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.interfaces.TetrisInterface;
 

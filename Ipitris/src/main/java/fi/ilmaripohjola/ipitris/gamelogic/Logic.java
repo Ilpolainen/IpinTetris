@@ -40,7 +40,7 @@ public class Logic {
         this.commands[0] = new CommandDown(this);
         this.commands[1] = new CommandLeft(this);
         this.commands[2] = new CommandRight(this);
-        this.commands[3] = new CommandRotateLeft(this);
+        this.commands[3] = new CommandRotateRight(this);
     }
 
     public Command[] getCommands() {
@@ -70,7 +70,7 @@ public class Logic {
     }
     
     public void checkLevel() {
-        if (this.rowsDestroyed > this.level * 12) {
+        if (this.rowsDestroyed > (this.level+1) * 12) {
             this.level = this.level + 1;
         }
     }
@@ -165,12 +165,12 @@ public class Logic {
     
     
     
-    public void moveRight() {
-        this.current.moveRight();
-        if (!pieceWithinLimits() || connects()) {
-            this.current.moveLeft();
-        }
-    }
+//    public void moveRight() {
+//        this.current.moveRight();
+//        if (!pieceWithinLimits() || connects()) {
+//            this.current.moveLeft();
+//        }
+//    }
     
 //    public void moveLeft() {
 //        this.current.moveLeft();

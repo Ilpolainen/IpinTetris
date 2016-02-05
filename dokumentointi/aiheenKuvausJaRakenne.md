@@ -14,3 +14,5 @@
 - Palasen liikuttaminen vasemmalle
 - Palasen tippumisnopeuden lis‰‰minen
 - Pelin keskeytt‰minen
+
+[luokkadiagrammi](dokumentointi/Luokkadiagrammi.jpg)

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.ilmaripohjola.ipitris.gameengine;
+package fi.ilmaripohjola.ipitris.gameloop;
 
 import fi.ilmaripohjola.ipitris.entities.Table;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;

@@ -34,14 +34,14 @@ public class PieceGenerator {
     
     
     public Piece givePiece() {
-        int i = random.nextInt(1);        
-        if (i==1) {
+        int i = random.nextInt(7);        
+        if (i==0) {
             return makeI();
         } if (i==1) {
             return makeSquare();
         } if (i==2) {
             return makeT();
-        } if (i==0) {
+        } if (i==3) {
             return makeL();
         } if (i==4) {
             return makeJ();

@@ -41,6 +41,7 @@ public class Renderer extends JPanel implements Updatable {
         g.drawRect(0, 0, tetris.getTable().getWidth()*scale, (tetris.getTable().getHeight()-4)*scale);
         drawTable(g, tetris.getTable());
         drawPiece(g, tetris.getCurrent());
+        showLevel(g);
         showPoints(g);
         if (this.tetris.getContinues()==false) {
             writeGameOver(g);
@@ -76,7 +77,7 @@ public class Renderer extends JPanel implements Updatable {
     }
     
     public void writeGameOver(Graphics g) {
-        Font f = new Font("Greek",0,40);
+        Font f = new Font("Greek",0,42);
         FontMetrics metrics = g.getFontMetrics(f);
         g.setFont(f);
         String GO = "GAME OVER";
@@ -86,11 +87,21 @@ public class Renderer extends JPanel implements Updatable {
     }
     
     public void showPoints(Graphics g) {
-        Font f = new Font("Greek", 0, 25);        
+        Font f = new Font("Greek", 0, 20);        
         g.setFont(f);        
-        String points = "" + this.tetris.getPoints();
+        String points = "POINTS: " + this.tetris.getPoints();
+        FontMetrics metrics = g.getFontMetrics(f);
         g.setColor(Color.BLACK);
-        g.drawString(points, tetris.getTable().getWidth()*this.scale - 40, 30);
+        g.drawString(points, tetris.getTable().getWidth()*this.scale - (metrics.stringWidth(points))-10, metrics.getMaxAscent());
         
+    }
+    
+    public void showLevel(Graphics g) {
+        Font f = new Font("Greek", 0, 20);        
+        g.setFont(f);        
+        String level = "LEVEL: " + this.tetris.getLevel();
+        FontMetrics metrics = g.getFontMetrics(f);
+        g.setColor(Color.BLACK);
+        g.drawString(level, 10, metrics.getMaxAscent());
     }
 }
