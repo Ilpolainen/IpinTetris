@@ -19,3 +19,23 @@
 - 3h Yritin edelleen ymm‰rt‰‰ swingin toimintaa ja pleimoottorin rakentamista, mutta koululla kuulin huhun, ettei pelilooppia voi k‰ytt‰‰ yhdess‰ listenereiden kanssa. 
 - 4h. Kirjoitin testej‰, joita toteuktukseni vuoksi tulee olemaan ‰lytˆn m‰‰r‰. 
 - 1h Kirjoitin tuntip‰iv‰kirjaa ja yritin saada muita kurssin vaatimia nippelidokumentteja kuntoon. Turhauttaa valtavasti, kun en p‰‰se ohjauksiin riitt‰v‰sti ja tarvitsisin sit‰ todella.
+
+**30.9.2016**
+
+-6h Pelilogiikka edistyi hurjasti
+
+**1.2.2016**
+
+-4h Opin paljon uutta Swingist‰ ja sain peliloopin ja keylistenerin toimimaan
+
+**2.2.2016**
+
+-3h Opettelin k‰ytt‰m‰‰n Swingill‰ piirt‰mist‰ ja sain ihan kivoja tuloksia
+
+**3.2.2016**
+
+-5h Sain vihdoin pelin toimimaan ja se n‰ytt‰‰kin ihan kivalta
+
+**5.2.2016**
+
+-8h Tein koko p‰iv‰n hommia. Tein hitosti testej‰ ja tuunasin luokkakaaviota. Sain myˆs pelin n‰ytt‰m‰‰n levelin ja pisteet.

@@ -175,7 +175,7 @@ public class Logic {
         checkLevel();
     }
 
-    public ArrayList searchFullRows() {
+    public ArrayList<Integer> searchFullRows() {
         ArrayList<Integer> rowsToDestroy = new ArrayList<>();
         int piecesInRow = 0;
         for (int i = 0; i < table.getHeight(); i++) {
