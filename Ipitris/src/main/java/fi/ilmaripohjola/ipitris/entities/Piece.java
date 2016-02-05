@@ -5,20 +5,16 @@ import java.awt.Color;
 public abstract class Piece implements Movable {
     
     private Color color;
-    private Block[] blocks;
-    private int asento;
+    protected Block[] blocks;
+    protected int asento;
     
 
     public Piece() {
     }        
     
-    public Piece(Color color, int x, int y) {
+    public Piece(Color color, int size ,int x, int y) {
         this.color = color;         
-        this.blocks = new Block[4];
-        this.blocks[0] = new Block(color,x,y-1);
-        this.blocks[1] = new Block(color,x,y);
-        this.blocks[2] = new Block(color,x,y+1);
-        this.blocks[3] = new Block(color,x,y+2);
+        this.blocks = new Block[size];        
         this.asento = 1;
     }
 
@@ -68,7 +64,19 @@ public abstract class Piece implements Movable {
         for (Block block : blocks) {
             block.moveLeft();
         }
-    } 
+    }
+    
+    @Override
+    public String toString() {
+        String palautettava = "Asento: " + "\n"
+                + this.asento + "\n"
+                + "Koordinaatit: " + "\n"
+                + "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"
+                + "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n"
+                + "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n"
+                + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
+        return palautettava;
+    }
     
     
     

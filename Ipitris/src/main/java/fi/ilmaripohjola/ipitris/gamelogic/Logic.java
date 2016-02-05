@@ -24,21 +24,23 @@ public class Logic {
     private PieceGenerator generator;
     private boolean continues;
     private int level;
+    private int points;
     private int rowsDestroyed;
     private Command[] commands;
 
-    public Logic(Table table, int level) {
+    public Logic(Table table) {
         this.table = table;
         this.generator = new PieceGenerator(new Random(), table.getWidth());
         this.current = generator.givePiece();        
         this.rowsDestroyed = 0;
         this.continues = true;
-        this.level = level;
+        this.level = 0;
+        this.points = 0;
         this.commands = new Command[4];
         this.commands[0] = new CommandDown(this);
         this.commands[1] = new CommandLeft(this);
         this.commands[2] = new CommandRight(this);
-        this.commands[3] = new CommandRotateRight(this);
+        this.commands[3] = new CommandRotateLeft(this);
     }
 
     public Command[] getCommands() {
@@ -47,6 +49,10 @@ public class Logic {
 
     public void setCommands(Command[] commands) {
         this.commands = commands;
+    }
+
+    public int getPoints() {
+        return points;
     }
     
     
@@ -64,7 +70,7 @@ public class Logic {
     }
     
     public void checkLevel() {
-        if (this.rowsDestroyed > this.level * 20) {
+        if (this.rowsDestroyed > this.level * 12) {
             this.level = this.level + 1;
         }
     }
@@ -104,8 +110,21 @@ public class Logic {
     
     public void destroyRows() {
         ArrayList<Integer> rowsToDestroy = searchFullRows();
+        int morePoints = 0;
+        if (rowsToDestroy.size()==1) {
+            points = points + 1;
+        }
+        if (rowsToDestroy.size()==2) {
+            points = points + 3;
+        }
+        if (rowsToDestroy.size()==3) {
+            points = points + 5;
+        }
+        if (rowsToDestroy.size()==4) {
+            points = points + 8;
+        }
         for (Integer row : rowsToDestroy) {
-            destroyRow(row);
+            destroyRow(row);            
         }
     }
     
@@ -230,8 +249,7 @@ public class Logic {
         return this.continues;
     }
     
-    public void endGame() {
-        
+    public void endGame() {        
         this.continues = false;
     }
     

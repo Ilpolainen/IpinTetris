@@ -26,7 +26,7 @@ public class PieceITest {
     
     @Before
     public void setUp() {
-        pieceI = new PieceI(Color.BLACK, 3, 3);
+        pieceI = new PieceI(Color.BLACK, 3, 4);
     }
     
     @Test

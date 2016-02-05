@@ -32,12 +32,14 @@ public class Main {
      */
     public static void main(String[] args) {        
         Table table = new Table(10,25);        
-        Logic tetris = new Logic(table, 1);       
+        Logic tetris = new Logic(table);
+//        PieceI p = new PieceI(Color.BLACK, 1, 1);
+//        p.moveDown();
         TetrisInterface IF = new TetrisInterface(tetris, 30);
         GameLoop AT = new GameLoop(tetris, IF.getRenderer());
         SwingUtilities.invokeLater(IF);
         AT.start();
-        
+//        
         
         
         

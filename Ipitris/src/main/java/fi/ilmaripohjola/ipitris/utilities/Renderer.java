@@ -10,6 +10,8 @@ import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.Table;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
@@ -39,6 +41,10 @@ public class Renderer extends JPanel implements Updatable {
         g.drawRect(0, 0, tetris.getTable().getWidth()*scale, (tetris.getTable().getHeight()-4)*scale);
         drawTable(g, tetris.getTable());
         drawPiece(g, tetris.getCurrent());
+        showPoints(g);
+        if (this.tetris.getContinues()==false) {
+            writeGameOver(g);
+        }
     }
     
     protected void drawBlock(Graphics g, Block block) {        
@@ -67,5 +73,24 @@ public class Renderer extends JPanel implements Updatable {
                 }
             }
         }        
+    }
+    
+    public void writeGameOver(Graphics g) {
+        Font f = new Font("Greek",0,40);
+        FontMetrics metrics = g.getFontMetrics(f);
+        g.setFont(f);
+        String GO = "GAME OVER";
+        g.setColor(Color.BLACK);
+        
+        g.drawString(GO, tetris.getTable().getWidth()*this.scale/2 - (metrics.stringWidth(GO)/2), tetris.getTable().getHeight()/3*this.scale);
+    }
+    
+    public void showPoints(Graphics g) {
+        Font f = new Font("Greek", 0, 25);        
+        g.setFont(f);        
+        String points = "" + this.tetris.getPoints();
+        g.setColor(Color.BLACK);
+        g.drawString(points, tetris.getTable().getWidth()*this.scale - 40, 30);
+        
     }
 }

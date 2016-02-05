@@ -26,7 +26,7 @@ public class PieceSquareTest {
     
     @Before
     public void setUp() {
-        pieceSquare = new PieceSquare(Color.BLACK, 3, 3);
+        pieceSquare = new PieceSquare(Color.BLACK, 3, 4);
     }
     
     @Test

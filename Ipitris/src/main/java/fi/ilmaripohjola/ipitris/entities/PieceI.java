@@ -13,9 +13,7 @@ import java.awt.Color;
  */
 public class PieceI extends Piece {
 
-    private Color color;
-    private Block[] blocks;
-    private int asento;
+
 
     public PieceI() {
     }
@@ -23,107 +21,53 @@ public class PieceI extends Piece {
     
     
     public PieceI(Color color, int x, int y) {
-        this.color = color;
-        this.blocks = new Block[4];
-        this.blocks[0] = new Block(color,x, y - 1);
-        this.blocks[1] = new Block(color,x, y);
-        this.blocks[2] = new Block(color,x, y + 1);
-        this.blocks[3] = new Block(color,x, y + 2);
-        this.asento = 1;
+        super(color, 4, x, y);
+        super.blocks[0] = new Block(color,x, y - 1);
+        super.blocks[1] = new Block(color,x, y);
+        super.blocks[2] = new Block(color,x, y + 1);
+        super.blocks[3] = new Block(color,x, y + 2);
     }
-
-    @Override
-    public Block[] getBlocks() {
-        return this.blocks; 
-    } 
-    
-    
-
-    @Override
-    public void moveLeft() {
-         for (Block block : blocks) {
-            block.moveLeft();
-        }
-    }
-
-    @Override
-    public void moveRight() {
-        for (Block block : blocks) {
-            block.moveRight();
-        }
-    }
-
-     @Override
-    public void moveUp() {
-        for (Block block : blocks) {
-            block.moveUp();
-        }
-    }
-
-    @Override
-    public void moveDown() {
-        for (Block block : blocks) {
-            block.moveDown();
-        }
-    }
-    
-    
 
     @Override
     public void rotateRight() {
-        if (this.asento == 1) {
-            blocks[0].moveLeft();
-            blocks[0].moveDown();
-            blocks[2].moveRight();
-            blocks[2].moveUp();
-            blocks[3].moveRight();
-            blocks[3].moveRight();
-            blocks[3].moveUp();
-            blocks[3].moveUp();
-            this.asento = 2;
-        } else if (this.asento == 2) {
+        if (super.asento == 1) {
+            super.blocks[0].moveLeft();
+            super.blocks[0].moveDown();
+            super.blocks[2].moveRight();
+            super.blocks[2].moveUp();
+            super.blocks[3].moveRight();
+            super.blocks[3].moveRight();
+            super.blocks[3].moveUp();
+            super.blocks[3].moveUp();
+            super.asento = 2;
+        } else if (super.asento == 2) {
             rotateLeft();
-            this.asento = 1;
+            super.asento = 1;
         } 
         //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void rotateLeft() {
-        if (this.asento == 2) {
-            blocks[0].moveUp();
-            blocks[0].moveRight();
-            blocks[2].moveLeft();
-            blocks[2].moveDown();
-            blocks[3].moveLeft();
-            blocks[3].moveLeft();
-            blocks[3].moveDown();
-            blocks[3].moveDown();
-            this.asento = 1;
-        } else if (this.asento == 1) {
+        if (super.asento == 2) {
+            super.blocks[0].moveUp();
+            super.blocks[0].moveRight();
+            super.blocks[2].moveLeft();
+            super.blocks[2].moveDown();
+            super.blocks[3].moveLeft();
+            super.blocks[3].moveLeft();
+            super.blocks[3].moveDown();
+            super.blocks[3].moveDown();
+            super.asento = 1;
+        } else if (super.asento == 1) {
             rotateRight();
-            this.asento = 2;
+            super.asento = 2;
         } 
     }
 
-    @Override
-    public String toString() {
-        String palautus = "Asento: " + "\n" + 
-                this.asento + "\n"
-                + "Koordinaatit: " + "\n" + 
-                "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n" +
-                "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n" +
-                "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n" +
-                "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
-        return palautus;
-    }
 }
 
-/**
- *
- *
 
- */
     
    
 

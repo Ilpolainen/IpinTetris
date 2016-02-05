@@ -27,29 +27,28 @@ public class GameLoop extends Timer implements ActionListener {
    
 
     public GameLoop(Logic tetris, Updatable updatable) {
-        super(25, null);
+        super(20, null);
         this.tetris = tetris;
         this.continues = true;        
         this.updatable = updatable;
         addActionListener(this);
-        setInitialDelay(1000);
+        setInitialDelay(100);
         this.round=0;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (this.tetris.getContinues() == false) {
-            this.stop();
-                System.out.println("END");
+    public void actionPerformed(ActionEvent e) {        
+        if (this.tetris.getContinues() == false) {            
+            updatable.updateNow();
+            this.stop();               
             }
         if (this.round==21-tetris.getLevel()) {   
-            System.out.println(tetris.getLevel());
             tetris.getCommands()[0].runCommand();
             this.round=0;
         } else {
             this.round=this.round+1;
         }        
-        updatable.updateNow();                
+        updatable.updateNow();               
     }
 
     

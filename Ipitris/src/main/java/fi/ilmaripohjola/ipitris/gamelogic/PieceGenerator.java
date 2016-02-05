@@ -34,14 +34,14 @@ public class PieceGenerator {
     
     
     public Piece givePiece() {
-        int i = random.nextInt(7);        
-        if (i==0) {
+        int i = random.nextInt(1);        
+        if (i==1) {
             return makeI();
         } if (i==1) {
             return makeSquare();
         } if (i==2) {
             return makeT();
-        } if (i==3) {
+        } if (i==0) {
             return makeL();
         } if (i==4) {
             return makeJ();
@@ -59,7 +59,7 @@ public class PieceGenerator {
     }
     
     private Piece makeSquare() {
-        PieceSquare piece = new PieceSquare(Color.BLUE, this.tableWidth/2, 2);
+        PieceSquare piece = new PieceSquare(Color.BLUE, this.tableWidth/2, 3);
         return piece;
     }
     
@@ -79,12 +79,12 @@ public class PieceGenerator {
     }
     
     private Piece makeS() {
-        PieceS piece = new PieceS(Color.YELLOW, this.tableWidth/2, 2);
+        PieceS piece = new PieceS(Color.YELLOW, this.tableWidth/2, 3);
         return piece;
     }
     
     private Piece makeZ() {
-        PieceZ piece = new PieceZ(Color.MAGENTA, this.tableWidth/2, 2);
+        PieceZ piece = new PieceZ(Color.MAGENTA, this.tableWidth/2, 3);
         return piece;
     }
 }

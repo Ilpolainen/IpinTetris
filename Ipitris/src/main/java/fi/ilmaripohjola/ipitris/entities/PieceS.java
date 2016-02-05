@@ -13,57 +13,53 @@ import java.awt.Color;
  */
 public class PieceS extends Piece {
 
-    private Color color;
-    private Block[] blocks;
-    private int asento;
+    
 
      
 
     public PieceS(Color color, int x, int y) {
-        this.color = color;
-        this.blocks = new Block[4];
-        this.blocks[0] = new Block(color, x, y - 1);
-        this.blocks[1] = new Block(color, x, y);
-        this.blocks[2] = new Block(color, x + 1, y);
-        this.blocks[3] = new Block(color, x + 1, y + 1);
-        this.asento = 1;
+        super(color, 4, x, y);
+        super.blocks[0] = new Block(color, x, y - 1);
+        super.blocks[1] = new Block(color, x, y);
+        super.blocks[2] = new Block(color, x + 1, y);
+        super.blocks[3] = new Block(color, x + 1, y + 1);        
     }
     
-    @Override
-    public Block[] getBlocks() {
-        return this.blocks; 
-    }
-
-    @Override
-    public void moveUp() {
-        for (Block block : blocks) {
-            block.moveUp();
-        }
-//To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveDown() {
-        for (Block block : blocks) {
-            block.moveDown();
-        }
-        //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveLeft() {
-        for (Block block : blocks) {
-            block.moveLeft();
-        }
-        //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void moveRight() {
-        for (Block block : blocks) {
-            block.moveRight();
-        }
-    }
+//    @Override
+//    public Block[] getBlocks() {
+//        return this.blocks; 
+//    }
+//
+//    @Override
+//    public void moveUp() {
+//        for (Block block : blocks) {
+//            block.moveUp();
+//        }
+////To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public void moveDown() {
+//        for (Block block : blocks) {
+//            block.moveDown();
+//        }
+//        //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public void moveLeft() {
+//        for (Block block : blocks) {
+//            block.moveLeft();
+//        }
+//        //To change body of generated methods, choose Tools | Templates.
+//    }
+//
+//    @Override
+//    public void moveRight() {
+//        for (Block block : blocks) {
+//            block.moveRight();
+//        }
+//    }
 
     @Override
     public void rotateLeft() {
@@ -92,15 +88,15 @@ public class PieceS extends Piece {
         rotateLeft(); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public String toString() {
-        String palautus = "Asento: " + "\n"
-                + this.asento + "\n"
-                + "Koordinaatit: " + "\n"
-                + "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"
-                + "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n"
-                + "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n"
-                + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
-        return palautus;
-    }
+//    @Override
+//    public String toString() {
+//        String palautus = "Asento: " + "\n"
+//                + this.asento + "\n"
+//                + "Koordinaatit: " + "\n"
+//                + "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"
+//                + "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n"
+//                + "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n"
+//                + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
+//        return palautus;
+//    }
 }
