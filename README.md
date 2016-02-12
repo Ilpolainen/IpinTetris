@@ -10,4 +10,3 @@ Reaaliaikainen tetris.
 
 [pit](dokumentointi/Pit/201602121642/pit.md)
 
-[checkstyle](dokumentointi/checkstyle.html)
