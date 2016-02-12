@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Block contains and handles x and y coordinates and handles, and the color of the tetris game's square. Implements movable.
  */
 package fi.ilmaripohjola.ipitris.entities;
 
