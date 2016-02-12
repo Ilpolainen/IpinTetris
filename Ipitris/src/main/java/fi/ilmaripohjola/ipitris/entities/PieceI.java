@@ -12,14 +12,13 @@ import java.awt.Color;
  * @author omistaja
  */
 public class PieceI extends Piece {
-    
-    
+
     public PieceI(Color color, int x, int y) {
         super(color, 4, x, y);
-        super.blocks[0] = new Block(color,x, y - 1);
-        super.blocks[1] = new Block(color,x, y);
-        super.blocks[2] = new Block(color,x, y + 1);
-        super.blocks[3] = new Block(color,x, y + 2);
+        super.blocks[0] = new Block(color, x, y - 1);
+        super.blocks[1] = new Block(color, x, y);
+        super.blocks[2] = new Block(color, x, y + 1);
+        super.blocks[3] = new Block(color, x, y + 2);
     }
 
     @Override
@@ -35,9 +34,9 @@ public class PieceI extends Piece {
             super.blocks[3].moveUp();
             super.asento = 2;
         } else if (super.asento == 2) {
-            rotateLeft();            
-        } 
-       
+            rotateLeft();
+        }
+
     }
 
     @Override
@@ -54,12 +53,7 @@ public class PieceI extends Piece {
             super.asento = 1;
         } else if (super.asento == 1) {
             rotateRight();
-        } 
+        }
     }
 
 }
-
-
-    
-   
-

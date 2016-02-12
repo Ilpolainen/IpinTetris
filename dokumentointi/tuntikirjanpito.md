@@ -39,3 +39,9 @@
 **5.2.2016**
 
 -8h Tein koko päivän hommia. Tein hitosti testejä ja tuunasin luokkakaaviota. Sain myös pelin näyttämään levelin ja pisteet.
+
+**11.2. 2016**
+
+-8h Tein taas koko päivän hommia, ja sain lopulta oman gameloopin tehtyä.
+
+-8h Ja taas pitkä päivä. Opin multithreadingin ja jaoin peliloopin ja grafiikkaloopin erikseen. 

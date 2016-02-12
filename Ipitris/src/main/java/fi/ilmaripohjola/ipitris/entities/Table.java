@@ -10,23 +10,22 @@ package fi.ilmaripohjola.ipitris.entities;
  * @author omistaja
  */
 public class Table {
+
     private int width;
-    private int height;    
+    private int height;
     private Block[][] blocks;
 
     public Table(int width, int height) {
         if (width < 4) {
             width = 4;
-        } 
+        }
         this.width = width;
         if (height < 8) {
             height = 8;
         }
         this.height = height;
-        this.blocks = new Block[width][height+4];
+        this.blocks = new Block[width][height + 4];
     }
-
-    
 
     public int getHeight() {
         return height;
@@ -39,6 +38,17 @@ public class Table {
     public Block[][] getBlocks() {
         return blocks;
     }
-    
-    
+
+    public void setSize(int width, int height) {
+        if (width < 4) {
+            width = 4;
+        }
+        this.width = width;
+        if (height < 8) {
+            height = 8;
+        }
+        this.height = height;
+        this.blocks = new Block[width][height + 4];
+    }
+
 }

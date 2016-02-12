@@ -39,7 +39,7 @@ public class CommandDown extends Command {
             super.getTetris().attachAndMakeNew();
             super.getTetris().destroyRows();
         }
-
     }
+    
 
 }

@@ -12,7 +12,7 @@ import java.awt.Color;
  * @author omistaja
  */
 public class Block implements Movable {
-    
+
     private int x;
     private int y;
     private Color color;
@@ -26,8 +26,6 @@ public class Block implements Movable {
     public Color getColor() {
         return color;
     }
-    
-    
 
     public int getX() {
         return x;
@@ -37,34 +35,29 @@ public class Block implements Movable {
         return y;
     }
 
-    
-        
-
     @Override
     public void moveUp() {
-        this.y = this.y-1; //To change body of generated methods, choose Tools | Templates.
+        this.y = this.y - 1; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void moveDown() {
-        this.y = this.y+1; //To change body of generated methods, choose Tools | Templates.
+        this.y = this.y + 1; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void moveLeft() {
-        this.x = this.x-1; //To change body of generated methods, choose Tools | Templates.
+        this.x = this.x - 1; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void moveRight() {
-        
-        this.x = this.x+1; //To change body of generated methods, choose Tools | Templates.
+        this.x = this.x + 1; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String toString() {
         return this.x + "," + this.y; //To change body of generated methods, choose Tools | Templates.
     }
-    
     
 }

@@ -139,25 +139,7 @@ public class LogicTest {
         }
         assertEquals(20, l.getLevel());
     }
-    
-    @Test
-    public void setSpeedWorksNormally() {
-        l.setSpeed(3);
-        assertEquals(3,l.getLevel());
-    }
-    
-    @Test
-    public void setSpeedIgnoresNegativeInputs() {
-        l.setSpeed(-4);
-        assertEquals(0,l.getLevel());
-    }
-    
-    @Test
-    public void setSpeedIgnoresTooBigInputs() {
-        l.setSpeed(50);
-        assertEquals(20,l.getLevel());
-    }
-    
+   
     @Test
     public void searchFullRowsReturnsEmptyListWithNothingToDestroy() {
         assertEquals(0, l.searchFullRows().size());        

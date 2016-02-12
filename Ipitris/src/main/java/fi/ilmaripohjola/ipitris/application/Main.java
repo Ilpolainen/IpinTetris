@@ -11,9 +11,13 @@ import fi.ilmaripohjola.ipitris.entities.PieceS;
 import fi.ilmaripohjola.ipitris.entities.PieceSquare;
 import fi.ilmaripohjola.ipitris.entities.PieceT;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gameloop.GameLoop;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
+import fi.ilmaripohjola.ipitris.interfaces.KeyPressListener;
+
+import fi.ilmaripohjola.ipitris.interfaces.StartingScreen;
 import fi.ilmaripohjola.ipitris.interfaces.TetrisInterface;
+import fi.ilmaripohjola.ipitris.utilities.Renderer;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -30,16 +34,26 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {        
-        Table table = new Table(10,25);        
-        Logic tetris = new Logic(table);
-//        PieceI p = new PieceI(Color.BLACK, 1, 1);
-//        p.moveDown();
-        TetrisInterface IF = new TetrisInterface(tetris, 30);
-        GameLoop AT = new GameLoop(tetris, IF.getRenderer());
-        SwingUtilities.invokeLater(IF);
-        AT.start();
+    public static void main(String[] args) throws InterruptedException {        
+//      
+//        Table table = new Table(10,25);
+//        int scale = 30;
+//        Logic tetris = new Logic(table);
+//        KeyPressListener listener = new KeyPressListener(tetris);
+//        Renderer renderer = new Renderer(tetris, scale);
+//        TetrisInterface IF = new TetrisInterface(table.getWidth(), table.getHeight(), scale, renderer, listener);
+        StartingScreen SS = new StartingScreen();
+        SS.start();
+//        MyGameLoop loop = new MyGameLoop(renderer, listener, tetris);
+//        SwingUtilities.invokeLater(IF);
+//        IF.start();
+//        loop.run();
 //        
+        
+//        StartingScreen SS = new StartingScreen();
+//        SwingUtilities.invokeLater(SS);
+
+        
         
         
         

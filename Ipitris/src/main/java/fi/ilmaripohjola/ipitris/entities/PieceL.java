@@ -129,5 +129,4 @@ public class PieceL extends Piece {
         asento = 3;
     }
 
-
 }

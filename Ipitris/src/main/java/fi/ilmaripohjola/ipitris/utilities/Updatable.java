@@ -5,6 +5,8 @@
  */
 package fi.ilmaripohjola.ipitris.utilities;
 
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+
 /**
  *
  * @author omistaja

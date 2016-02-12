@@ -1,27 +1,34 @@
+/**
+ * Abstract class Piece controls different amount of Blocks, and it's meant to be a controllable object in tetris.
+ */
+
 package fi.ilmaripohjola.ipitris.entities;
 
 import java.awt.Color;
 
 public abstract class Piece implements Movable {
-    
+
     private Color color;
     protected Block[] blocks;
     protected int asento;
-    
+    private int x;
+    private int y;
 
     public Piece() {
-    }        
-    
-    public Piece(Color color, int size ,int x, int y) {
-        this.color = color;         
-        this.blocks = new Block[size];        
+    }
+
+    public Piece(Color color, int size, int x, int y) {
+        this.color = color;
+        this.blocks = new Block[size];
         this.asento = 1;
+        this.x = x;
+        this.y = y;
     }
 
     public int getAsento() {
         return asento;
     }
-    
+
     public Block[] getBlocks() {
         return blocks;
     }
@@ -29,27 +36,37 @@ public abstract class Piece implements Movable {
     public Color getColor() {
         return color;
     }
-       
-    public void rotateLeft(){
-        
+
+    public void rotateLeft() {
+
     }
-    
-    public void rotateRight(){
-        
+
+    public void rotateRight() {
+
     }
-    
+
+    public int getX() {
+        return x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     @Override
     public void moveUp() {
         for (Block block : blocks) {
             block.moveUp();
         }
-    }   
+        this.y = this.y - 1;
+    }
 
     @Override
     public void moveDown() {
         for (Block block : blocks) {
             block.moveDown();
         }
+        this.y = this.y + 1;
     }
 
     @Override
@@ -57,15 +74,17 @@ public abstract class Piece implements Movable {
         for (Block block : blocks) {
             block.moveRight();
         }
+        this.x = this.x + 1;
     }
-    
+
     @Override
-    public void moveLeft(){
+    public void moveLeft() {
         for (Block block : blocks) {
             block.moveLeft();
         }
+        this.x = this.x - 1;
     }
-    
+
     @Override
     public String toString() {
         String palautettava = "Asento: " + "\n"
@@ -77,9 +96,5 @@ public abstract class Piece implements Movable {
                 + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
         return palautettava;
     }
-    
-    
-    
-    
-    
+
 }
