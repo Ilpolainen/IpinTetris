@@ -25,12 +25,35 @@ public class PieceGenerator {
     private Random random;
     private int tableWidth;
     private Piece next;
+    private Color[] colors;
 
     public PieceGenerator(Random random, int tableWidth) {
         this.random = random;
         this.tableWidth = tableWidth;
         this.next = null;
+        this.colors = new Color[7];
+        this.colors[0] = Color.RED;
+        this.colors[1] = Color.BLUE;
+        this.colors[2] = Color.GREEN;
+        this.colors[3] = Color.CYAN;
+        this.colors[4] = Color.ORANGE;
+        this.colors[5] = Color.YELLOW;
+        this.colors[6] = Color.MAGENTA;
     }
+
+    public void setColors(Color i, Color square, Color t, Color l, Color j, Color s, Color z) {
+        this.colors[0] = i;
+        this.colors[1] = square;
+        this.colors[2] = t;
+        this.colors[3] = l;
+        this.colors[4] = j;
+        this.colors[5] = s;
+        this.colors[6] = z;
+    }
+
+    public Color[] getColors() {
+        return colors;
+    }    
 
     public int getTableWidth() {
         return tableWidth;
@@ -77,37 +100,37 @@ public class PieceGenerator {
     }
 
     private Piece makeI() {
-        PieceI piece = new PieceI(Color.RED, this.tableWidth / 2, 1);
+        PieceI piece = new PieceI(this.colors[0], this.tableWidth / 2, 1);
         return piece;
     }
 
     private Piece makeSquare() {
-        PieceSquare piece = new PieceSquare(Color.BLUE, this.tableWidth / 2 - 1, 3);
+        PieceSquare piece = new PieceSquare(this.colors[1], this.tableWidth / 2 - 1, 3);
         return piece;
     }
 
     private Piece makeT() {
-        PieceT piece = new PieceT(Color.GREEN, this.tableWidth / 2, 2);
+        PieceT piece = new PieceT(this.colors[2], this.tableWidth / 2, 2);
         return piece;
     }
 
     private Piece makeL() {
-        PieceL piece = new PieceL(Color.CYAN, this.tableWidth / 2 - 1, 2);
+        PieceL piece = new PieceL(this.colors[3], this.tableWidth / 2 - 1, 2);
         return piece;
     }
 
     private Piece makeJ() {
-        PieceJ piece = new PieceJ(Color.ORANGE, this.tableWidth / 2, 2);
+        PieceJ piece = new PieceJ(this.colors[4], this.tableWidth / 2, 2);
         return piece;
     }
 
     private Piece makeS() {
-        PieceS piece = new PieceS(Color.YELLOW, this.tableWidth / 2 - 1, 2);
+        PieceS piece = new PieceS(this.colors[5], this.tableWidth / 2 - 1, 2);
         return piece;
     }
 
     private Piece makeZ() {
-        PieceZ piece = new PieceZ(Color.MAGENTA, this.tableWidth / 2, 2);
+        PieceZ piece = new PieceZ(this.colors[6], this.tableWidth / 2, 2);
         return piece;
     }
 }

@@ -1,9 +1,9 @@
 /**
- * Logic is still a kind of a mess that tries to oversee the rules and logics of tetris.
+ * Logic is still a kind of a mess that tries to oversee the rules and logics of
+ * tetris.
  */
-
-
 package fi.ilmaripohjola.ipitris.gamelogic;
+
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.PieceI;
@@ -13,30 +13,28 @@ import java.util.ArrayList;
 import java.util.Random;
 import fi.ilmaripohjola.ipitris.entities.PieceS;
 
-public class Logic {
+public class TetrisLogic {
 
     private Table table;
     private Piece current;
     private PieceGenerator generator;
     private boolean continues;
-    private int level;
-    private int points;
-    private int rowsDestroyed;
     private Command[] commands;
+    private LimitGuard limitGuard;
+    private LevelManager levelManager;
 
-    public Logic(Table table) {
-        this.table = table;
-        this.generator = new PieceGenerator(new Random(), table.getWidth());
+    public TetrisLogic(Table table, PieceGenerator generator) {
+        this.table = table;        
+        this.generator = generator;
         this.current = generator.givePiece();
-        this.rowsDestroyed = 0;
         this.continues = true;
-        this.level = 0;
-        this.points = 0;
         this.commands = new Command[4];
         this.commands[0] = new CommandDown(this);
         this.commands[1] = new CommandLeft(this);
         this.commands[2] = new CommandRight(this);
         this.commands[3] = new CommandRotateRight(this);
+        this.limitGuard = new LimitGuard();
+        this.levelManager = new LevelManager();
     }
 
     public void update(boolean down, boolean left, boolean right, boolean space) {
@@ -58,12 +56,12 @@ public class Logic {
         return table;
     }
 
-    public int getRowsDestroyed() {
-        return rowsDestroyed;
-    }    
+    public LimitGuard getLimitGuard() {
+        return limitGuard;
+    }
 
-    public int getLevel() {
-        return this.level;
+    public LevelManager getLevelManager() {
+        return levelManager;
     }
 
     public void setCurrent(Piece current) {
@@ -92,8 +90,12 @@ public class Logic {
         }
     }
 
+    public int getLevel() {
+        return this.levelManager.getLevel();
+    }
+
     public int getPoints() {
-        return points;
+        return this.levelManager.getPoints();
     }
 
     public void attachAndMakeNew() {
@@ -102,61 +104,25 @@ public class Logic {
             this.table.getBlocks()[block.getX()][block.getY()] = block;
         }
         this.current = generator.givePiece();
-        if (this.connects()) {
+        if (this.limitGuard.connects(current, table)) {
             endGame();
         }
-    }
-
-    public void checkLevel() {
-        if (this.rowsDestroyed > (this.level + 1) * 12) {
-            this.level = this.level + 1;
-        }
-    }
-
-    public boolean connects() {
-        Block[] currentBlocks = this.current.getBlocks();
-        for (Block block : currentBlocks) {
-            if (this.table.getBlocks()[block.getX()][block.getY()] != null) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean pieceWithinLimits() {
-        Block[] currentBlocks = this.current.getBlocks();
-        for (Block block : currentBlocks) {
-            if (!blockWithinLimits(block.getX(), block.getY())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean blockWithinLimits(int x, int y) {
-        if (x < 0 || x >= this.table.getWidth()) {
-            return false;
-        }
-        if (y < 0 || y >= this.table.getHeight()) {
-            return false;
-        }
-        return true;
     }
 
     public void destroyRows() {
         ArrayList<Integer> rowsToDestroy = searchFullRows();
         int morePoints = 0;
         if (rowsToDestroy.size() == 1) {
-            points = points + 1;
+            this.levelManager.increasePoints(1);
         }
         if (rowsToDestroy.size() == 2) {
-            points = points + 3;
+            this.levelManager.increasePoints(3);
         }
         if (rowsToDestroy.size() == 3) {
-            points = points + 5;
+            this.levelManager.increasePoints(5);
         }
         if (rowsToDestroy.size() == 4) {
-            points = points + 8;
+            this.levelManager.increasePoints(8);
         }
         for (Integer row : rowsToDestroy) {
             destroyRow(row);
@@ -176,7 +142,6 @@ public class Logic {
                 }
             }
         }
-        checkLevel();
     }
 
     public ArrayList<Integer> searchFullRows() {
@@ -190,17 +155,11 @@ public class Logic {
             }
             if (piecesInRow == this.table.getWidth()) {
                 rowsToDestroy.add(i);
-                this.rowsDestroyed = this.rowsDestroyed + 1;
+                this.levelManager.increaseRowsDestroyed();
             }
             piecesInRow = 0;
         }
         return rowsToDestroy;
-    }
-
-    public void levelUp() {
-        if (this.level < 20) {
-            this.level = this.level + 1;
-        }
     }
 
     public void endGame() {

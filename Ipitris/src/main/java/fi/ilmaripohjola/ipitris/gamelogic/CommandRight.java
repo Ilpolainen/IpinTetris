@@ -14,7 +14,7 @@ public class CommandRight extends Command {
     public CommandRight() {
     }
 
-    public CommandRight(Logic tetris) {
+    public CommandRight(TetrisLogic tetris) {
          super(tetris);
     }
     
@@ -22,7 +22,7 @@ public class CommandRight extends Command {
     @Override
     public void runCommand() {
         super.getTetris().getCurrent().moveRight();
-        if (!super.getTetris().pieceWithinLimits() || super.getTetris().connects()) {
+        if (!super.getTetris().getLimitGuard().pieceWithinLimits(super.getTetris().getCurrent(), super.getTetris().getTable()) || super.getTetris().getLimitGuard().connects(super.getTetris().getCurrent(), super.getTetris().getTable())) {
             super.getTetris().getCurrent().moveLeft();
         } //To change body of generated methods, choose Tools | Templates.
     }

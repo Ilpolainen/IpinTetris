@@ -5,9 +5,9 @@
  */
 package fi.ilmaripohjola.ipitris.gameloop;
 
-import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
 import fi.ilmaripohjola.ipitris.interfaces.KeyPressListener;
-import fi.ilmaripohjola.ipitris.utilities.Renderer;
+import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,15 +20,15 @@ public class MyGameLoop implements Runnable {
 
     private boolean continues;
     private KeyPressListener listener;
-    private Logic tetris;
-    private Renderer renderer;
+    private TetrisLogic tetris;
+    private MyFirstRenderer renderer;
     private Thread t;
 
-    public MyGameLoop(Renderer renderer, KeyPressListener listener, Logic tetris) {
+
+    public MyGameLoop(MyFirstRenderer renderer, KeyPressListener listener, TetrisLogic tetris) {
         this.continues = false;
         this.listener = listener;
-        this.tetris = tetris;
-        this.renderer = renderer;
+        this.tetris = tetris;        
     }
 
     @Override
@@ -73,14 +73,11 @@ public class MyGameLoop implements Runnable {
     }
 
     public void start() {
-        System.out.println("Starting loop");
+        System.out.println("Starting gameloop");
         if (t == null) {
             t = new Thread(this, "3");
-            t.start();
-//       
-        }
-        MyRenderLoop renderloop = new MyRenderLoop(this.renderer, this.tetris); 
-        renderloop.start();
+        }        
+        t.start();
     }
 
     private void getKeys(boolean[] keys) {

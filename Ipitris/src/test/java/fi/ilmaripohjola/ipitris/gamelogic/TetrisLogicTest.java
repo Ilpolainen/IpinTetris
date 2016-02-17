@@ -11,6 +11,7 @@ import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.Table;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -22,20 +23,22 @@ import static org.junit.Assert.*;
  *
  * @author omistaja
  */
-public class LogicTest {
+public class TetrisLogicTest {
     
     Table t;
-    Logic l;
+    TetrisLogic l;
     Piece p;
     Command c;
     
-    public LogicTest() {
+    public TetrisLogicTest() {
     }    
     
     @Before
     public void setUp() {
         t = new Table(10,20);
-        l = new Logic(t);
+        Random random = new Random();
+        PieceGenerator generator = new PieceGenerator(random, 10);
+        l = new TetrisLogic(t, generator);
         p = new PieceI(Color.BLACK,4,1);
         c = new CommandRotateLeft();
     }
@@ -72,11 +75,12 @@ public class LogicTest {
     
     @Test
     public void constructorSetsRowsDestroyedRight() {
-        assertEquals(0, l.getRowsDestroyed());
+        assertEquals(0, l.getLevelManager().getRowsDestroyed());
     }
     
     @Test
     public void constructorSetsCorrectCommands() {
+        
         assertEquals(l.getCommands().length, 4);
         assertEquals(l.getCommands()[0].getClass(),CommandDown.class);
         assertEquals(l.getCommands()[1].getClass(),CommandLeft.class);
@@ -128,14 +132,14 @@ public class LogicTest {
     
     @Test
     public void levelUpWorks() {
-        l.levelUp();
+        l.getLevelManager().levelUp();
         assertEquals(1, l.getLevel());
     }
     
     @Test
     public void levelStopsAt20() {
         for (int i = 0; i < 30; i++) {
-            l.levelUp();
+            l.getLevelManager().levelUp();
         }
         assertEquals(20, l.getLevel());
     }
@@ -215,11 +219,4 @@ public class LogicTest {
         l.destroyRows();
         assertEquals(9, l.getPoints());
     }
-    
-    
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

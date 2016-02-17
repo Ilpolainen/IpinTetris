@@ -14,7 +14,7 @@ public class CommandRotateLeft extends Command {
     public CommandRotateLeft() {
     }
 
-    public CommandRotateLeft(Logic tetris) {
+    public CommandRotateLeft(TetrisLogic tetris) {
         super(tetris);
     }
     
@@ -23,7 +23,7 @@ public class CommandRotateLeft extends Command {
     @Override
     public void runCommand() {
         super.getTetris().getCurrent().rotateLeft();
-        if (!super.getTetris().pieceWithinLimits() || super.getTetris().connects()) {
+        if (!super.getTetris().getLimitGuard().pieceWithinLimits(super.getTetris().getCurrent(), super.getTetris().getTable()) || super.getTetris().getLimitGuard().connects(super.getTetris().getCurrent(), super.getTetris().getTable())) {
             super.getTetris().getCurrent().rotateRight();
         }
     }

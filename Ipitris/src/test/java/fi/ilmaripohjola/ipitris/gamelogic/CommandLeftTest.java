@@ -9,6 +9,7 @@ import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.Table;
 import java.awt.Color;
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -23,7 +24,7 @@ import static org.junit.Assert.*;
 public class CommandLeftTest {
 
     Table t;
-    Logic l;
+    TetrisLogic l;
     PieceI p;
 
     public CommandLeftTest() {
@@ -31,8 +32,10 @@ public class CommandLeftTest {
 
     @Before
     public void setUp() {
+        Random random = new Random();
+        PieceGenerator generator = new PieceGenerator(random, 10);
         t = new Table(10, 20);
-        l = new Logic(t);
+        l = new TetrisLogic(t, generator);
         p = new PieceI(Color.BLACK, 1, 1);
         l.setCurrent(p);
     }

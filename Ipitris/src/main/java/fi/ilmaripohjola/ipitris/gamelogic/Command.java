@@ -13,17 +13,17 @@ import fi.ilmaripohjola.ipitris.entities.Block;
  */
 public abstract class Command {
     
-    private Logic tetris;
+    private TetrisLogic tetris;
 
     public Command() {
     }
         
 
-    public Command(Logic tetris) {
+    public Command(TetrisLogic tetris) {
         this.tetris = tetris;
     }
 
-    public Logic getTetris() {
+    public TetrisLogic getTetris() {
         return tetris;
     }
     

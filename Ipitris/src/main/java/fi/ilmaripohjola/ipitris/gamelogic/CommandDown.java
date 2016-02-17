@@ -13,7 +13,7 @@ import fi.ilmaripohjola.ipitris.entities.Block;
  */
 public class CommandDown extends Command {
 
-    public CommandDown(Logic tetris) {
+    public CommandDown(TetrisLogic tetris) {
         super(tetris);
     }
         
@@ -21,7 +21,7 @@ public class CommandDown extends Command {
     @Override
     public void runCommand() {
         super.getTetris().getCurrent().moveDown();
-        if (super.getTetris().connects()) {
+        if (super.getTetris().getLimitGuard().connects(super.getTetris().getCurrent(), super.getTetris().getTable())) {
             Block[] currentBlocks = super.getTetris().getCurrent().getBlocks();
             super.getTetris().getCurrent().moveUp();
             for (Block block : currentBlocks) {
@@ -34,7 +34,7 @@ public class CommandDown extends Command {
                 super.getTetris().destroyRows();
             }
         }
-        if (!super.getTetris().pieceWithinLimits()) {
+        if (!super.getTetris().getLimitGuard().pieceWithinLimits(super.getTetris().getCurrent(), super.getTetris().getTable())) {
             super.getTetris().getCurrent().moveUp();
             super.getTetris().attachAndMakeNew();
             super.getTetris().destroyRows();

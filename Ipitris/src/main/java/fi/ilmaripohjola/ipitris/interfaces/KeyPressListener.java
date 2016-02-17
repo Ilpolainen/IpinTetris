@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package fi.ilmaripohjola.ipitris.interfaces;
-import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.VK_DOWN;
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
 import static java.awt.event.KeyEvent.VK_SPACE;
-import static java.awt.event.KeyEvent.VK_UP;
 import java.awt.event.KeyListener;
+
 
 /**
  *
@@ -19,13 +19,13 @@ import java.awt.event.KeyListener;
  */
 public class KeyPressListener implements KeyListener {
 
-    private Logic tetris;
+    private TetrisLogic tetris;
     private boolean down;
     private boolean space;
     private boolean left;
     private boolean right;
 
-    public KeyPressListener(Logic tetris) {
+    public KeyPressListener(TetrisLogic tetris) {
         this.tetris = tetris;
         down = false;
         space = false;
@@ -68,20 +68,16 @@ public class KeyPressListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == VK_DOWN) {
-            down = true;
-//            tetris.getCommands()[0].runCommand();            
+            down = true;           
         }
         if (e.getKeyCode() == VK_LEFT) {
             left = true;
-//            tetris.getCommands()[1].runCommand();
         }
         if (e.getKeyCode() == VK_RIGHT) {
             right = true;
-//            tetris.getCommands()[2].runCommand();
         }
         if (e.getKeyCode() == VK_SPACE) {
             space = true;
-//            tetris.getCommands()[3].runCommand();
         }
     }
 
@@ -94,4 +90,8 @@ public class KeyPressListener implements KeyListener {
     public void keyTyped(KeyEvent e) {
         //To change body of generated methods, choose Tools | Templates.
     }
+
+    
+
+   
 }
