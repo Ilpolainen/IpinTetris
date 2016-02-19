@@ -11,6 +11,3 @@ Reaaliaikainen tetris.
 [pit](dokumentointi/Pit/201602191817/index.md)
 
 [checkstyle](dokumentointi/site/checkstyle.html)
-
-
-
