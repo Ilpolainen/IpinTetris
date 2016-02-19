@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fi.ilmaripohjola.ipitris.gamelogic;
 
 import fi.ilmaripohjola.ipitris.entities.Piece;
@@ -17,6 +12,8 @@ import java.awt.Color;
 import java.util.Random;
 
 /**
+ * Is able for constructing random new Piece's subclass-objects and also is able
+ * to show the next one coming.
  *
  * @author omistaja
  */
@@ -27,6 +24,14 @@ public class PieceGenerator {
     private Piece next;
     private Color[] colors;
 
+    /**
+     * Constructor needs an object of Random -class and an int to present the
+     * width of table in order to construct pieces' x-coordinate correctly. Sets
+     * up preset-colors.
+     *
+     * @param random java.util.Random class object
+     * @param tableWidth int for determining the starting position of generated Piece
+     */
     public PieceGenerator(Random random, int tableWidth) {
         this.random = random;
         this.tableWidth = tableWidth;
@@ -41,6 +46,17 @@ public class PieceGenerator {
         this.colors[6] = Color.MAGENTA;
     }
 
+    /**
+     * Sets color values to new Piece -objects in given color-order.
+     *
+     * @param i Color to be used with PieceI
+     * @param square Color to be used with PieceSquare
+     * @param t Color to be used with PieceT
+     * @param l Color to be used with PieceL
+     * @param j Color to be used with PieceJ
+     * @param s Color to be used with PieceS
+     * @param z Color to be used with PieceZ
+     */
     public void setColors(Color i, Color square, Color t, Color l, Color j, Color s, Color z) {
         this.colors[0] = i;
         this.colors[1] = square;
@@ -53,7 +69,7 @@ public class PieceGenerator {
 
     public Color[] getColors() {
         return colors;
-    }    
+    }
 
     public int getTableWidth() {
         return tableWidth;
@@ -63,6 +79,10 @@ public class PieceGenerator {
         return next;
     }
 
+    /**
+     * 
+     * @return a random Piece-object. For private use only. 
+     */
     private Piece makeNext() {
         int i = random.nextInt(7);
         Piece newNext = null;
@@ -89,6 +109,11 @@ public class PieceGenerator {
         }
         return newNext;
     }
+    
+    /**
+     * Constructs a new random Piece -object, set's it next and returns previous next one.
+     * @return Piece previous next
+     */
 
     public Piece givePiece() {
         if (next == null) {

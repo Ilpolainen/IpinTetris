@@ -45,29 +45,29 @@ public class TableTest {
     
     @Test
     public void constructorSetsWrongHeightRight() {        
-        assertEquals(8, wrong.getHeight());
+        assertEquals(4, wrong.getHeight());
     }
     
     @Test
     public void constructorSetsWrongWidthRight() {        
-        assertEquals(4, wrong.getWidth());
+        assertEquals(3, wrong.getWidth());
     }
     
     @Test
     public void constructorSetsNegativeHeightRight() {        
-        assertEquals(8, negat.getHeight());
+        assertEquals(4, negat.getHeight());
     }
     
     @Test
     public void constructorSetsNegativeWidthRight() {        
-        assertEquals(4, negat.getWidth());
+        assertEquals(3, negat.getWidth());
     }
     
     @Test
     public void constructorSetsArraySizeRight() {
         assertEquals(10, table.getBlocks().length);
-        assertEquals(4, wrong.getBlocks().length);
-        assertEquals(4, negat.getBlocks().length);        
+        assertEquals(3, wrong.getBlocks().length);
+        assertEquals(3, negat.getBlocks().length);        
     }
     
     @After

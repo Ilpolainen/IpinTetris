@@ -22,7 +22,6 @@ public class MyFirstRenderer extends JPanel implements Renderer {
 
     private TetrisLogic tetris;
     private int scale;
-    private boolean continues;
 
     public MyFirstRenderer(TetrisLogic tetris, int scale) {
         this.tetris = tetris;

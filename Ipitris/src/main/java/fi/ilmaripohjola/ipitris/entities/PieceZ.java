@@ -1,16 +1,22 @@
-/**
- * PieceZ is a certain kind of Piece
- */
 package fi.ilmaripohjola.ipitris.entities;
 
 import java.awt.Color;
 
 /**
+ * a certain kind of subClass of Piece.
  *
  * @author omistaja
  */
 public class PieceZ extends Piece {
-         
+
+    /**
+     * Uses superclasses constructor and in addition set's blocks' x and y to
+     * form a Tetris Z-Piece.
+     *
+     * @param color the color of the piece
+     * @param x the anchor x-value of the Piece
+     * @param y the anchor y-value of the Piece
+     */
     public PieceZ(Color color, int x, int y) {
         super(color, 4, x, y);
         super.blocks[0] = new Block(color, x, y - 1);
@@ -18,40 +24,12 @@ public class PieceZ extends Piece {
         super.blocks[2] = new Block(color, x - 1, y);
         super.blocks[3] = new Block(color, x - 1, y + 1);
     }
-    
-//    @Override
-//    public Block[] getBlocks() {
-//        return this.blocks; 
-//    }
-//    
-//    @Override
-//    public void moveLeft() {
-//         for (Block block : blocks) {
-//            block.moveLeft();
-//        }
-//    }
-//
-//    @Override
-//    public void moveRight() {
-//        for (Block block : blocks) {
-//            block.moveRight();
-//        }
-//    }
-//
-//     @Override
-//    public void moveUp() {
-//        for (Block block : blocks) {
-//            block.moveUp();
-//        }
-//    }
-//
-//    @Override
-//    public void moveDown() {
-//        for (Block block : blocks) {
-//            block.moveDown();
-//        }
-//    }
 
+    /**
+     * Implements Superclasses method rotateLeft in desired way.
+     *
+     * @See Piece
+     */
     @Override
     public void rotateLeft() {
         if (asento == 1) {
@@ -60,7 +38,7 @@ public class PieceZ extends Piece {
             blocks[2].moveDown();
             blocks[2].moveRight();
             blocks[3].moveRight();
-            blocks[3].moveRight();            
+            blocks[3].moveRight();
             asento = 2;
         } else if (asento == 2) {
             blocks[0].moveRight();
@@ -71,23 +49,15 @@ public class PieceZ extends Piece {
             blocks[3].moveLeft();
             asento = 1;
         }
-        //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Implements Superclasses method rotateRight in desired way.
+     *
+     * @See Piece
+     */
     @Override
     public void rotateRight() {
-        rotateLeft(); //To change body of generated methods, choose Tools | Templates.
+        rotateLeft();
     }
-
-//    @Override
-//    public String toString() {
-//        String asento = "Asento: " + "\n"
-//                + this.asento + "\n"
-//                + "Koordinaatit: " + "\n"
-//                + "eka: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"
-//                + "toka: (" + blocks[1].getX() + "," + blocks[1].getY() + ")" + "\n"
-//                + "kolmas: (" + blocks[2].getX() + "," + blocks[2].getY() + ")" + "\n"
-//                + "neljäs: (" + blocks[3].getX() + "," + blocks[3].getY() + ")" + "\n";
-//        return asento;
-//    }
 }

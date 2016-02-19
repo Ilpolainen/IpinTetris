@@ -5,23 +5,13 @@
  */
 package fi.ilmaripohjola.ipitris.interfaces;
 
-import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
-import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
-import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Hashtable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -144,7 +134,7 @@ public class StartingScreen implements Runnable {
         setFonts(widthName, heightName, scaleName);        
         JSlider widthSlider = new JSlider(JSlider.HORIZONTAL, 3, 40, this.width);
         JSlider heightSlider = new JSlider(JSlider.HORIZONTAL, 4, 40, this.height);
-        JSlider scaleSlider = new JSlider(JSlider.HORIZONTAL, 2, 40, this.scale);
+        JSlider scaleSlider = new JSlider(JSlider.HORIZONTAL, 2, 80, this.scale);
         widthSlider.setName("width");
         heightSlider.setName("height");
         scaleSlider.setName("scale");
@@ -224,6 +214,14 @@ public class StartingScreen implements Runnable {
         lableTable.put(new Integer(30), new JLabel("30"));
         lableTable.put(new Integer(35), new JLabel("35"));
         lableTable.put(new Integer(40), new JLabel("40"));
+        lableTable.put(new Integer(45), new JLabel("45"));
+        lableTable.put(new Integer(50), new JLabel("50"));
+        lableTable.put(new Integer(55), new JLabel("55"));
+        lableTable.put(new Integer(60), new JLabel("60"));
+        lableTable.put(new Integer(65), new JLabel("65"));
+        lableTable.put(new Integer(70), new JLabel("70"));
+        lableTable.put(new Integer(75), new JLabel("75"));
+        lableTable.put(new Integer(80), new JLabel("80"));
         slider.setLabelTable(lableTable);
     }
     

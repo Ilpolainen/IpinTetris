@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>ipitris - Checkstyle report</title>
+    <link>${project.url}</link>
+    <description>ipitris - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2016</copyright>
+    <item>
+      <title>File: 32,
+             Errors: 0,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>${project.url}/checkstyle.html</link>
+      <description>
+        <p>Click <a href="${project.url}/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceL.java">fi/ilmaripohjola/ipitris/entities/PieceL.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic.java">fi/ilmaripohjola/ipitris/gamelogic/TetrisLogic.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gameloop.MyGameLoop.java">fi/ilmaripohjola/ipitris/gameloop/MyGameLoop.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer.java">fi/ilmaripohjola/ipitris/utilities/MyFirstRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.utilities.Renderer.java">fi/ilmaripohjola/ipitris/utilities/Renderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.CommandRotateRight.java">fi/ilmaripohjola/ipitris/gamelogic/CommandRotateRight.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.Table.java">fi/ilmaripohjola/ipitris/entities/Table.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.Block.java">fi/ilmaripohjola/ipitris/entities/Block.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.StartingScreen.java">fi/ilmaripohjola/ipitris/interfaces/StartingScreen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop.java">fi/ilmaripohjola/ipitris/gameloop/MyRenderLoop.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceS.java">fi/ilmaripohjola/ipitris/entities/PieceS.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.CommandRight.java">fi/ilmaripohjola/ipitris/gamelogic/CommandRight.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceI.java">fi/ilmaripohjola/ipitris/entities/PieceI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceSquare.java">fi/ilmaripohjola/ipitris/entities/PieceSquare.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.CommandLeft.java">fi/ilmaripohjola/ipitris/gamelogic/CommandLeft.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator.java">fi/ilmaripohjola/ipitris/gamelogic/PieceGenerator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.GameScreen.java">fi/ilmaripohjola/ipitris/interfaces/GameScreen.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.Movable.java">fi/ilmaripohjola/ipitris/entities/Movable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.RowManager.java">fi/ilmaripohjola/ipitris/gamelogic/RowManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.SliderCoordinator.java">fi/ilmaripohjola/ipitris/interfaces/SliderCoordinator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.StateCoordinator.java">fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.Command.java">fi/ilmaripohjola/ipitris/gamelogic/Command.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceZ.java">fi/ilmaripohjola/ipitris/entities/PieceZ.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.Piece.java">fi/ilmaripohjola/ipitris/entities/Piece.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.CommandDown.java">fi/ilmaripohjola/ipitris/gamelogic/CommandDown.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceT.java">fi/ilmaripohjola/ipitris/entities/PieceT.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.CommandRotateLeft.java">fi/ilmaripohjola/ipitris/gamelogic/CommandRotateLeft.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceJ.java">fi/ilmaripohjola/ipitris/entities/PieceJ.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.KeyPressListener.java">fi/ilmaripohjola/ipitris/interfaces/KeyPressListener.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.application.Main.java">fi/ilmaripohjola/ipitris/application/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.LevelManager.java">fi/ilmaripohjola/ipitris/gamelogic/LevelManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.LimitGuard.java">fi/ilmaripohjola/ipitris/gamelogic/LimitGuard.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

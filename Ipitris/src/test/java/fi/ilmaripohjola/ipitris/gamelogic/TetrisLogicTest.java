@@ -40,7 +40,7 @@ public class TetrisLogicTest {
         PieceGenerator generator = new PieceGenerator(random, 10);
         l = new TetrisLogic(t, generator);
         p = new PieceI(Color.BLACK,4,1);
-        c = new CommandRotateLeft();
+        c = new CommandRotateLeft(l);
     }
     
     @Test
@@ -86,6 +86,13 @@ public class TetrisLogicTest {
         assertEquals(l.getCommands()[1].getClass(),CommandLeft.class);
         assertEquals(l.getCommands()[2].getClass(),CommandRight.class);
         assertEquals(l.getCommands()[3].getClass(),CommandRotateRight.class);
+    }
+    
+    @Test
+    public void costructorCreatesGeneratorRowManagerLevelManageAndLimitGuard() {
+        assertNotEquals(null, l.getLimitGuard());
+        assertNotEquals(null, l.getLevelManager());
+        assertNotEquals(null, l.getRowManager());        
     }
     
     @Test
@@ -143,80 +150,39 @@ public class TetrisLogicTest {
         }
         assertEquals(20, l.getLevel());
     }
-   
-    @Test
-    public void searchFullRowsReturnsEmptyListWithNothingToDestroy() {
-        assertEquals(0, l.searchFullRows().size());        
-    }
     
     @Test
-    public void searchFullRowsFindsCorrectRows() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < t.getWidth(); j++) {
-                t.getBlocks()[j][i]=new Block(Color.BLACK, j, i);
+    public void resetDoesAllThatItNeedsToDo () {
+        l.getCommands()[0].runCommand();
+        l.getCommands()[0].runCommand();
+        l.getCommands()[0].runCommand();
+        l.getCommands()[0].runCommand();
+        l.getCommands()[3].runCommand();
+        for (int i = 0; i < 10; i++) {
+            l.getCommands()[0].runCommand();
+        }
+        for (int i = 0; i < 30; i++) {
+            l.getLevelManager().increasePoints(5);
+        }
+        l.reset();
+        assertEquals(0, l.getPoints());
+        assertEquals(0, l.getLevel());
+        assertEquals(0, l.getLevelManager().getRowsDestroyed());
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 20; j++) {
+                assertEquals(null, t.getBlocks()[i][j]);
             }
-        }
-        ArrayList<Integer> AL = l.searchFullRows();
-        for (int i = 0; i < 4; i++) {
-            assertEquals((Integer)i,AL.get(i));
-        }
-    }
-    
-    @Test
-    public void destroyRowWorks() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < t.getWidth(); j++) {
-                t.getBlocks()[j][i]=new Block(Color.BLACK, j, i);
-            }
-        }
-        l.destroyRow(3);
-        for (int i = 0; i < t.getWidth(); i++) {
-            assertEquals(t.getBlocks()[i][0],null); 
-        }
-        for (int i = 0; i < t.getWidth(); i++) {
-            for (int j = 1; j < 4; j++) {
-                assertNotEquals(t.getBlocks()[i][j],null);
-            }
- 
         }
     }
     
-    @Test
-    public void destroyRowsWorks() {
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < t.getWidth(); j++) {
-                t.getBlocks()[j][i]=new Block(Color.BLACK, j, i);
-            }
-        }        
-        l.destroyRows();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j <t.getWidth(); j++) {
-                assertEquals(t.getBlocks()[i][j], null);
-            }
-        }
-        assertEquals(8, l.getPoints());
-    }
-    
-    @Test
-    public void pointsCountingMatches() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < t.getWidth(); j++) {
-                t.getBlocks()[j][i]=new Block(Color.BLACK, j, i);
-            }
-        }
-        l.destroyRows();
-        assertEquals(5, l.getPoints());
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < t.getWidth(); j++) {
-                t.getBlocks()[j][i]=new Block(Color.BLACK, j, i);
-            }
-        }
-        l.destroyRows();
-        assertEquals(8, l.getPoints());
-        for (int i = 0; i < t.getWidth(); i++) {
-            t.getBlocks()[i][0]=new Block(Color.BLACK, i, 0);
-        }
-        l.destroyRows();
-        assertEquals(9, l.getPoints());
+    public void updateCallsRightControls() {
+        l.update(false, true, false, false);
+        assertEquals(1, l.getCurrent().getAsento());
+        assertEquals(1, l.getCurrent().getY());
+        assertEquals(3, l.getCurrent().getX());
+        l.update(true, false, true, true);
+        assertEquals(2, l.getCurrent().getAsento());
+        assertEquals(2, l.getCurrent().getY());
+        assertEquals(4, l.getCurrent().getX());
     }
 }

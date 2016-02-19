@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * A Runnable loop that updates the GameScreen's Renderer.
  *
  * @author omistaja
  */
@@ -23,6 +24,12 @@ public class MyRenderLoop implements Runnable {
     private Thread t;
     private boolean continues;
 
+    /**
+     * Constructs the renderloop with given variables.
+     *
+     * @param renderer Given updatable Renderer.
+     * @param tetris The GameLogic attached to the renderloop.
+     */
     public MyRenderLoop(Renderer renderer, TetrisLogic tetris) {
         this.renderer = renderer;
         this.tetris = tetris;
@@ -30,42 +37,35 @@ public class MyRenderLoop implements Runnable {
 
     @Override
     public void run() {
-        boolean[] keys = new boolean[4];
+        this.tetris.reset();
         this.continues = true;
         try {
             Thread.sleep(700);
         } catch (InterruptedException ex) {
             Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        Date date = new Date();
-        long currentTime = date.getTime();
-        long lastUpdate = date.getTime();
-        long deltaTime = currentTime - lastUpdate;
         int rounds = 0;
         while (continues) {
-            currentTime = date.getTime();
-            deltaTime = currentTime - lastUpdate;
-            lastUpdate = currentTime;
             try {
-                Thread.sleep(20 - deltaTime);
+                Thread.sleep(20);
             } catch (InterruptedException ex) {
                 Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (!this.tetris.getContinues()) {                
+            if (!this.tetris.getContinues()) {
                 this.continues = false;
             }
             this.renderer.updateNow();
-            
-        } //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
+    /**
+     * Starts the thread if not yet started.
+     */
     public void start() {
         System.out.println("Starting renderloop");
         if (t == null) {
             t = new Thread(this, "3");
             t.start();
-//       
         }
     }
 }

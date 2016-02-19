@@ -1,18 +1,17 @@
-/**
- * Logic is still a kind of a mess that tries to oversee the rules and logics of
- * tetris.
- */
 package fi.ilmaripohjola.ipitris.gamelogic;
 
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
-import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
 import fi.ilmaripohjola.ipitris.entities.PieceS;
 
+/**
+ * Handles the rules and state of a tetris -game with the help of LimitGuard and
+ * LevelManager.
+ *
+ * @author omistaja
+ */
 public class TetrisLogic {
 
     private Table table;
@@ -22,9 +21,17 @@ public class TetrisLogic {
     private Command[] commands;
     private LimitGuard limitGuard;
     private LevelManager levelManager;
+    private RowManager rowManager;
 
+    /**
+     * Constructor set's up a tetris -game. It needs a table and a
+     * PieceGenerator. Creates it's own commands.
+     *
+     * @param table A Table -object given by caller.
+     * @param generator A PieceGenerator object given by caller.
+     */
     public TetrisLogic(Table table, PieceGenerator generator) {
-        this.table = table;        
+        this.table = table;
         this.generator = generator;
         this.current = generator.givePiece();
         this.continues = true;
@@ -35,8 +42,18 @@ public class TetrisLogic {
         this.commands[3] = new CommandRotateRight(this);
         this.limitGuard = new LimitGuard();
         this.levelManager = new LevelManager();
+        this.rowManager = new RowManager();
     }
 
+    /**
+     * Runs commands accordingly their given boolean values. For example if down
+     * is true, it calls commands[0] wich is CommandDown in preset -state.
+     *
+     * @param down boolean to call commands[0]
+     * @param left boolean to call commands[1]
+     * @param right boolean to call commands[2]
+     * @param space boolean to call commands[3]
+     */
     public void update(boolean down, boolean left, boolean right, boolean space) {
         if (down) {
             this.commands[0].runCommand();
@@ -64,6 +81,10 @@ public class TetrisLogic {
         return levelManager;
     }
 
+    public RowManager getRowManager() {
+        return rowManager;
+    }
+
     public void setCurrent(Piece current) {
         this.current = current;
     }
@@ -84,6 +105,12 @@ public class TetrisLogic {
         return commands;
     }
 
+    /**
+     * Sets the Command in given index i in Command array to a new Command.
+     *
+     * @param i given arrayindex
+     * @param command Command with which to replace the Command in given index.
+     */
     public void setCommand(int i, Command command) {
         if (i < this.commands.length && i >= 0) {
             this.commands[i] = command;
@@ -98,10 +125,18 @@ public class TetrisLogic {
         return this.levelManager.getPoints();
     }
 
+    /**
+     * Attaches the blocks of Piece "current" in the Table -objects block array
+     * and calls a new current from generator. Also ask's the LimitGuard if it's
+     * time to end the game.
+     */
     public void attachAndMakeNew() {
         Block[] currentBlocks = this.current.getBlocks();
+        Block[][] tableBlocks = this.table.getBlocks();
         for (Block block : currentBlocks) {
-            this.table.getBlocks()[block.getX()][block.getY()] = block;
+            int x = block.getX();
+            int y = block.getY();
+            tableBlocks[x][y] = block;
         }
         this.current = generator.givePiece();
         if (this.limitGuard.connects(current, table)) {
@@ -109,60 +144,27 @@ public class TetrisLogic {
         }
     }
 
-    public void destroyRows() {
-        ArrayList<Integer> rowsToDestroy = searchFullRows();
-        int morePoints = 0;
-        if (rowsToDestroy.size() == 1) {
-            this.levelManager.increasePoints(1);
-        }
-        if (rowsToDestroy.size() == 2) {
-            this.levelManager.increasePoints(3);
-        }
-        if (rowsToDestroy.size() == 3) {
-            this.levelManager.increasePoints(5);
-        }
-        if (rowsToDestroy.size() == 4) {
-            this.levelManager.increasePoints(8);
-        }
-        for (Integer row : rowsToDestroy) {
-            destroyRow(row);
-        }
-    }
-
-    public void destroyRow(int i) {
-        for (int j = 0; j < table.getWidth(); j++) {
-            this.table.getBlocks()[j][i] = null;
-        }
-        for (int j = i; j >= 0; j--) {
-            for (int k = 0; k < table.getWidth(); k++) {
-                if (this.table.getBlocks()[k][j] != null) {
-                    this.table.getBlocks()[k][j].moveDown();
-                    this.table.getBlocks()[k][j + 1] = this.table.getBlocks()[k][j];
-                    this.table.getBlocks()[k][j] = null;
-                }
-            }
-        }
-    }
-
-    public ArrayList<Integer> searchFullRows() {
-        ArrayList<Integer> rowsToDestroy = new ArrayList<>();
-        int piecesInRow = 0;
-        for (int i = 0; i < table.getHeight(); i++) {
-            for (int j = 0; j < table.getWidth(); j++) {
-                if (this.table.getBlocks()[j][i] != null) {
-                    piecesInRow++;
-                }
-            }
-            if (piecesInRow == this.table.getWidth()) {
-                rowsToDestroy.add(i);
-                this.levelManager.increaseRowsDestroyed();
-            }
-            piecesInRow = 0;
-        }
-        return rowsToDestroy;
-    }
-
+    /**
+     * Sets boolean continues false.
+     */
     public void endGame() {
         this.continues = false;
+    }
+
+    /**
+     * Set's the table's block arrays blocks all null, calls for levelmanager to
+     * reset all stats, asks a new current from generator and at the end set's
+     * continues true.
+     */
+    public void reset() {
+        this.current = this.generator.givePiece();
+        Block[][] tableBlocks = table.getBlocks();
+        for (int i = 0; i < table.getWidth(); i++) {
+            for (int j = 0; j < tableBlocks[0].length; j++) {
+                tableBlocks[i][j] = null;
+            }
+        }
+        this.levelManager.reset();
+        continues = true;
     }
 }

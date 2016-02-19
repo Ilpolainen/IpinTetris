@@ -1,9 +1,8 @@
-/**
- * Table contains and organizes blocks in the board. 
- */
 package fi.ilmaripohjola.ipitris.entities;
 
 /**
+ * Contains an array of blocks and constructs it correctly to meet the
+ * recuirements of tetris-board.
  *
  * @author omistaja
  */
@@ -13,9 +12,16 @@ public class Table {
     private int height;
     private Block[][] blocks;
 
+    /**
+     * Sets a new array of blocks with given width and height and make's sure
+     * the numbers aren't too small for tetris.
+     *
+     * @param width the width of the block array of the table
+     * @param height the height - 4 of the block array of the table
+     */
     public Table(int width, int height) {
-        if (width < 4) {
-            width = 4;
+        if (width < 3) {
+            width = 3;
         }
         this.width = width;
         if (height < 4) {

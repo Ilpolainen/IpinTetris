@@ -1,16 +1,22 @@
-/**
- * PieceT is a certain kind of Piece
- */
 package fi.ilmaripohjola.ipitris.entities;
 
 import java.awt.Color;
 
 /**
+ * a certain kind of subClass of Piece.
  *
  * @author omistaja
  */
 public class PieceT extends Piece {
 
+    /**
+     * Uses superclasses constructor and in addition set's blocks' x and y to
+     * form a Tetris T-Piece.
+     *
+     * @param color the color of the piece
+     * @param x the anchor x-value of the Piece
+     * @param y the anchor y-value of the Piece
+     */
     public PieceT(Color color, int x, int y) {
         super(color, 4, x, y);
         super.blocks[0] = new Block(color, x - 1, y);
@@ -19,6 +25,11 @@ public class PieceT extends Piece {
         super.blocks[3] = new Block(color, x + 1, y);
     }
 
+    /**
+     * Implements Superclasses method rotateRight in desired way.
+     *
+     * @See Piece
+     */
     @Override
     public void rotateRight() {
         if (asento == 1) {
@@ -72,6 +83,11 @@ public class PieceT extends Piece {
         asento = 1;
     }
 
+    /**
+     * Implements Superclasses method rotateLeft in desired way.
+     *
+     * @See Piece
+     */
     @Override
     public void rotateLeft() {
         if (asento == 1) {

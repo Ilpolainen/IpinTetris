@@ -1,32 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fi.ilmaripohjola.ipitris.interfaces;
+
 import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.VK_DOWN;
+import static java.awt.event.KeyEvent.VK_ENTER;
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
 import static java.awt.event.KeyEvent.VK_SPACE;
+import static java.awt.event.KeyEvent.VK_UP;
 import java.awt.event.KeyListener;
 
-
 /**
+ * Get's the input from user and sets boolean values for pressed keys.
  *
  * @author omistaja
  */
 public class KeyPressListener implements KeyListener {
 
-    private TetrisLogic tetris;
+    private StateCoordinator stateCoordinator;
     private boolean down;
     private boolean space;
     private boolean left;
     private boolean right;
 
-    public KeyPressListener(TetrisLogic tetris) {
-        this.tetris = tetris;
+    /**
+     * Sets the StateCoordinator which boolean values are meant to be changed.
+     *
+     * @param stateCoordinator the StateCoordinator which boolean values are
+     * meant to be changed.
+     */
+    public KeyPressListener(StateCoordinator stateCoordinator) {
+        this.stateCoordinator = stateCoordinator;
         down = false;
         space = false;
         left = false;
@@ -68,12 +73,13 @@ public class KeyPressListener implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == VK_DOWN) {
-            down = true;           
+            down = true;
         }
         if (e.getKeyCode() == VK_LEFT) {
             left = true;
         }
         if (e.getKeyCode() == VK_RIGHT) {
+            System.out.println("Right");
             right = true;
         }
         if (e.getKeyCode() == VK_SPACE) {
@@ -91,7 +97,4 @@ public class KeyPressListener implements KeyListener {
         //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-
-   
 }

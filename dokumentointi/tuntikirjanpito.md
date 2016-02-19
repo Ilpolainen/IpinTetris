@@ -44,4 +44,14 @@
 
 -8h Tein taas koko p‰iv‰n hommia, ja sain lopulta oman gameloopin tehty‰.
 
--8h Ja taas pitk‰ p‰iv‰. Opin multithreadingin ja jaoin peliloopin ja grafiikkaloopin erikseen. 
+**12.2.v2016**
+
+-8h Ja taas pitk‰ p‰iv‰. Opin multithreadingin ja jaoin peliloopin ja grafiikkaloopin erikseen.
+
+**18.2..2016**
+
+-6h J‰lleen pitk‰ p‰iv‰. Hitosti kaikkea s‰l‰‰. Testej‰ ja checkstyle ja pilkunviilausta
+
+**19.2.2016**
+
+-10h Sama juttu kuin eilen.

@@ -12,6 +12,7 @@ import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
+import javafx.stage.Screen;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -48,7 +49,7 @@ public class GameScreen implements Runnable {
         frame = new JFrame("IPITRIS");        
         frame.setPreferredSize(new Dimension(width, height));         
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setComponents(frame.getContentPane());
+        setComponents(frame.getContentPane());      
         frame.pack();
         frame.setVisible(true);
     }

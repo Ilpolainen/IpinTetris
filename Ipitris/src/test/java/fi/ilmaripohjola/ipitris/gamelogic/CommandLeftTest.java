@@ -43,7 +43,7 @@ public class CommandLeftTest {
     @Test
     public void moveLeftWorksNormally() {
         l.getCommands()[1].runCommand();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
             assertEquals(0, p.getBlocks()[i].getX());            
             assertEquals(0, p.getBlocks()[0].getY());
             assertEquals(1, p.getBlocks()[1].getY());

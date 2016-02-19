@@ -1,25 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fi.ilmaripohjola.ipitris.gamelogic;
 
 /**
+ * Extends Command.
  *
+ * @See Command
  * @author omistaja
  */
 public class CommandRotateLeft extends Command {
 
-    public CommandRotateLeft() {
-    }
-
+    /**
+     * Watch reference from Piece.
+     *
+     * @see Piece
+     * @param tetris a TetrisLogic -object given by caller
+     */
     public CommandRotateLeft(TetrisLogic tetris) {
         super(tetris);
     }
-    
-    
-    
+
+    /**
+     * Calls TerisLogic's current Piece's rotateLeft, and handles exceptional
+     * situations caused by the game state by using TetrisLogic's methods and
+     * it's LimitGuard - situations like going out of bounds or collision with
+     * other objects.
+     */
     @Override
     public void runCommand() {
         super.getTetris().getCurrent().rotateLeft();
@@ -27,6 +31,5 @@ public class CommandRotateLeft extends Command {
             super.getTetris().getCurrent().rotateRight();
         }
     }
-    
-   
+
 }
