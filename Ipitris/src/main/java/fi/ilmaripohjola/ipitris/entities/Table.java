@@ -42,4 +42,16 @@ public class Table {
     public Block[][] getBlocks() {
         return blocks;
     }
+    
+    public void setTable(int width, int height) {
+        if (width < 3) {
+            width = 3;
+        }
+        this.width = width;
+        if (height < 4) {
+            height = 4;
+        }
+        this.height = height;
+        this.blocks = new Block[width][height + 4];
+    }
 }

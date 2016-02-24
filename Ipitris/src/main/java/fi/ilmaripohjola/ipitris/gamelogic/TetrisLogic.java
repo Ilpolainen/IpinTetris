@@ -17,6 +17,7 @@ public class TetrisLogic {
     private Table table;
     private Piece current;
     private PieceGenerator generator;
+    private boolean ended;
     private boolean continues;
     private Command[] commands;
     private LimitGuard limitGuard;
@@ -35,6 +36,7 @@ public class TetrisLogic {
         this.generator = generator;
         this.current = generator.givePiece();
         this.continues = true;
+        this.ended = false;
         this.commands = new Command[4];
         this.commands[0] = new CommandDown(this);
         this.commands[1] = new CommandLeft(this);
@@ -116,6 +118,10 @@ public class TetrisLogic {
             this.commands[i] = command;
         }
     }
+    
+    public void setTable(int width, int height) {
+        this.table.setTable(width, height);
+    }
 
     public int getLevel() {
         return this.levelManager.getLevel();
@@ -148,6 +154,19 @@ public class TetrisLogic {
      * Sets boolean continues false.
      */
     public void endGame() {
+        this.ended = true;
+        this.continues = false;
+    }
+
+    public boolean isEnded() {
+        return ended;
+    }    
+    
+    public void unPause() {
+        this.continues = true;
+    }
+    
+    public void pause() {
         this.continues = false;
     }
 
@@ -156,7 +175,7 @@ public class TetrisLogic {
      * reset all stats, asks a new current from generator and at the end set's
      * continues true.
      */
-    public void reset() {
+    public void restart() {
         this.current = this.generator.givePiece();
         Block[][] tableBlocks = table.getBlocks();
         for (int i = 0; i < table.getWidth(); i++) {
@@ -166,5 +185,6 @@ public class TetrisLogic {
         }
         this.levelManager.reset();
         continues = true;
+        this.ended = false;
     }
 }

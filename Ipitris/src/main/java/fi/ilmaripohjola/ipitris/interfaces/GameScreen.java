@@ -5,18 +5,15 @@
  */
 package fi.ilmaripohjola.ipitris.interfaces;
 
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
-import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
-import fi.ilmaripohjola.ipitris.utilities.Renderer;
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.LayoutManager;
-import javafx.stage.Screen;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 /**
@@ -29,37 +26,77 @@ public class GameScreen implements Runnable {
     private MyFirstRenderer renderer;
     private int scale;
     private KeyPressListener kpl;
+    private ActionListener stateCoordinator;
     private int width;
     private int height;
     private Thread t;
 
-    public GameScreen(int width, int height, int scale, MyFirstRenderer renderer, KeyPressListener kpl) {
-        this.width = width * scale + 7 * scale + scale/3;
-        if (height<12) {
-            height=12;
+    public GameScreen(int width, int height, int scale, MyFirstRenderer renderer, KeyPressListener kpl, ActionListener stateCoordinator) {
+        this.width = width * scale + 7 * scale + scale * 4 / 11;
+        if (height < 12) {
+            height = 12;
         }
-        this.height = (height-4) * scale + 30;         
+        this.height = (height - 4) * scale + 55;
         this.scale = scale;
         this.renderer = renderer;
         this.kpl = kpl;
+        this.stateCoordinator = stateCoordinator;
+    }
+
+    public void setWidth(int newWidth) {
+        this.width = newWidth * scale + 7 * scale + scale * 4 / 11;
+        frame.setSize(this.width, this.height);
+    }
+
+    public void setHeight(int newHeight) {
+        if (newHeight < 12) {
+            newHeight = 12;
+        }
+        this.height = (newHeight - 4) * scale + 55;
+        frame.setSize(this.width, this.height);
+    }
+
+    public void setScale(int scale) {
+        this.scale = scale;
+        this.renderer.setScale(scale);
+    }
+
+    public void resizeFrame() {
+        frame.setPreferredSize(new Dimension(width, height));
     }
 
     @Override
     public void run() {
-        frame = new JFrame("IPITRIS");        
-        frame.setPreferredSize(new Dimension(width, height));         
+        frame = new JFrame("IPITRIS");
+        frame.setPreferredSize(new Dimension(width, height));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setComponents(frame.getContentPane());      
+        setComponents(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
     }
 
     public void setComponents(Container container) {
-        container.add(renderer);
+        JPanel buttonsPanel = new JPanel();
+        JButton pause = new JButton("PAUSE");
+        JButton quit = new JButton("QUIT");
+        JButton restart = new JButton("RESTART");
+        pause.setFocusable(false);
+        quit.setFocusable(false);
+        restart.setFocusable(false);
+        pause.addActionListener(stateCoordinator);
+        quit.addActionListener(stateCoordinator);
+        restart.addActionListener(stateCoordinator);
+
+        GridLayout gl = new GridLayout();
+        gl.setColumns(3);
+        buttonsPanel.setLayout(gl);
+        buttonsPanel.add(restart);
+        buttonsPanel.add(pause);
+        buttonsPanel.add(quit);
+        container.add(buttonsPanel, BorderLayout.NORTH);
+        container.add(renderer, BorderLayout.CENTER);
         this.frame.addKeyListener(kpl);
     }
-
-    
 
     public JFrame getFrame() {
         return frame;
@@ -70,10 +107,9 @@ public class GameScreen implements Runnable {
     }
 
     public void start() throws InterruptedException {
-        System.out.println("Creating tetris window");        
         if (t == null) {
             t = new Thread(this, "1");
-            t.start();            
+            t.start();
         }
     }
 

@@ -66,6 +66,10 @@ public class PieceGenerator {
         this.colors[5] = s;
         this.colors[6] = z;
     }
+    
+    public void setColor(Color color, int i) {
+        this.colors[i] = color;        
+    }
 
     public Color[] getColors() {
         return colors;
@@ -73,6 +77,11 @@ public class PieceGenerator {
 
     public int getTableWidth() {
         return tableWidth;
+    }
+
+    public void setTableWidth(int tableWidth) {
+        this.tableWidth = tableWidth;
+        this.next = this.makeNext();
     }
 
     public Piece getNext() {

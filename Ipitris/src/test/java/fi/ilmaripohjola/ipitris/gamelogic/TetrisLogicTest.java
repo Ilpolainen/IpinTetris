@@ -164,7 +164,7 @@ public class TetrisLogicTest {
         for (int i = 0; i < 30; i++) {
             l.getLevelManager().increasePoints(5);
         }
-        l.reset();
+        l.restart();
         assertEquals(0, l.getPoints());
         assertEquals(0, l.getLevel());
         assertEquals(0, l.getLevelManager().getRowsDestroyed());

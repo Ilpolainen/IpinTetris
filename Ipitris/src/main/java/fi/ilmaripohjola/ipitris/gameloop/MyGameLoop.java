@@ -9,7 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Runnable class that loops and updates the TetrisLogic's state within it's own thread.
+ * Runnable class that loops and updates the TetrisLogic's state within it's own
+ * thread.
  *
  * @author omistaja
  */
@@ -23,7 +24,8 @@ public class MyGameLoop implements Runnable {
     /**
      * Constructs MyGameLoop with given values.
      *
-     * @param listener KeyPressListener for ending the game. Currently not needed.
+     * @param listener KeyPressListener for ending the game. Currently not
+     * needed.
      * @param tetris The GameLogic to update.
      */
     public MyGameLoop(KeyPressListener listener, TetrisLogic tetris) {
@@ -41,11 +43,15 @@ public class MyGameLoop implements Runnable {
         return this.continues;
     }
 
+    public Thread getT() {
+        return t;
+    }
+
     @Override
     public void run() {
         System.out.println("Game On");
         boolean[] keys = new boolean[4];
-        this.tetris.reset();
+        this.tetris.restart();
         this.continues = true;
         try {
             Thread.sleep(400);
@@ -55,31 +61,35 @@ public class MyGameLoop implements Runnable {
 
         int rounds = 0;
         while (continues) {
-            getKeys(keys);
-            if (rounds > 40 - 2 * tetris.getLevel()) {
-                keys[0] = true;
-                rounds = 0;
-            }
-            rounds++;
-            this.tetris.update(keys[0], keys[1], keys[2], keys[3]);
-            emptyKeys();
+            if (tetris.getContinues()) {
+                getKeys(keys);
+                if (rounds > 40 - 2 * tetris.getLevel()) {
+                    keys[0] = true;
+                    rounds = 0;
+                }
+                rounds++;
+                this.tetris.update(keys[0], keys[1], keys[2], keys[3]);
+                emptyKeys();
 
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (!this.tetris.getContinues()) {
-                this.continues = false;
-            }
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }            
         }
     }
 
     /**
      * Starts the thread for this loop.
      */
-    
-    public void start() {
+    public void createThreadAndStart() {
         System.out.println("Starting gameloop");
         if (t == null) {
             t = new Thread(this, "3");

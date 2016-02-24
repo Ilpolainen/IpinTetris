@@ -5,6 +5,7 @@ import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.VK_DOWN;
 import static java.awt.event.KeyEvent.VK_ENTER;
+import static java.awt.event.KeyEvent.VK_ESCAPE;
 import static java.awt.event.KeyEvent.VK_LEFT;
 import static java.awt.event.KeyEvent.VK_RIGHT;
 import static java.awt.event.KeyEvent.VK_SPACE;
@@ -23,21 +24,25 @@ public class KeyPressListener implements KeyListener {
     private boolean space;
     private boolean left;
     private boolean right;
+    private int[] keys;
 
     /**
      * Sets the StateCoordinator which boolean values are meant to be changed.
      *
      * @param stateCoordinator the StateCoordinator which boolean values are
      * meant to be changed.
+     * @param keys
      */
-    public KeyPressListener(StateCoordinator stateCoordinator) {
+    public KeyPressListener(StateCoordinator stateCoordinator, int[] keys) {        
         this.stateCoordinator = stateCoordinator;
         down = false;
         space = false;
         left = false;
-        right = false;
+        right = false; 
+        this.keys = keys;
+        System.out.println("KEYPRESSLISTENER LUOTu");
     }
-
+    
     public void setDown(boolean down) {
         this.down = down;
     }
@@ -72,19 +77,19 @@ public class KeyPressListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == VK_DOWN) {
+        TetrisLogic tl = this.stateCoordinator.getTetris();
+        if (e.getKeyCode() == keys[0]) {
             down = true;
         }
-        if (e.getKeyCode() == VK_LEFT) {
+        if (e.getKeyCode() == keys[1]) {
             left = true;
         }
-        if (e.getKeyCode() == VK_RIGHT) {
-            System.out.println("Right");
+        if (e.getKeyCode() == keys[2]) {
             right = true;
         }
-        if (e.getKeyCode() == VK_SPACE) {
+        if (e.getKeyCode() == keys[3]) {
             space = true;
-        }
+        }        
     }
 
     @Override

@@ -28,6 +28,10 @@ public class MyFirstRenderer extends JPanel implements Renderer {
         this.scale = scale;
     }
 
+    public void setScale(int scale) {
+        this.scale = scale;
+    }
+
     @Override
     public void updateNow() {
         this.repaint(); //To change body of generated methods, choose Tools | Templates.
@@ -41,7 +45,7 @@ public class MyFirstRenderer extends JPanel implements Renderer {
         drawTable(g, tetris.getTable());
         drawPiece(g, tetris.getCurrent(), 0, 0);
         showInfo(g);
-        if (this.tetris.getContinues() == false) {
+        if (tetris.isEnded()) {
             writeGameOver(g);
         }
     }
