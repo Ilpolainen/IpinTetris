@@ -31,18 +31,18 @@ public class KeyPressListener implements KeyListener {
      *
      * @param stateCoordinator the StateCoordinator which boolean values are
      * meant to be changed.
-     * @param keys
+     * @param keys int[] Contains integers that represent the KeyCodes, that
+     * this Listener uses as a comparison for the event KeyCodes.
      */
-    public KeyPressListener(StateCoordinator stateCoordinator, int[] keys) {        
+    public KeyPressListener(StateCoordinator stateCoordinator, int[] keys) {
         this.stateCoordinator = stateCoordinator;
         down = false;
         space = false;
         left = false;
-        right = false; 
+        right = false;
         this.keys = keys;
-        System.out.println("KEYPRESSLISTENER LUOTu");
     }
-    
+
     public void setDown(boolean down) {
         this.down = down;
     }
@@ -77,7 +77,6 @@ public class KeyPressListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        TetrisLogic tl = this.stateCoordinator.getTetris();
         if (e.getKeyCode() == keys[0]) {
             down = true;
         }
@@ -89,7 +88,7 @@ public class KeyPressListener implements KeyListener {
         }
         if (e.getKeyCode() == keys[3]) {
             space = true;
-        }        
+        }
     }
 
     @Override

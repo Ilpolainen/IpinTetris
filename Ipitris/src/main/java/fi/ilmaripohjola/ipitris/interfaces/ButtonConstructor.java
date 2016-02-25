@@ -34,28 +34,8 @@ public class ButtonConstructor {
         JButton right = new JButton("RIGHT");
         JButton rotate = new JButton("ROTATE");
         JButton back3 = new JButton("BACK");
-        passFocus(start, options, trash, exit, confirm, boardOptions, back, visualOptions, back2, colors, keys, down, left, right, rotate, back3);
         attachButtons(panels, start, options, trash, exit, confirm, boardOptions, back, visualOptions, back2, colors, keys, down, left, right, rotate, back3);
         connectButtons(stateCoordinator, start, options, trash, exit, confirm, boardOptions, back, visualOptions, back2, colors, keys, down, left, right, rotate, back3);
-    }
-
-    public void passFocus(JButton start, JButton options, JButton trash, JButton exit, JButton confirm, JButton boardOptions, JButton back, JButton visualOptions, JButton back2, JButton colors, JButton keys, JButton down, JButton left, JButton right, JButton rotate, JButton back3) {
-        start.setFocusable(false);
-        options.setFocusable(false);
-        confirm.setFocusable(false);
-        trash.setFocusable(false);
-        exit.setFocusable(false);
-        boardOptions.setFocusable(false);
-        back.setFocusable(false);
-        visualOptions.setFocusable(false);
-        back2.setFocusable(false);
-        colors.setFocusable(false);
-        keys.setFocusable(false);
-        down.setFocusable(false);
-        left.setFocusable(false);
-        right.setFocusable(false);
-        rotate.setFocusable(false);
-        back3.setFocusable(false);
     }
 
     public void attachButtons(JPanel[] panels, JButton start, JButton options, JButton trash, JButton exit, JButton confirm, JButton boardOptions, JButton back, JButton visualOptions, JButton back2, JButton colors, JButton keys, JButton down, JButton left, JButton right, JButton rotate, JButton back3) {

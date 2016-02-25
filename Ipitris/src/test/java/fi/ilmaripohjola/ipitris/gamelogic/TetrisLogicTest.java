@@ -5,17 +5,12 @@
  */
 package fi.ilmaripohjola.ipitris.gamelogic;
 
-import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.Table;
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.Random;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -41,6 +36,7 @@ public class TetrisLogicTest {
         l = new TetrisLogic(t, generator);
         p = new PieceI(Color.BLACK,4,1);
         c = new CommandRotateLeft(l);
+        l.setCurrent(p);
     }
     
     @Test
@@ -175,6 +171,7 @@ public class TetrisLogicTest {
         }
     }
     
+    @Test
     public void updateCallsRightControls() {
         l.update(false, true, false, false);
         assertEquals(1, l.getCurrent().getAsento());
@@ -184,5 +181,19 @@ public class TetrisLogicTest {
         assertEquals(2, l.getCurrent().getAsento());
         assertEquals(2, l.getCurrent().getY());
         assertEquals(4, l.getCurrent().getX());
+    }
+    
+    @Test
+    public void setTableWorksRight() {
+        this.l.setTable(4, 5);
+        assertEquals(4, t.getWidth());
+        assertEquals(5, t.getHeight());
+    }
+    
+    @Test
+    public void setTableWorksWithNegativeInput() {
+        this.l.setTable(-1, -3);
+        assertEquals(3, t.getWidth());
+        assertEquals(4, t.getHeight());
     }
 }

@@ -11,15 +11,15 @@ import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
 import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
-import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.util.Random;
 
 /**
+ * Constructs all the necessary Objects for a tetris game.
  *
  * @author omistaja
  */
 public class GameConstructor {
-    
+
     private Table table;
     private TetrisLogic tetris;
     private PieceGenerator generator;
@@ -30,6 +30,18 @@ public class GameConstructor {
     private MyGameLoop gameLoop;
     private StateCoordinator coordinator;
 
+    /**
+     *
+     * Creates Table, PieceGenerator, TetrisLogic, KeyPressListener, Renderer,
+     * GameScreen, MyGameLoop and MyRenderLoop for new tetris game.
+     *
+     * @param width Used to make a tetris table with correct width.
+     * @param height Used to make a tetris table with correct height.
+     * @param coordinator StateCoordinator for tetris, wich is given as a
+     * parameter for various classes needed for tetris game.
+     * @throws InterruptedException Throws InterruptedException if Thread
+     * -problems occur.
+     */
     public GameConstructor(int width, int height, StateCoordinator coordinator) throws InterruptedException {
         this.coordinator = coordinator;
         table = new Table(width, height);
@@ -39,7 +51,7 @@ public class GameConstructor {
         renderer = new MyFirstRenderer(tetris, coordinator.getStartingScreen().getScale());
         gameScreen = new GameScreen(width, height, coordinator.getStartingScreen().getScale(), renderer, kpl, coordinator);
         renderLoop = new MyRenderLoop(renderer, tetris);
-        gameLoop = new MyGameLoop(kpl, tetris);        
+        gameLoop = new MyGameLoop(kpl, tetris);
     }
 
     public MyGameLoop getGameLoop() {
@@ -73,10 +85,15 @@ public class GameConstructor {
     public TetrisLogic getTetris() {
         return tetris;
     }
-    
-    
-    
-    public void createAndStartGame() throws InterruptedException {  
+
+    /**
+     * Starts a new game and new loop Threads with custom options values given
+     * by StateCoordinator and StartingScreen.
+     *
+     * @throws InterruptedException Throws InterruptedException if Thread
+     * -problems occur.
+     */
+    public void createAndStartGame() throws InterruptedException {
         this.table.setTable(this.coordinator.getStartingScreen().getWidth(), this.coordinator.getStartingScreen().getHeight());
         this.generator.setTableWidth(this.coordinator.getStartingScreen().getWidth());
         this.renderer.setScale(this.coordinator.getStartingScreen().getScale());
@@ -90,9 +107,13 @@ public class GameConstructor {
         this.coordinator.getStartingScreen().getFrame().setVisible(false);
         gameLoop.createThreadAndStart();
     }
-    
+
+    /**
+     * Starts a new with custom options values given by StateCoordinator and
+     * StartingScreen. Uses already running threads
+     */
     public void startGame() {
-        this.coordinator.getStartingScreen().getFrame().setVisible(false);        
+        this.coordinator.getStartingScreen().getFrame().setVisible(false);
         this.gameScreen.setScale(this.coordinator.getStartingScreen().getScale());
         this.gameScreen.setWidth(this.coordinator.getStartingScreen().getWidth());
         this.gameScreen.setHeight(this.coordinator.getStartingScreen().getHeight());

@@ -25,7 +25,6 @@ public class KeyConfigurer implements KeyListener {
     private StartingScreen ss;
 
     public KeyConfigurer(StartingScreen ss) {
-        System.out.println("KeyConfigurer Luotu");
         this.ss = ss;
         this.keys = new int[4];
         keys[0] = VK_DOWN;
@@ -50,11 +49,11 @@ public class KeyConfigurer implements KeyListener {
             for (int i = 0; i < 4; i++) {
                 JButton button = (JButton) buttons.getComponent(i);
                 button.setForeground(buttons.getForeground());
-            }            
+            }
             keys[ss.getKeyToConfigure()] = e.getKeyCode();
-            System.out.println(e.getKeyCode());
-            ss.setKeyToConfigure(-1);
+
         }
+        ss.setKeyToConfigure(-1);
     }
 
     @Override

@@ -30,7 +30,8 @@ public class PieceGenerator {
      * up preset-colors.
      *
      * @param random java.util.Random class object
-     * @param tableWidth int for determining the starting position of generated Piece
+     * @param tableWidth int for determining the starting position of generated
+     * Piece
      */
     public PieceGenerator(Random random, int tableWidth) {
         this.random = random;
@@ -66,9 +67,19 @@ public class PieceGenerator {
         this.colors[5] = s;
         this.colors[6] = z;
     }
-    
+
+    /**
+     * Sets color to a Piece width given index.
+     *
+     * @param color desired Piece color
+     * @param i Piece index
+     */
     public void setColor(Color color, int i) {
-        this.colors[i] = color;        
+        this.colors[i] = color;
+    }
+
+    public Piece getNext() {
+        return next;
     }
 
     public Color[] getColors() {
@@ -79,20 +90,23 @@ public class PieceGenerator {
         return tableWidth;
     }
 
+    /**
+     * Sets the width, that PieceConstructor uses to set correct starting
+     * position for the Pieces.
+     *
+     * @param tableWidth desired new tablewidth value
+     */
     public void setTableWidth(int tableWidth) {
         this.tableWidth = tableWidth;
         this.next = this.makeNext();
     }
 
-    public Piece getNext() {
-        return next;
-    }
-
     /**
-     * 
-     * @return a random Piece-object. For private use only. 
+     * Returns a random Piece-object. For private use only.
+     *
+     * @return Piece
      */
-    private Piece makeNext() {
+    public Piece makeNext() {
         int i = random.nextInt(7);
         Piece newNext = null;
         if (i == 0) {
@@ -118,12 +132,13 @@ public class PieceGenerator {
         }
         return newNext;
     }
-    
+
     /**
-     * Constructs a new random Piece -object, set's it next and returns previous next one.
+     * Constructs a new random Piece -object, set's it next and returns previous
+     * next one.
+     *
      * @return Piece previous next
      */
-
     public Piece givePiece() {
         if (next == null) {
             next = this.makeNext();

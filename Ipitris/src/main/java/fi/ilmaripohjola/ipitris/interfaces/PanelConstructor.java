@@ -11,14 +11,28 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 
 /**
+ * PanelConstructor helps Class StartingScreen, to construct it's frame's
+ * panels.
  *
  * @author omistaja
  */
 public class PanelConstructor {
 
+    /**
+     * Empty Constructor.
+     */
     public PanelConstructor() {
     }
-    
+
+    /**
+     * This Method constructs panels for StartingScreen's frame and sets up all
+     * the necessary settings needed for a tetris StartingPanel. It creates
+     * those layouts and attaches the panels for the StartingScreens Panel
+     * -array.
+     *
+     * @param container
+     * @param panels
+     */
     public void setUpPanels(Container container, JPanel[] panels) {
         GridLayout cl1 = new GridLayout();
         GridLayout cl2 = new GridLayout();
@@ -36,7 +50,7 @@ public class PanelConstructor {
         JPanel boardPanel = new JPanel(cl3);
         JPanel visualOptionsPanel = new JPanel(cl4);
         JPanel colorPanel = new JPanel(cl5);
-        JPanel keysPanel = new JPanel(cl6);       
+        JPanel keysPanel = new JPanel(cl6);
         panels[0] = startPanel;
         panels[1] = optionsPanel;
         panels[2] = boardPanel;

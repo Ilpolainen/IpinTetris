@@ -9,4 +9,9 @@
     <suppress files="MyFirstRenderer.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="GameScreen.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="StartingScreen.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="ButtonConstructor.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="KeyConfigurer.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="StateCoordinator.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="PanelConstructor.java" checks="[a-zA-Z0-9]*"/>
+    <suppress files="SliderCreator.java" checks="[a-zA-Z0-9]*"/>
 </suppressions>

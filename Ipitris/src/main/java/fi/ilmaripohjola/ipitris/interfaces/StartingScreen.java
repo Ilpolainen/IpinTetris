@@ -7,22 +7,16 @@ package fi.ilmaripohjola.ipitris.interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.util.Hashtable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
-import javax.swing.event.ChangeListener;
 
 public class StartingScreen implements Runnable {
 
@@ -99,8 +93,6 @@ public class StartingScreen implements Runnable {
     public StateCoordinator getStateCoordinator() {
         return stateCoordinator;
     }
-    
-    
 
     @Override
     public void run() {
@@ -109,6 +101,10 @@ public class StartingScreen implements Runnable {
         this.frame.setSize(size);
         this.frame.setLocation(300, 120);
         this.setUpComponents(this.frame.getContentPane());
+        List<Component> comps = getAllComponents(this.frame.getContentPane());
+        for (Component comp : comps) {
+            comp.setFocusable(false);
+        }
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setVisible(true);
     }
@@ -139,7 +135,7 @@ public class StartingScreen implements Runnable {
         JButton pieceJ = new JButton("J");
         JButton pieceS = new JButton("S");
         JButton pieceZ = new JButton("Z");
-        JButton back = new JButton("BACK");
+        JButton back = new JButton("BACK TO VISUAL OPTIONS");
         piecePanel.add(pieceI);
         piecePanel.add(pieceT);
         piecePanel.add(pieceSquare);
@@ -153,6 +149,18 @@ public class StartingScreen implements Runnable {
         panels[4].add(back, BorderLayout.NORTH);
     }
 
+    public List<Component> getAllComponents(final Container c) {
+        Component[] comps = c.getComponents();
+        List<Component> compList = new ArrayList<>();
+        for (Component comp : comps) {
+            compList.add(comp);
+            if (comp instanceof Container) {
+                compList.addAll(getAllComponents((Container) comp));
+            }
+        }
+        return compList;
+    }
+
     public void connectColorButtons(JButton I, JButton T, JButton square, JButton L, JButton J, JButton S, JButton Z, JButton back) {
         I.addActionListener(stateCoordinator);
         T.addActionListener(stateCoordinator);
@@ -163,7 +171,7 @@ public class StartingScreen implements Runnable {
         Z.addActionListener(stateCoordinator);
         back.addActionListener(stateCoordinator);
     }
-    
+
     public void start() throws InterruptedException {
         if (t == null) {
             t = new Thread(this, "2");

@@ -3,8 +3,6 @@ package fi.ilmaripohjola.ipitris.gamelogic;
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import java.util.ArrayList;
-import fi.ilmaripohjola.ipitris.entities.PieceS;
 
 /**
  * Handles the rules and state of a tetris -game with the help of LimitGuard and
@@ -118,7 +116,14 @@ public class TetrisLogic {
             this.commands[i] = command;
         }
     }
-    
+
+    /**
+     * Updates the table size with given width and height values. NOTE: Current
+     * Piece array will be destroyed.
+     *
+     * @param width desired new table width
+     * @param height desired new table height
+     */
     public void setTable(int width, int height) {
         this.table.setTable(width, height);
     }
@@ -160,20 +165,25 @@ public class TetrisLogic {
 
     public boolean isEnded() {
         return ended;
-    }    
-    
+    }
+
+    /**
+     * Sets continues parameter true.
+     */
     public void unPause() {
         this.continues = true;
     }
-    
+
+    /**
+     * Sets continues parameter false.
+     */
     public void pause() {
         this.continues = false;
     }
 
     /**
-     * Set's the table's block arrays blocks all null, calls for levelmanager to
-     * reset all stats, asks a new current from generator and at the end set's
-     * continues true.
+     * Set's the table's blocks all null, calls levelmanager to reset all stats,
+     * asks a new current from generator and at the end set's continues true.
      */
     public void restart() {
         this.current = this.generator.givePiece();

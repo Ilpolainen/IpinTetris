@@ -42,7 +42,14 @@ public class Table {
     public Block[][] getBlocks() {
         return blocks;
     }
-    
+
+    /**
+     * Updates the Tables eidth and height attributes and constructs a new Block
+     * -array to replace the Tables former block -array.
+     *
+     * @param width int table width
+     * @param height int table height
+     */
     public void setTable(int width, int height) {
         if (width < 3) {
             width = 3;

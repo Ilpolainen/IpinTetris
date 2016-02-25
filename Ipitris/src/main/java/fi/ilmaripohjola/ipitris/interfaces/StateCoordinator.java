@@ -5,8 +5,10 @@ import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -20,7 +22,7 @@ import javax.swing.JPanel;
  * @author omistaja
  */
 public class StateCoordinator implements ActionListener {
-
+    
     private StartingScreen startingScreen;
     private SliderCoordinator sliderCoordinator;
     private KeyConfigurer keyConfigurer;
@@ -84,51 +86,55 @@ public class StateCoordinator implements ActionListener {
             } catch (InterruptedException ex) {
                 Logger.getLogger(StateCoordinator.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-        else if (e.getActionCommand().equals("TRASH")) {
+        } else if (e.getActionCommand().equals("TRASH")) {
             makeSound();
-        }
-        else if (e.getActionCommand().equals("OPTIONS")) {
+        } else if (e.getActionCommand().equals("OPTIONS")) {
             showOptionsPanel();
-        }
-        else if (e.getActionCommand().equals("CONFIRM")) {
+        } else if (e.getActionCommand().equals("CONFIRM")) {
             showStartPanel();
-        }
-        else if (e.getActionCommand().equals("BOARD OPTIONS")) {
+        } else if (e.getActionCommand().equals("BOARD OPTIONS")) {
             showBoardPanel();
-        }
-        else if (e.getActionCommand().equals("BACK")) {
-
+        } else if (e.getActionCommand().equals("BACK")) {
             showOptionsPanel();
-        }
-        else if (e.getActionCommand().equals("EXIT")) {
+        } else if (e.getActionCommand().equals("BACK TO VISUAL OPTIONS")) {
+            this.showVisualPanel();
+        } else if (e.getActionCommand().equals("EXIT")) {
             System.exit(0);
-        }
-        else if (e.getActionCommand().equals("VISUAL OPTIONS")) {
+        } else if (e.getActionCommand().equals("VISUAL OPTIONS")) {
             showVisualPanel();
-        }
-        else if (e.getActionCommand().equals("PAUSE")) {
+        } else if (e.getActionCommand().equals("PAUSE")) {
             if (this.constructor.getTetris().getContinues()) {
                 this.constructor.getTetris().pause();
             } else {
                 this.constructor.getTetris().unPause();
             }
-        }
-        else if (e.getActionCommand().equals("RESTART")) {
+        } else if (e.getActionCommand().equals("RESTART")) {
             this.constructor.getTetris().restart();
-        }
-        else if (e.getActionCommand().equals("QUIT")) {
+        } else if (e.getActionCommand().equals("QUIT")) {
             this.constructor.getTetris().endGame();
             this.constructor.getGameScreen().getFrame().setVisible(false);
             this.startingScreen.getFrame().setVisible(true);
-        }
-        else if (e.getActionCommand().equals("KEY OPTIONS")) {
+        } else if (e.getActionCommand().equals("KEY OPTIONS")) {
             showKeyPanel();
-        }
-        else  if (e.getActionCommand().equals("COLORS")) {
+        } else if (e.getActionCommand().equals("COLORS")) {
             showColorsPanel();
+        }
+        if (e.getActionCommand().equals("DOWN")) {
+            this.startingScreen.setKeyToConfigure(0);
+            this.setKeyButtonRed(0);
+        }
+        if (e.getActionCommand().equals("LEFT")) {
+            this.startingScreen.setKeyToConfigure(1);
+            this.setKeyButtonRed(1);
+        }
+        if (e.getActionCommand().equals("RIGHT")) {
+            this.startingScreen.setKeyToConfigure(2);
+            this.setKeyButtonRed(2);
+        }
+        if (e.getActionCommand().equals("ROTATE")) {
+            this.startingScreen.setKeyToConfigure(3);
+            this.setKeyButtonRed(3);
         } else {
-            CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
             JPanel cp = (JPanel) startingScreen.getFrame().getContentPane().getComponent(4);
             JColorChooser jcc = (JColorChooser) cp.getComponent(1);
             Color color = jcc.getColor();
@@ -161,29 +167,13 @@ public class StateCoordinator implements ActionListener {
                 this.setPieceButtonColor(6, color);
             }
         }
-        if (e.getActionCommand().equals("DOWN")) {
-            this.startingScreen.setKeyToConfigure(0);
-            this.setKeyButtonRed(0);
-        }
-        if (e.getActionCommand().equals("LEFT")) {
-            this.startingScreen.setKeyToConfigure(1);
-            this.setKeyButtonRed(1);
-        }
-        if (e.getActionCommand().equals("RIGHT")) {
-            this.startingScreen.setKeyToConfigure(2);
-            this.setKeyButtonRed(2);
-        }
-        if (e.getActionCommand().equals("ROTATE")) {
-            this.startingScreen.setKeyToConfigure(3);
-            this.setKeyButtonRed(3);
-        }
+
     }
 
     private void startGame() throws InterruptedException {
-        if (this.constructor.getGameScreen().getFrame()==null) {
+        if (this.constructor.getGameScreen().getFrame() == null) {
             this.constructor.createAndStartGame();
-        }
-        else {
+        } else {
             this.constructor.startGame();
         }
     }
@@ -198,9 +188,9 @@ public class StateCoordinator implements ActionListener {
             button.setForeground(Color.BLACK);
             button.setBackground(color);
         }
-        
+
     }
-    
+
     private void setKeyButtonRed(int i) {
         JPanel keyPanel = (JPanel) this.startingScreen.getFrame().getContentPane().getComponent(5);
         JPanel buttons = (JPanel) keyPanel.getComponent(1);
@@ -208,7 +198,7 @@ public class StateCoordinator implements ActionListener {
         JButton button = (JButton) buttons.getComponent(i);
         button.setForeground(Color.red);
     }
-    
+
     private void clearButtonColors(JPanel panel) {
         for (int j = 0; j < panel.getComponentCount(); j++) {
             JButton buttonToClear = (JButton) panel.getComponent(j);
