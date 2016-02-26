@@ -55,3 +55,17 @@
 **19.2.2016**
 
 -10h Sama juttu kuin eilen.
+
+**24.2.2016**
+
+-3h Puuhastelua refactoroinnin kanssa.
+
+**25.2.2016**
+
+-9h JavaDocceja, testejä ja taistelua näppäinkonfiguraation kanssa. Löysin vihdoin tavan selättää Swingin vittumainen focuksen varastaminen. Hieno rekursiivinen algoritmi, joka käy componenttipuun syvyyshaulla läpi ja asettaa focusablet falseiksi KUTEN NIIDEN PITÄISI OLLA JÄRKEVÄSSÄ OHJELMOINTIKIRJASTOSSA.
+
+**26.2.2016**
+
+-3h Viimeisiä viilauksia ja kaavioiden päivityksiä, sekä jarin luominen.
+
+8
