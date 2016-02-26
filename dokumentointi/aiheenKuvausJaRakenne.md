@@ -18,7 +18,7 @@
 ![luokkadiagrammi](TetrisClassDiagram.jpg)
 ![käynnistyssekvenssikaavio](TetrisSetupSequenceDiagram.jpg)
 ![CommandDownSekvenssikaavio](CommandDownStandardSequenceDiagram.jpg)
-![DestroyRowsSekvenssikaavio](DestroyRowsSequenceDiagram)
+![DestroyRowsSekvenssikaavio](DestroyRowsSequenceDiagram.jpg)
 
 ##Rakennekuvaus**
 
