@@ -1,0 +1,1403 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>Block.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Block contains and handles x and y coordinates and handles, and the color of the tetris game&#39;s square. Implements movable.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package fi.ilmaripohjola.ipitris.entities;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.awt.Color;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Block contains and handles x and y coordinates and handles, and the color of the tetris game&#39;s square. Implements movable.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * @author omistaja</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Block implements Movable {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private int x;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private int y;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private Color color;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Constructs a Block with given values.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param color The color of the Block given by caller.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param x The x-coordinate of the Block given by caller.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param y The y-coordinate of the block given by caller.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_26'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Block(Color color, int x, int y) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_27'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.x = x;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_28'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.y = y;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_29'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.color = color;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_30'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Color getColor() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_33'/>
+33
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_33'>1</a>
+<span>
+
+1. getColor : mutated return of Object value for fi/ilmaripohjola/ipitris/entities/Block::getColor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return color;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getX() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_37'/>
+37
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_37'>1</a>
+<span>
+
+1. getX : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return x;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getY() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_41'/>
+41
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_41'>1</a>
+<span>
+
+1. getY : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return y;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Reduses Blocks y-coordinate by one. NOTE: Does not change it&#39;s position on the Table-array</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>       </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void moveUp() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_50'/>
+50
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_50'>1</a>
+<span>
+
+1. moveUp : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.y = this.y - 1; //To change body of generated methods, choose Tools | Templates.</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_51'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_52'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_54'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Increases Blocks y-coordinate by one. NOTE: Does not change it&#39;s position on the Table-array</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void moveDown() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_59'/>
+59
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_59'>1</a>
+<span>
+
+1. moveDown : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.y = this.y + 1; //To change body of generated methods, choose Tools | Templates.</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_60'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Reduses Blocks x-coordinate by one. NOTE: Does not change it&#39;s position on the Table-array</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void moveLeft() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_68'/>
+68
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_68'>1</a>
+<span>
+
+1. moveLeft : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.x = this.x - 1; //To change body of generated methods, choose Tools | Templates.</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_69'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Increases Blocks X-coordinate by one. NOTE: Does not change it&#39;s position on the Table-array</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_75'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_76'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void moveRight() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_77'/>
+77
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_77'>1</a>
+<span>
+
+1. moveRight : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        this.x = this.x + 1; //To change body of generated methods, choose Tools | Templates.</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_78'/>
+78
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_78'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_79'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_80'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public String toString() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_82'/>
+82
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_82'>1</a>
+<span>
+
+1. toString : mutated return of Object value for fi/ilmaripohjola/ipitris/entities/Block::toString to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this.x + &#34;,&#34; + this.y; //To change body of generated methods, choose Tools | Templates.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_83'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_84'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    </span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_85'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_33'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getColor<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.constructorSetsColorRight(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> mutated return of Object value for fi/ilmaripohjola/ipitris/entities/Block::getColor to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_37'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getX<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.constructorSetsCoordinatesRight(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_41'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getY<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.constructorSetsCoordinatesRight(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_50'>50</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_50'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveUp<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_59'>59</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_59'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveDown<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_68'>68</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_68'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveLeft<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_77'>77</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_77'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveRight<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.BlockTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.BlockTest)</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5b23c1f6_82'>82</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5b23c1f6_82'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>fi.ilmaripohjola.ipitris.entities.PieceJTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceJTest)</span></span> mutated return of Object value for fi/ilmaripohjola/ipitris/entities/Block::toString to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateLeft4Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateLeft1Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandLeftTest.moveLeftDontExceedTableLimits(fi.ilmaripohjola.ipitris.gamelogic.CommandLeftTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest.runWorksNormally(fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateLeftWorksFourTimes(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateRightWorks(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateLeft2Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandLeftTest.moveLeftDontCrossOtherBlocks(fi.ilmaripohjola.ipitris.gamelogic.CommandLeftTest) (16 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest.runCallsDestroyRows(fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.rotateLeftWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.rotateRightWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRightTest.moveRightDontExceedTableLimits(fi.ilmaripohjola.ipitris.gamelogic.CommandRightTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.rotateRightWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateRight2Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (32 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateLeft3Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.BlockTest.constructorSetsCoordinatesRight(fi.ilmaripohjola.ipitris.entities.BlockTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateRight4Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (31 ms)</li><li>fi.ilmaripohjola.ipitris.entities.BlockTest.constructorSetsColorRight(fi.ilmaripohjola.ipitris.entities.BlockTest) (31 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceSTest) (16 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateRight4Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateRight3Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.TetrisLogicTest.resetDoesAllThatItNeedsToDo(fi.ilmaripohjola.ipitris.gamelogic.TetrisLogicTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.rotateLeftWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceZTest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRotateRightTest.runDoesNotRotateWhenItIsImpossible(fi.ilmaripohjola.ipitris.gamelogic.CommandRotateRightTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest.runCreatesNewCurrentIfCurrentPieceGoesOutOfBounds(fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateRight3Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceTTest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateLeftWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateRightWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.rotateLeftWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateLeftWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceTTest) (16 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.rotateLeftWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateLeft3Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateLeft2Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateRightWorks(fi.ilmaripohjola.ipitris.entities.PieceJTest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRotateRightTest.runWorksNormally(fi.ilmaripohjola.ipitris.gamelogic.CommandRotateRightTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRotateLeftTest.runDoesNotRotateWhenItIsImpossible(fi.ilmaripohjola.ipitris.gamelogic.CommandRotateLeftTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceJTest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceITest) (16 ms)</li><li>fi.ilmaripohjola.ipitris.entities.BlockTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.BlockTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.BlockTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.BlockTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateLeft1Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.BlockTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.BlockTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandLeftTest.moveLeftWorksNormally(fi.ilmaripohjola.ipitris.gamelogic.CommandLeftTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.rotateLeftWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest.runCausesACollosionEndsTheGameWhenNewPieceDoesNotFitInTheSreen(fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest) (31 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.TetrisLogicTest.updateCallsRightControls(fi.ilmaripohjola.ipitris.gamelogic.TetrisLogicTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.moveRightWorks(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.rotateRightWorksTwice(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.rotateRightWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceZTest) (16 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateRightWorksThreeTimes(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceLTest) (16 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.rotateRightWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.TetrisLogicTest.attachAndMakeNewWorks(fi.ilmaripohjola.ipitris.gamelogic.TetrisLogicTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRightTest.moveRightDontCrossOtherBlocks(fi.ilmaripohjola.ipitris.gamelogic.CommandRightTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceITest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateRight2Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSquareTest.rotateLeftWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceSquareTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.RowManagerTest.destroyRowWorks(fi.ilmaripohjola.ipitris.gamelogic.RowManagerTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceITest.rotateRightWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceITest) (15 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateRightWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRightTest.moveRightWorksNormally(fi.ilmaripohjola.ipitris.gamelogic.CommandRightTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.moveDownWorks(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.BlockTest.moveLeftWorks(fi.ilmaripohjola.ipitris.entities.BlockTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.rotateRightWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.constructorSetsPositionRight(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest.runCausesCollision(fi.ilmaripohjola.ipitris.gamelogic.CommandDownTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateRightWorksFourTimes(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceSTest.moveUpWorks(fi.ilmaripohjola.ipitris.entities.PieceSTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceTTest.rotateLeftWorksThreeTimes(fi.ilmaripohjola.ipitris.entities.PieceTTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateLeft4Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.gamelogic.CommandRotateLeftTest.runWorksNormally(fi.ilmaripohjola.ipitris.gamelogic.CommandRotateLeftTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceLTest.rotateRight1Works(fi.ilmaripohjola.ipitris.entities.PieceLTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceJTest.rotateRight1Works(fi.ilmaripohjola.ipitris.entities.PieceJTest) (0 ms)</li><li>fi.ilmaripohjola.ipitris.entities.PieceZTest.rotateLeftWorksOnce(fi.ilmaripohjola.ipitris.entities.PieceZTest) (0 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.8
+
+</body>
+</html>
