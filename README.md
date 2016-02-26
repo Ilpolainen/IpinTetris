@@ -11,3 +11,5 @@ Reaaliaikainen tetris.
 [pit](dokumentointi/Pit/201602261226/index.html)
 
 [checkstyle](dokumentointi/site/checkstyle.html)
+
+[pelin käyttöohjeet](dokumentointi/käyttöohjeet)

@@ -5,26 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.application;
 
-import fi.ilmaripohjola.ipitris.entities.PieceI;
-import fi.ilmaripohjola.ipitris.entities.PieceJ;
-import fi.ilmaripohjola.ipitris.entities.PieceS;
-import fi.ilmaripohjola.ipitris.entities.PieceSquare;
-import fi.ilmaripohjola.ipitris.entities.PieceT;
-import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gamelogic.Logic;
-import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
-import fi.ilmaripohjola.ipitris.interfaces.KeyPressListener;
-
-import fi.ilmaripohjola.ipitris.interfaces.StartingScreen;
-import fi.ilmaripohjola.ipitris.interfaces.GameScreen;
 import fi.ilmaripohjola.ipitris.interfaces.StateCoordinator;
-import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.time.Clock;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 /**
  *
