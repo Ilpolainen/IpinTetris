@@ -15,7 +15,10 @@
 - Palasen tippumisnopeuden lisääminen
 - Pelin keskeyttäminen
 
-![luokkadiagrammi](Luokkadiagrammi.jpg)
+![luokkadiagrammi](TetrisClassDiagram.jpg)
+![käynnistyssekvenssikaavio](TetrisSetupSequenceDiagram.jpg)
+![CommandDownSekvenssikaavio](CommandDownStandardSequenceDiagram.jpg)
+![DestroyRowsSekvenssikaavio](DestroyRowsSequenceDiagram)
 
 ##Rakennekuvaus**
 
@@ -29,3 +32,4 @@ Lisäksi logiikka käyttää abstractin Command -luokan aliluokkia, joita käytetään 
 
 Pelin käynnistäminen ja alkuvalikossa selaaminen, sekä optionsien valitseminen taphtuu suhtkoht monimutkaisessa käyttöliittymäkokonaisuudessa, jota en sen tarkemmin selvennä, sillä pelin voi käynnistää normaaliasetuksilla ilman niihin sekaantumista. Mainittakoon vain, että StateCoordinator on ActionListener, joka kuuntelee StartingScreenin sekä GameScreenin nappulakomentojakomentoija ja osaa näiden perusteella koordinoida esimerkiksi sitä, mikä ikkuna milloinkin on aktiivinen, onko peli käynnissä yms.. GameCenterUnit on pelin keskusyksikkö, joka alustaa ja rakentaa pelin, ja jolta tarvittaessa voi kysyä tietoja eri olioiden tiloista, sillä se toimii myös linkkinä tarvittaville yhteyksille.  
 
+[käyttöohjeet](kayttoohjeet.md)

@@ -67,5 +67,3 @@
 **26.2.2016**
 
 -3h Viimeisiä viilauksia ja kaavioiden päivityksiä, sekä jarin luominen.
-
-8

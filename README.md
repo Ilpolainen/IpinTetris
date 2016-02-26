@@ -12,4 +12,4 @@ Reaaliaikainen tetris.
 
 [checkstyle](dokumentointi/site/checkstyle.html)
 
-[pelin käyttöohjeet](dokumentointi/käyttöohjeet)
+[pelin käyttöohjeet](dokumentointi/kayttoohjeet.md)
