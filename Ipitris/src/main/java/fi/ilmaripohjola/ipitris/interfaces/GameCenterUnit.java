@@ -7,7 +7,7 @@ package fi.ilmaripohjola.ipitris.interfaces;
 
 import fi.ilmaripohjola.ipitris.entities.Table;
 import fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator;
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
@@ -18,10 +18,10 @@ import java.util.Random;
  *
  * @author omistaja
  */
-public class GameConstructor {
+public class GameCenterUnit {
 
     private Table table;
-    private TetrisLogic tetris;
+    private Logic tetris;
     private PieceGenerator generator;
     private KeyPressListener kpl;
     private MyFirstRenderer renderer;
@@ -42,11 +42,11 @@ public class GameConstructor {
      * @throws InterruptedException Throws InterruptedException if Thread
      * -problems occur.
      */
-    public GameConstructor(int width, int height, StateCoordinator coordinator) throws InterruptedException {
+    public GameCenterUnit(int width, int height, StateCoordinator coordinator) throws InterruptedException {
         this.coordinator = coordinator;
         table = new Table(width, height);
         generator = new PieceGenerator(new Random(), width);
-        tetris = new TetrisLogic(table, generator);
+        tetris = new Logic(table, generator);
         kpl = new KeyPressListener(coordinator, this.coordinator.getKeyConfigurer().getKeys());
         renderer = new MyFirstRenderer(tetris, coordinator.getStartingScreen().getScale());
         gameScreen = new GameScreen(width, height, coordinator.getStartingScreen().getScale(), renderer, kpl, coordinator);
@@ -82,7 +82,7 @@ public class GameConstructor {
         return table;
     }
 
-    public TetrisLogic getTetris() {
+    public Logic getTetris() {
         return tetris;
     }
 

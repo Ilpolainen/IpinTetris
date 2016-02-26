@@ -25,7 +25,7 @@ public class CommandRotateLeftTest {
     public CommandRotateLeftTest() {
     }
 
-    private TetrisLogic tl;
+    private Logic tl;
     private Table t;
     private PieceGenerator g;
     private PieceI p;
@@ -36,7 +36,7 @@ public class CommandRotateLeftTest {
         Random random = new Random();
         PieceGenerator generator = new PieceGenerator(random, 10);
         t = new Table(10, 20);
-        tl = new TetrisLogic(t, generator);
+        tl = new Logic(t, generator);
         p = new PieceI(Color.BLACK, 4, 1);
         tl.setCurrent(p);
         lr = new CommandRotateLeft(tl);       

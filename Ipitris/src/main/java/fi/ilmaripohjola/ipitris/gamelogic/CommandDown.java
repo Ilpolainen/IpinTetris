@@ -16,7 +16,7 @@ public class CommandDown extends Command {
      * @param tetris a TetrisLogic -object given by caller
      */
 
-    public CommandDown(TetrisLogic tetris) {
+    public CommandDown(Logic tetris) {
         super(tetris);
     }
 

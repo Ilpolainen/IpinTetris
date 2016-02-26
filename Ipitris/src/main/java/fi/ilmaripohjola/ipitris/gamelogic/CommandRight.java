@@ -14,7 +14,7 @@ public class CommandRight extends Command {
      * @see Piece
      * @param tetris a TetrisLogic -object given by caller
      */
-    public CommandRight(TetrisLogic tetris) {
+    public CommandRight(Logic tetris) {
         super(tetris);
     }
 

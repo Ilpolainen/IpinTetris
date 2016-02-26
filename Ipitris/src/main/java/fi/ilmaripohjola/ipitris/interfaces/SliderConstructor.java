@@ -13,13 +13,14 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 
 /**
- *
+ * Constructs sliders.
  * @author omistaja
  */
-public class SliderCreator {
+public class SliderConstructor {
 
-    public SliderCreator() {
+    public SliderConstructor() {
     }
+    
 
     public void createSliders(StartingScreen ss) {
         JLabel widthName = new JLabel("    WIDTH:");
@@ -71,9 +72,9 @@ public class SliderCreator {
         this.createLabelTable(width);
         this.createLabelTable(height);
         this.createLabelTable(scale);
-        width.addChangeListener((ChangeListener) ss.getStateCoordinator().getSliderCoordinator());
-        height.addChangeListener((ChangeListener) ss.getStateCoordinator().getSliderCoordinator());
-        scale.addChangeListener((ChangeListener) ss.getStateCoordinator().getSliderCoordinator());
+        width.addChangeListener((ChangeListener) ss.getSliderCoordinator());
+        height.addChangeListener((ChangeListener) ss.getSliderCoordinator());
+        scale.addChangeListener((ChangeListener) ss.getSliderCoordinator());
     }
 
     /**

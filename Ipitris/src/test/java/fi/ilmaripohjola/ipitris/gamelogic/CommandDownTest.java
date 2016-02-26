@@ -23,7 +23,7 @@ import static org.junit.Assert.*;
  */
 public class CommandDownTest {
 
-    private TetrisLogic tl;
+    private Logic tl;
     private Table t;
     private PieceGenerator g;
     private CommandDown c;
@@ -36,7 +36,7 @@ public class CommandDownTest {
     public void setUp() {
         this.t = new Table(10, 25);
         this.g = new PieceGenerator(new Random(), t.getWidth());
-        this.tl = new TetrisLogic(t, g);
+        this.tl = new Logic(t, g);
         this.c = new CommandDown(tl);
         this.p = new PieceI(Color.BLACK, 0, 1);
         tl.setCurrent(p);

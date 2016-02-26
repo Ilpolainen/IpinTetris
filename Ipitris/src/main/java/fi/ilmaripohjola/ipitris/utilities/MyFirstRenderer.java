@@ -7,7 +7,7 @@ import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.PieceI;
 import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -20,10 +20,10 @@ import javax.swing.JPanel;
  */
 public class MyFirstRenderer extends JPanel implements Renderer {
 
-    private TetrisLogic tetris;
+    private Logic tetris;
     private int scale;
 
-    public MyFirstRenderer(TetrisLogic tetris, int scale) {
+    public MyFirstRenderer(Logic tetris, int scale) {
         this.tetris = tetris;
         this.scale = scale;
     }

@@ -14,7 +14,7 @@ public class CommandRotateRight extends Command {
      * @see Piece
      * @param tetris a TetrisLogic -object given by caller
      */
-    public CommandRotateRight(TetrisLogic tetris) {
+    public CommandRotateRight(Logic tetris) {
         super(tetris);
     }
 

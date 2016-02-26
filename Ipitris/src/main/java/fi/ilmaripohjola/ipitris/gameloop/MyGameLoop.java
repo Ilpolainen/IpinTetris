@@ -1,6 +1,6 @@
 package fi.ilmaripohjola.ipitris.gameloop;
 
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.interfaces.KeyPressListener;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import fi.ilmaripohjola.ipitris.utilities.Renderer;
@@ -18,7 +18,7 @@ public class MyGameLoop implements Runnable {
 
     private boolean continues;
     private KeyPressListener listener;
-    private TetrisLogic tetris;
+    private Logic tetris;
     private Thread t;
 
     /**
@@ -28,7 +28,7 @@ public class MyGameLoop implements Runnable {
      * needed.
      * @param tetris The GameLogic to update.
      */
-    public MyGameLoop(KeyPressListener listener, TetrisLogic tetris) {
+    public MyGameLoop(KeyPressListener listener, Logic tetris) {
         this.continues = false;
         this.listener = listener;
         this.tetris = tetris;

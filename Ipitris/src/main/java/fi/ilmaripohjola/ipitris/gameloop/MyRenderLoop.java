@@ -5,7 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.gameloop;
 
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.util.Date;
@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class MyRenderLoop implements Runnable {
 
-    private TetrisLogic tetris;
+    private Logic tetris;
     private Renderer renderer;
     private Thread t;
     private boolean continues;
@@ -30,7 +30,7 @@ public class MyRenderLoop implements Runnable {
      * @param renderer Given updatable Renderer.
      * @param tetris The GameLogic attached to the renderloop.
      */
-    public MyRenderLoop(Renderer renderer, TetrisLogic tetris) {
+    public MyRenderLoop(Renderer renderer, Logic tetris) {
         this.renderer = renderer;
         this.tetris = tetris;
     }

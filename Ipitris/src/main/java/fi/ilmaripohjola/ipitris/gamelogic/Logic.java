@@ -10,7 +10,7 @@ import fi.ilmaripohjola.ipitris.entities.Table;
  *
  * @author omistaja
  */
-public class TetrisLogic {
+public class Logic {
 
     private Table table;
     private Piece current;
@@ -29,7 +29,7 @@ public class TetrisLogic {
      * @param table A Table -object given by caller.
      * @param generator A PieceGenerator object given by caller.
      */
-    public TetrisLogic(Table table, PieceGenerator generator) {
+    public Logic(Table table, PieceGenerator generator) {
         this.table = table;
         this.generator = generator;
         this.current = generator.givePiece();

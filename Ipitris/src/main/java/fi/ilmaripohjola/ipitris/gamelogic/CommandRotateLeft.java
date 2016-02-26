@@ -14,7 +14,7 @@ public class CommandRotateLeft extends Command {
      * @see Piece
      * @param tetris a TetrisLogic -object given by caller
      */
-    public CommandRotateLeft(TetrisLogic tetris) {
+    public CommandRotateLeft(Logic tetris) {
         super(tetris);
     }
 

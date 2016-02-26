@@ -1,6 +1,6 @@
 package fi.ilmaripohjola.ipitris.interfaces;
 
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import java.awt.event.KeyEvent;
 import static java.awt.event.KeyEvent.VK_DOWN;

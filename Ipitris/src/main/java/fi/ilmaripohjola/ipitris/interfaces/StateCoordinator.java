@@ -1,14 +1,12 @@
 package fi.ilmaripohjola.ipitris.interfaces;
 
-import fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic;
+import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -22,11 +20,10 @@ import javax.swing.JPanel;
  * @author omistaja
  */
 public class StateCoordinator implements ActionListener {
-    
+
     private StartingScreen startingScreen;
-    private SliderCoordinator sliderCoordinator;
     private KeyConfigurer keyConfigurer;
-    private GameConstructor constructor;
+    private GameCenterUnit constructor;
 
     /**
      * Creates new StartingScreen and SliderCoordinator with which to
@@ -36,17 +33,12 @@ public class StateCoordinator implements ActionListener {
      */
     public StateCoordinator() throws InterruptedException {
         this.startingScreen = new StartingScreen(this);
-        this.sliderCoordinator = new SliderCoordinator(this.startingScreen);
         this.keyConfigurer = this.startingScreen.getKeyConfigurer();
-        this.constructor = new GameConstructor(startingScreen.getWidth(), startingScreen.getHeight(), this);
+        this.constructor = new GameCenterUnit(startingScreen.getWidth(), startingScreen.getHeight(), this);
     }
 
-    public TetrisLogic getTetris() {
+    public Logic getTetris() {
         return this.constructor.getTetris();
-    }
-
-    public SliderCoordinator getSliderCoordinator() {
-        return sliderCoordinator;
     }
 
     public MyGameLoop getGameLoop() {
@@ -57,7 +49,7 @@ public class StateCoordinator implements ActionListener {
         return keyConfigurer;
     }
 
-    public GameConstructor getConstructor() {
+    public GameCenterUnit getConstructor() {
         return constructor;
     }
 

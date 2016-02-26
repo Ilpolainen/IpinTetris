@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
 public class CommandRightTest {
     
     Table t;
-    TetrisLogic l;
+    Logic l;
     PieceI p;
 
     public CommandRightTest() {
@@ -35,7 +35,7 @@ public class CommandRightTest {
         Random random = new Random();
         PieceGenerator generator = new PieceGenerator(random, 10);
         t = new Table(10, 20);
-        l = new TetrisLogic(t, generator);
+        l = new Logic(t, generator);
         p = new PieceI(Color.BLACK, 8, 1);
         l.setCurrent(p);
     }

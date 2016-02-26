@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
 public class CommandLeftTest {
 
     Table t;
-    TetrisLogic l;
+    Logic l;
     PieceI p;
 
     public CommandLeftTest() {
@@ -35,7 +35,7 @@ public class CommandLeftTest {
         Random random = new Random();
         PieceGenerator generator = new PieceGenerator(random, 10);
         t = new Table(10, 20);
-        l = new TetrisLogic(t, generator);
+        l = new Logic(t, generator);
         p = new PieceI(Color.BLACK, 1, 1);
         l.setCurrent(p);
     }

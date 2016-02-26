@@ -31,19 +31,25 @@ public class StartingScreen implements Runnable {
     private KeyConfigurer keyConfigurer;
     private PanelConstructor panelConstructor;
     private ButtonConstructor buttonConstructor;
-    private SliderCreator sliderCreator;
+    private SliderConstructor sliderConstructor;
+    private SliderCoordinator sliderCoordinator;
 
     public StartingScreen(StateCoordinator stateCoordinator) {
         this.panelConstructor = new PanelConstructor();
         this.buttonConstructor = new ButtonConstructor();
         this.keyConfigurer = new KeyConfigurer(this);
         this.stateCoordinator = stateCoordinator;
-        this.sliderCreator = new SliderCreator();
+        this.sliderCoordinator = new SliderCoordinator(this);
+        this.sliderConstructor = new SliderConstructor();
         this.width = 10;
         this.height = 25;
         this.scale = 30;
         this.panels = new JPanel[6];
         this.keyToConfigure = -1;
+    }
+
+    public SliderCoordinator getSliderCoordinator() {
+        return sliderCoordinator;
     }
 
     public int getKeyToConfigure() {
@@ -113,7 +119,7 @@ public class StartingScreen implements Runnable {
         this.frame.addKeyListener(keyConfigurer);
         this.panelConstructor.setUpPanels(container, panels);
         this.buttonConstructor.createButtons(this.stateCoordinator, this.panels);
-        this.sliderCreator.createSliders(this);
+        this.sliderConstructor.createSliders(this);
         createColorChooser();
         CardLayout cl = new CardLayout();
         container.setLayout(cl);

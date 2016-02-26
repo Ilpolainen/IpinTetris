@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class TetrisLogicTest {
     
     Table t;
-    TetrisLogic l;
+    Logic l;
     Piece p;
     Command c;
     
@@ -33,7 +33,7 @@ public class TetrisLogicTest {
         t = new Table(10,20);
         Random random = new Random();
         PieceGenerator generator = new PieceGenerator(random, 10);
-        l = new TetrisLogic(t, generator);
+        l = new Logic(t, generator);
         p = new PieceI(Color.BLACK,4,1);
         c = new CommandRotateLeft(l);
         l.setCurrent(p);

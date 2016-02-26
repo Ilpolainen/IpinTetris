@@ -11,18 +11,18 @@ import fi.ilmaripohjola.ipitris.entities.Block;
  */
 public abstract class Command {
 
-    private TetrisLogic tetris;
+    private Logic tetris;
 
     /**
      * A TetrisLogic -object given by caller.
      *
      * @param tetris a TetrisLogic -object given by caller
      */
-    public Command(TetrisLogic tetris) {
+    public Command(Logic tetris) {
         this.tetris = tetris;
     }
 
-    public TetrisLogic getTetris() {
+    public Logic getTetris() {
         return tetris;
     }
 
