@@ -20,7 +20,7 @@
 ![CommandDownSekvenssikaavio](CommandDownStandardSequenceDiagram.jpg)
 ![DestroyRowsSekvenssikaavio](DestroyRowsSequenceDiagram.jpg)
 
-##Rakennekuvaus**
+##Rakennekuvaus
 
 Peli koostuu pelilogiikasta (Logic) ja sit‰ k‰ytt‰v‰st‰ peliluupista (GameLoop), joka kutsuu pelilogiikan metodia UpDate() booleanparametreill‰, jotka pelilooppi pyyt‰‰ aina n‰pp‰imistˆnkuuntelijalta (KeyPressListener). Myˆs piirt‰j‰ (abstracti Renderer, t‰ss‰ versiossa MyFirstRenderer) k‰ytt‰‰ logiikkaa. Renderluuppi puolestaan pyyt‰‰ piirt‰j‰‰ piirt‰m‰‰n pelitilanteesta kuvan. Luupit toimivat omissa threadeiss‰‰n.
 
