@@ -13,79 +13,99 @@
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">package</strong> fi.ilmaripohjola.ipitris.interfaces;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> javax.swing.JButton;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> javax.swing.JPanel;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> * @author omistaja</em>
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a> {
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a>() {
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>      }
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> createButtons(<a href="../../../../fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.html">StateCoordinator</a> stateCoordinator, JPanel[] panels) {
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>          JButton start = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"START"</span>);
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>          JButton options = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"OPTIONS"</span>);
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>          JButton trash = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"TRASH"</span>);
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>          JButton exit = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"EXIT"</span>);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>          JButton confirm = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"CONFIRM"</span>);
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>          JButton boardOptions = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BOARD OPTIONS"</span>);
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>          JButton visualOptions = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"VISUAL OPTIONS"</span>);
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>          JButton back = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK"</span>);
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          JButton back2 = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK"</span>);
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>          JButton colors = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"COLORS"</span>);
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>          JButton keys = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"KEY OPTIONS"</span>);
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>          JButton down = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"DOWN"</span>);
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>          JButton left = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"LEFT"</span>);
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>          JButton right = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"RIGHT"</span>);
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>          JButton rotate = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"ROTATE"</span>);
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>          JButton back3 = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK"</span>);
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>          attachButtons(panels, start, options, trash, exit, confirm, boardOptions, back, visualOptions, back2, colors, keys, down, left, right, rotate, back3);
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>          connectButtons(stateCoordinator, start, options, trash, exit, confirm, boardOptions, back, visualOptions, back2, colors, keys, down, left, right, rotate, back3);
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.awt.BorderLayout;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> javax.swing.JButton;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> javax.swing.JPanel;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment"> * @author omistaja</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a> {
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a>() {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      }
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> createButtons(<a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelNavigator.html">PanelNavigator</a> panelNavigator, <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.html">StateCoordinator</a> stateCoordinator, JPanel[] panels) {
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          <strong class="jxr_keyword">this</strong>.createPanelNavigatorButtons(panels, panelNavigator);
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          <strong class="jxr_keyword">this</strong>.createOtherButtons(panels, stateCoordinator);
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>      }
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> createPanelNavigatorButtons(JPanel[] panels, <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelNavigator.html">PanelNavigator</a> panelNavigator) {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          JButton options = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"OPTIONS"</span>);
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          JButton confirm = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"CONFIRM"</span>);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          JButton boardOptions = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BOARD OPTIONS"</span>);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          JButton visualOptions = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"VISUAL OPTIONS"</span>);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          JButton back = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK"</span>);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          JButton back2 = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK"</span>);
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          JButton colors = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"COLORS"</span>);
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          JButton keys = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"KEY OPTIONS"</span>);
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          JButton back3 = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK"</span>);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          JButton backToVisualOptions = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"BACK TO VISUAL OPTIONS"</span>);
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          connectPanelNavigatorButtons(panelNavigator, options, confirm, visualOptions, boardOptions, back, back2, colors, keys, back3, backToVisualOptions);
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          attachPanelNavigatorButtons(panels, options, confirm, boardOptions, visualOptions, back, back2, colors, keys, back3, backToVisualOptions);
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> attachButtons(JPanel[] panels, JButton start, JButton options, JButton trash, JButton exit, JButton confirm, JButton boardOptions, JButton back, JButton visualOptions, JButton back2, JButton colors, JButton keys, JButton down, JButton left, JButton right, JButton rotate, JButton back3) {
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          panels[1].add(confirm);
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>          panels[1].add(boardOptions);
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>          panels[1].add(visualOptions);
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>          panels[1].add(keys);
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>          panels[0].add(start);
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>          panels[0].add(options);
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>          panels[0].add(trash);
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          panels[0].add(exit);
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>          panels[2].add(back);
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>          panels[3].add(back2);
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          panels[3].add(colors);
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>          JPanel buttons = <strong class="jxr_keyword">new</strong> JPanel();
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>          buttons.add(down);
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>          buttons.add(left);
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>          buttons.add(right);
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          buttons.add(rotate);
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>          panels[5].add(back3);
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>          panels[5].add(buttons);
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>      }
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> connectButtons(<a href="../../../../fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.html">StateCoordinator</a> stateCoordinator, JButton start, JButton options, JButton trash, JButton exit, JButton confirm, JButton boardOptions, JButton back, JButton visualOptions, JButton back2, JButton colors, JButton buttons, JButton down, JButton left, JButton right, JButton rotate, JButton back3) {
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>          start.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>          exit.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>          trash.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          options.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          confirm.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>          boardOptions.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>          back.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>          visualOptions.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>          back2.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>          colors.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>          buttons.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>          down.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>          left.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>          right.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>          rotate.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>          back3.addActionListener(stateCoordinator);
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>      }
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>  }
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> createOtherButtons(JPanel[] panels, <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.html">StateCoordinator</a> stateCoordinator) {
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          JButton start = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"START"</span>);
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          JButton trash = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"TRASH"</span>);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          JButton exit = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"EXIT"</span>);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          JButton down = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"DOWN"</span>);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          JButton left = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"LEFT"</span>);
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          JButton right = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"RIGHT"</span>);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          JButton rotate = <strong class="jxr_keyword">new</strong> JButton(<span class="jxr_string">"ROTATE"</span>);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          connectOtherButtons(stateCoordinator, start, trash, exit, down, left, right, rotate);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          attachOtherButtons(panels, start, trash, exit, down, left, right, rotate);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      }
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> connectPanelNavigatorButtons(<a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelNavigator.html">PanelNavigator</a> panelNavigator, JButton options, JButton confirm, JButton visualOptions, JButton boardOptions, JButton back, JButton back2, JButton colors, JButton keys, JButton back3, JButton backToVisualOptions) {
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          options.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          confirm.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          boardOptions.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          back.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          visualOptions.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          back2.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          colors.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          keys.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          back3.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          backToVisualOptions.addActionListener(panelNavigator);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      }
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> connectOtherButtons(<a href="../../../../fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.html">StateCoordinator</a> stateCoordinator, JButton start, JButton trash, JButton exit, JButton down, JButton left, JButton right, JButton rotate) {
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          start.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          exit.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          trash.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          down.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          left.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          right.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          rotate.addActionListener(stateCoordinator);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>      }
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> attachPanelNavigatorButtons(JPanel[] panels, JButton options, JButton confirm, JButton visualOptions, JButton boardOptions, JButton back, JButton back2, JButton colors, JButton keys, JButton back3, JButton backToVisualOptions) {
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          panels[0].add(options);
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          panels[1].add(confirm);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          panels[1].add(boardOptions);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          panels[1].add(visualOptions);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          panels[1].add(keys);
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          panels[2].add(back);
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          panels[3].add(back2);
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          panels[3].add(colors);
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>          panels[4].add(backToVisualOptions, BorderLayout.NORTH);
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>          panels[5].add(back3);
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>      }
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> attachOtherButtons(JPanel[] panels, JButton start, JButton trash, JButton exit, JButton down, JButton left, JButton right, JButton rotate) {
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          panels[0].add(start, 0);
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>          panels[0].add(trash);
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          panels[0].add(exit);
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          JPanel buttons = <strong class="jxr_keyword">new</strong> JPanel();
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          buttons.add(down);
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          buttons.add(left);
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          buttons.add(right);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          buttons.add(rotate);
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          panels[5].add(buttons);
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      }
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016. All rights reserved.</div>

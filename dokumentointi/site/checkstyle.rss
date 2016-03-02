@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 37,
+      <title>File: 39,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.TetrisLogic.java">fi/ilmaripohjola/ipitris/gamelogic/TetrisLogic.java</a>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.GameCenterUnit.java">fi/ilmaripohjola/ipitris/interfaces/GameCenterUnit.java</a>
                 </td>
                 <td>
                   0
@@ -270,20 +270,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.SliderCreator.java">fi/ilmaripohjola/ipitris/interfaces/SliderCreator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.CommandLeft.java">fi/ilmaripohjola/ipitris/gamelogic/CommandLeft.java</a>
                 </td>
                 <td>
@@ -326,6 +312,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.PanelNavigator.java">fi/ilmaripohjola/ipitris/interfaces/PanelNavigator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.Movable.java">fi/ilmaripohjola/ipitris/entities/Movable.java</a>
                 </td>
                 <td>
@@ -355,6 +355,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.SliderCoordinator.java">fi/ilmaripohjola/ipitris/interfaces/SliderCoordinator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gamelogic.Logic.java">fi/ilmaripohjola/ipitris/gamelogic/Logic.java</a>
                 </td>
                 <td>
                   0
@@ -466,20 +480,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.GameConstructor.java">fi/ilmaripohjola/ipitris/interfaces/GameConstructor.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.entities.PieceJ.java">fi/ilmaripohjola/ipitris/entities/PieceJ.java</a>
                 </td>
                 <td>
@@ -537,6 +537,34 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.KeyConfigurer.java">fi/ilmaripohjola/ipitris/interfaces/KeyConfigurer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.SliderConstructor.java">fi/ilmaripohjola/ipitris/interfaces/SliderConstructor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.ColorPanelOptionsConstructor.java">fi/ilmaripohjola/ipitris/interfaces/ColorPanelOptionsConstructor.java</a>
                 </td>
                 <td>
                   0

@@ -5,15 +5,12 @@
  */
 package fi.ilmaripohjola.ipitris.interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -27,20 +24,16 @@ public class StartingScreen implements Runnable {
     private int width;
     private int height;
     private StateCoordinator stateCoordinator;
+    private PanelNavigator panelNavigator;
     private int keyToConfigure;
     private KeyConfigurer keyConfigurer;
-    private PanelConstructor panelConstructor;
-    private ButtonConstructor buttonConstructor;
-    private SliderConstructor sliderConstructor;
     private SliderCoordinator sliderCoordinator;
 
     public StartingScreen(StateCoordinator stateCoordinator) {
-        this.panelConstructor = new PanelConstructor();
-        this.buttonConstructor = new ButtonConstructor();
+        this.panelNavigator = new PanelNavigator(this);
         this.keyConfigurer = new KeyConfigurer(this);
         this.stateCoordinator = stateCoordinator;
         this.sliderCoordinator = new SliderCoordinator(this);
-        this.sliderConstructor = new SliderConstructor();
         this.width = 10;
         this.height = 25;
         this.scale = 30;
@@ -117,10 +110,15 @@ public class StartingScreen implements Runnable {
 
     public void setUpComponents(Container container) {
         this.frame.addKeyListener(keyConfigurer);
-        this.panelConstructor.setUpPanels(container, panels);
-        this.buttonConstructor.createButtons(this.stateCoordinator, this.panels);
-        this.sliderConstructor.createSliders(this);
-        createColorChooser();
+        PanelConstructor panelConstructor = new PanelConstructor();
+        panelConstructor.setUpPanels(container, panels);
+        ColorPanelOptionsConstructor colorPanelOptionsConstructor = new ColorPanelOptionsConstructor();
+        colorPanelOptionsConstructor.createColorOptions(stateCoordinator);
+        ButtonConstructor buttonConstructor = new ButtonConstructor();
+        buttonConstructor.createButtons(panelNavigator, stateCoordinator, panels);
+        SliderConstructor sliderConstructor = new SliderConstructor();
+        sliderConstructor.createSliders(this);
+
         CardLayout cl = new CardLayout();
         container.setLayout(cl);
         container.add(panels[0], "startPanel");
@@ -129,30 +127,6 @@ public class StartingScreen implements Runnable {
         container.add(panels[3], "visualOptionsPanel");
         container.add(panels[4], "colorPanel");
         container.add(panels[5], "keyPanel");
-    }
-
-    public void createColorChooser() {
-        JColorChooser tcc = new JColorChooser(panels[4].getBackground());
-        JPanel piecePanel = new JPanel();
-        JButton pieceI = new JButton("I");
-        JButton pieceT = new JButton("T");
-        JButton pieceSquare = new JButton("Square");
-        JButton pieceL = new JButton("L");
-        JButton pieceJ = new JButton("J");
-        JButton pieceS = new JButton("S");
-        JButton pieceZ = new JButton("Z");
-        JButton back = new JButton("BACK TO VISUAL OPTIONS");
-        piecePanel.add(pieceI);
-        piecePanel.add(pieceT);
-        piecePanel.add(pieceSquare);
-        piecePanel.add(pieceL);
-        piecePanel.add(pieceJ);
-        piecePanel.add(pieceS);
-        piecePanel.add(pieceZ);
-        connectColorButtons(pieceI, pieceT, pieceSquare, pieceL, pieceJ, pieceS, pieceZ, back);
-        panels[4].add(piecePanel, BorderLayout.SOUTH);
-        panels[4].add(tcc, BorderLayout.CENTER);
-        panels[4].add(back, BorderLayout.NORTH);
     }
 
     public List<Component> getAllComponents(final Container c) {
@@ -165,17 +139,6 @@ public class StartingScreen implements Runnable {
             }
         }
         return compList;
-    }
-
-    public void connectColorButtons(JButton I, JButton T, JButton square, JButton L, JButton J, JButton S, JButton Z, JButton back) {
-        I.addActionListener(stateCoordinator);
-        T.addActionListener(stateCoordinator);
-        square.addActionListener(stateCoordinator);
-        L.addActionListener(stateCoordinator);
-        J.addActionListener(stateCoordinator);
-        S.addActionListener(stateCoordinator);
-        Z.addActionListener(stateCoordinator);
-        back.addActionListener(stateCoordinator);
     }
 
     public void start() throws InterruptedException {

@@ -1,15 +1,6 @@
 package fi.ilmaripohjola.ipitris.interfaces;
 
-import fi.ilmaripohjola.ipitris.gamelogic.Logic;
-import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import java.awt.event.KeyEvent;
-import static java.awt.event.KeyEvent.VK_DOWN;
-import static java.awt.event.KeyEvent.VK_ENTER;
-import static java.awt.event.KeyEvent.VK_ESCAPE;
-import static java.awt.event.KeyEvent.VK_LEFT;
-import static java.awt.event.KeyEvent.VK_RIGHT;
-import static java.awt.event.KeyEvent.VK_SPACE;
-import static java.awt.event.KeyEvent.VK_UP;
 import java.awt.event.KeyListener;
 
 /**

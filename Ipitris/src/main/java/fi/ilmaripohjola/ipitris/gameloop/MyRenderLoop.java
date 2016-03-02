@@ -6,9 +6,7 @@
 package fi.ilmaripohjola.ipitris.gameloop;
 
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
-import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import fi.ilmaripohjola.ipitris.utilities.Renderer;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -3,7 +3,6 @@ package fi.ilmaripohjola.ipitris.interfaces;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
 import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
@@ -23,7 +21,7 @@ public class StateCoordinator implements ActionListener {
 
     private StartingScreen startingScreen;
     private KeyConfigurer keyConfigurer;
-    private GameCenterUnit constructor;
+    private GameCenterUnit gameCenterUnit;
 
     /**
      * Creates new StartingScreen and SliderCoordinator with which to
@@ -34,15 +32,15 @@ public class StateCoordinator implements ActionListener {
     public StateCoordinator() throws InterruptedException {
         this.startingScreen = new StartingScreen(this);
         this.keyConfigurer = this.startingScreen.getKeyConfigurer();
-        this.constructor = new GameCenterUnit(startingScreen.getWidth(), startingScreen.getHeight(), this);
+        this.gameCenterUnit = new GameCenterUnit(startingScreen.getWidth(), startingScreen.getHeight(), this);
     }
 
     public Logic getTetris() {
-        return this.constructor.getTetris();
+        return this.gameCenterUnit.getTetris();
     }
 
     public MyGameLoop getGameLoop() {
-        return this.constructor.getGameLoop();
+        return this.gameCenterUnit.getGameLoop();
     }
 
     public KeyConfigurer getKeyConfigurer() {
@@ -50,11 +48,11 @@ public class StateCoordinator implements ActionListener {
     }
 
     public GameCenterUnit getConstructor() {
-        return constructor;
+        return gameCenterUnit;
     }
 
     public MyRenderLoop getRenderLoop() {
-        return this.constructor.getRenderLoop();
+        return this.gameCenterUnit.getRenderLoop();
     }
 
     public StartingScreen getStartingScreen() {
@@ -80,50 +78,30 @@ public class StateCoordinator implements ActionListener {
             }
         } else if (e.getActionCommand().equals("TRASH")) {
             makeSound();
-        } else if (e.getActionCommand().equals("OPTIONS")) {
-            showOptionsPanel();
-        } else if (e.getActionCommand().equals("CONFIRM")) {
-            showStartPanel();
-        } else if (e.getActionCommand().equals("BOARD OPTIONS")) {
-            showBoardPanel();
-        } else if (e.getActionCommand().equals("BACK")) {
-            showOptionsPanel();
-        } else if (e.getActionCommand().equals("BACK TO VISUAL OPTIONS")) {
-            this.showVisualPanel();
         } else if (e.getActionCommand().equals("EXIT")) {
             System.exit(0);
-        } else if (e.getActionCommand().equals("VISUAL OPTIONS")) {
-            showVisualPanel();
         } else if (e.getActionCommand().equals("PAUSE")) {
-            if (this.constructor.getTetris().getContinues()) {
-                this.constructor.getTetris().pause();
+            if (this.gameCenterUnit.getTetris().getContinues()) {
+                this.gameCenterUnit.getTetris().pause();
             } else {
-                this.constructor.getTetris().unPause();
+                this.gameCenterUnit.getTetris().unPause();
             }
         } else if (e.getActionCommand().equals("RESTART")) {
-            this.constructor.getTetris().restart();
+            this.gameCenterUnit.getTetris().restart();
         } else if (e.getActionCommand().equals("QUIT")) {
-            this.constructor.getTetris().endGame();
-            this.constructor.getGameScreen().getFrame().setVisible(false);
+            this.gameCenterUnit.getTetris().endGame();
+            this.gameCenterUnit.getGameScreen().getFrame().setVisible(false);
             this.startingScreen.getFrame().setVisible(true);
-        } else if (e.getActionCommand().equals("KEY OPTIONS")) {
-            showKeyPanel();
-        } else if (e.getActionCommand().equals("COLORS")) {
-            showColorsPanel();
-        }
-        if (e.getActionCommand().equals("DOWN")) {
+        } else if (e.getActionCommand().equals("DOWN")) {
             this.startingScreen.setKeyToConfigure(0);
             this.setKeyButtonRed(0);
-        }
-        if (e.getActionCommand().equals("LEFT")) {
+        } else if (e.getActionCommand().equals("LEFT")) {
             this.startingScreen.setKeyToConfigure(1);
             this.setKeyButtonRed(1);
-        }
-        if (e.getActionCommand().equals("RIGHT")) {
+        } else if (e.getActionCommand().equals("RIGHT")) {
             this.startingScreen.setKeyToConfigure(2);
             this.setKeyButtonRed(2);
-        }
-        if (e.getActionCommand().equals("ROTATE")) {
+        } else if (e.getActionCommand().equals("ROTATE")) {
             this.startingScreen.setKeyToConfigure(3);
             this.setKeyButtonRed(3);
         } else {
@@ -131,31 +109,25 @@ public class StateCoordinator implements ActionListener {
             JColorChooser jcc = (JColorChooser) cp.getComponent(1);
             Color color = jcc.getColor();
             if (e.getActionCommand().equals("I")) {
-                this.constructor.getGenerator().setColor(color, 0);
+                this.gameCenterUnit.getGenerator().setColor(color, 0);
                 this.setPieceButtonColor(0, color);
-            }
-            if (e.getActionCommand().equals("T")) {
-                this.constructor.getGenerator().setColor(color, 1);
+            } else if (e.getActionCommand().equals("T")) {
+                this.gameCenterUnit.getGenerator().setColor(color, 1);
                 this.setPieceButtonColor(1, color);
-            }
-            if (e.getActionCommand().equals("Square")) {
-                this.constructor.getGenerator().setColor(color, 2);
+            } else if (e.getActionCommand().equals("Square")) {
+                this.gameCenterUnit.getGenerator().setColor(color, 2);
                 this.setPieceButtonColor(2, color);
-            }
-            if (e.getActionCommand().equals("L")) {
-                this.constructor.getGenerator().setColor(color, 3);
+            } else if (e.getActionCommand().equals("L")) {
+                this.gameCenterUnit.getGenerator().setColor(color, 3);
                 this.setPieceButtonColor(3, color);
-            }
-            if (e.getActionCommand().equals("J")) {
-                this.constructor.getGenerator().setColor(color, 4);
+            } else if (e.getActionCommand().equals("J")) {
+                this.gameCenterUnit.getGenerator().setColor(color, 4);
                 this.setPieceButtonColor(4, color);
-            }
-            if (e.getActionCommand().equals("S")) {
-                this.constructor.getGenerator().setColor(color, 5);
+            } else if (e.getActionCommand().equals("S")) {
+                this.gameCenterUnit.getGenerator().setColor(color, 5);
                 this.setPieceButtonColor(5, color);
-            }
-            if (e.getActionCommand().equals("Z")) {
-                this.constructor.getGenerator().setColor(color, 6);
+            } else if (e.getActionCommand().equals("Z")) {
+                this.gameCenterUnit.getGenerator().setColor(color, 6);
                 this.setPieceButtonColor(6, color);
             }
         }
@@ -163,10 +135,10 @@ public class StateCoordinator implements ActionListener {
     }
 
     private void startGame() throws InterruptedException {
-        if (this.constructor.getGameScreen().getFrame() == null) {
-            this.constructor.createAndStartGame();
+        if (this.gameCenterUnit.getGameScreen().getFrame() == null) {
+            this.gameCenterUnit.createAndStartGame();
         } else {
-            this.constructor.startGame();
+            this.gameCenterUnit.startGame();
         }
     }
 
@@ -196,42 +168,6 @@ public class StateCoordinator implements ActionListener {
             JButton buttonToClear = (JButton) panel.getComponent(j);
             buttonToClear.setForeground(Color.BLACK);
         }
-    }
-
-    private void showStartPanel() {
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.show(startingScreen.getFrame().getContentPane(), "startPanel");
-    }
-
-    private void showOptionsPanel() {
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.show(startingScreen.getFrame().getContentPane(), "optionsPanel");
-    }
-
-    private void showBoardPanel() {
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.show(startingScreen.getFrame().getContentPane(), "boardPanel");
-    }
-
-    private void showVisualPanel() {
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.show(startingScreen.getFrame().getContentPane(), "visualOptionsPanel");
-    }
-
-    private void showColorsPanel() {
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.show(startingScreen.getFrame().getContentPane(), "colorPanel");
-    }
-
-    private void showPreviousPanel() {
-        JFrame frame = startingScreen.getFrame();
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.previous(frame.getContentPane());
-    }
-
-    private void showKeyPanel() {
-        CardLayout cl = (CardLayout) startingScreen.getFrame().getContentPane().getLayout();
-        cl.show(startingScreen.getFrame().getContentPane(), "keyPanel");
     }
 
     /**

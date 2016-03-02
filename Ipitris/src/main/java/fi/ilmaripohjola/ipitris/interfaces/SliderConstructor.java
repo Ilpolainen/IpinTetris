@@ -14,14 +14,22 @@ import javax.swing.event.ChangeListener;
 
 /**
  * Constructs sliders.
+ *
  * @author omistaja
  */
 public class SliderConstructor {
 
+    /**
+     * Empty Constructor.
+     */
     public SliderConstructor() {
     }
-    
 
+    /**
+     * Creates and sets up sliders for tetris StartingScreen.
+     *
+     * @param ss StartingScreen on which to attach the sliders created.
+     */
     public void createSliders(StartingScreen ss) {
         JLabel widthName = new JLabel("    WIDTH:");
         JLabel heightName = new JLabel("    HEIGHT:");
@@ -30,12 +38,7 @@ public class SliderConstructor {
         JSlider widthSlider = new JSlider(JSlider.HORIZONTAL, 3, 40, ss.getWidth());
         JSlider heightSlider = new JSlider(JSlider.HORIZONTAL, 4, 40, ss.getHeight());
         JSlider scaleSlider = new JSlider(JSlider.HORIZONTAL, 2, 80, ss.getScale());
-        widthSlider.setFocusable(false);
-        heightSlider.setFocusable(false);
-        scaleSlider.setFocusable(false);
-        widthSlider.setName("width");
-        heightSlider.setName("height");
-        scaleSlider.setName("scale");
+        addSliderTags(widthSlider, heightSlider, scaleSlider);
         setUpSliders(ss, widthSlider, heightSlider, scaleSlider);
         JPanel[] panels = ss.getPanels();
         panels[2].add(widthName);
@@ -46,35 +49,35 @@ public class SliderConstructor {
         panels[3].add(scaleSlider);
     }
 
-    /**
-     * Sets up the options sliders for the startingscreens JFrame. Defins Minor-
-     * and Major- TickSpacing, sets labels and ticks visible and adds
-     * actionlistener for them.
-     *
-     * @param ss StartingScreen
-     * @param width JSlider widthSlider
-     * @param height JSlider height Slider
-     * @param scale JSlider Scale Slider
-     */
     private void setUpSliders(StartingScreen ss, JSlider width, JSlider height, JSlider scale) {
+        setTickSpacing(width, height, scale);
+        setPaintBooleans(width, height, scale);
+        createLabelTable(width, height, scale);
+        connectSliders(ss, width, height, scale);
+    }
+
+    private void setTickSpacing(JSlider width, JSlider height, JSlider scale) {
         width.setMinorTickSpacing(1);
         width.setMajorTickSpacing(1);
         height.setMinorTickSpacing(1);
         height.setMajorTickSpacing(1);
         scale.setMinorTickSpacing(1);
         scale.setMajorTickSpacing(1);
+    }
+
+    private void addSliderTags(JSlider width, JSlider height, JSlider scale) {
+        width.setName("width");
+        height.setName("height");
+        scale.setName("scale");
+    }
+
+    private void setPaintBooleans(JSlider width, JSlider height, JSlider scale) {
         width.setPaintTicks(true);
         height.setPaintTicks(true);
         scale.setPaintTicks(true);
         width.setPaintLabels(true);
         height.setPaintLabels(true);
         scale.setPaintLabels(true);
-        this.createLabelTable(width);
-        this.createLabelTable(height);
-        this.createLabelTable(scale);
-        width.addChangeListener((ChangeListener) ss.getSliderCoordinator());
-        height.addChangeListener((ChangeListener) ss.getSliderCoordinator());
-        scale.addChangeListener((ChangeListener) ss.getSliderCoordinator());
     }
 
     /**
@@ -82,7 +85,7 @@ public class SliderConstructor {
      *
      * @param slider slider on which the labeltable is assigned
      */
-    private void createLabelTable(JSlider slider) {
+    private void createLabelTable(JSlider width, JSlider height, JSlider scale) {
         Hashtable lableTable = new Hashtable();
         lableTable.put(5, new JLabel("5"));
         lableTable.put(10, new JLabel("10"));
@@ -100,7 +103,19 @@ public class SliderConstructor {
         lableTable.put(70, new JLabel("70"));
         lableTable.put(75, new JLabel("75"));
         lableTable.put(80, new JLabel("80"));
-        slider.setLabelTable(lableTable);
+        setLableTables(lableTable, width, height, scale);
+    }
+
+    private void setLableTables(Hashtable lableTable, JSlider width, JSlider height, JSlider scale) {
+        width.setLabelTable(lableTable);
+        height.setLabelTable(lableTable);
+        scale.setLabelTable(lableTable);
+    }
+
+    private void connectSliders(StartingScreen ss, JSlider width, JSlider height, JSlider scale) {
+        width.addChangeListener((ChangeListener) ss.getSliderCoordinator());
+        height.addChangeListener((ChangeListener) ss.getSliderCoordinator());
+        scale.addChangeListener((ChangeListener) ss.getSliderCoordinator());
     }
 
     private void setFonts(JLabel widthName, JLabel heightName, JLabel scaleName) {
