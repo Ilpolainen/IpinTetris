@@ -185,7 +185,7 @@ public class Logic {
      * Set's the table's blocks all null, calls levelmanager to reset all stats,
      * asks a new current from generator and at the end set's continues true.
      */
-    public void restart() {
+    public void start() {
         this.current = this.generator.givePiece();
         Block[][] tableBlocks = table.getBlocks();
         for (int i = 0; i < table.getWidth(); i++) {

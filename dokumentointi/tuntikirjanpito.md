@@ -67,3 +67,7 @@
 **26.2.2016**
 
 -3h Viimeisiä viilauksia ja kaavioiden päivityksiä, sekä jarin luominen.
+
+**4.3.2016**
+
+-2h Loppupalautuksen viimeistely.

@@ -106,9 +106,11 @@ public class StartingScreen implements Runnable {
         }
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setVisible(true);
+        this.frame.pack();
+        this.frame.setLocationRelativeTo(null);
     }
 
-    public void setUpComponents(Container container) {
+    private void setUpComponents(Container container) {
         this.frame.addKeyListener(keyConfigurer);
         PanelConstructor panelConstructor = new PanelConstructor();
         panelConstructor.setUpPanels(container, panels);
@@ -118,8 +120,12 @@ public class StartingScreen implements Runnable {
         buttonConstructor.createButtons(panelNavigator, stateCoordinator, panels);
         SliderConstructor sliderConstructor = new SliderConstructor();
         sliderConstructor.createSliders(this);
-
+        attachPanels();
+    }
+    
+    private void attachPanels() {
         CardLayout cl = new CardLayout();
+        Container container = this.frame.getContentPane();
         container.setLayout(cl);
         container.add(panels[0], "startPanel");
         container.add(panels[1], "optionsPanel");

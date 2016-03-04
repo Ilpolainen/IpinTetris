@@ -35,12 +35,12 @@ public class MyRenderLoop implements Runnable {
 
     @Override
     public void run() {
-        this.tetris.restart();
+        this.tetris.start();
         this.continues = true;
         try {
             Thread.sleep(700);
         } catch (InterruptedException ex) {
-            Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateLoop.class.getName()).log(Level.SEVERE, null, ex);
         }
         int rounds = 0;
         while (continues) {
@@ -48,7 +48,7 @@ public class MyRenderLoop implements Runnable {
                 try {
                     Thread.sleep(20);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(UpdateLoop.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 this.renderer.updateNow();
             } else {

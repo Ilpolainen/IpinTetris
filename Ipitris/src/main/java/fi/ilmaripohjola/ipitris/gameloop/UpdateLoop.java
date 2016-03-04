@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  *
  * @author omistaja
  */
-public class MyGameLoop implements Runnable {
+public class UpdateLoop implements Runnable {
 
     private boolean continues;
     private KeyPressListener listener;
@@ -25,7 +25,7 @@ public class MyGameLoop implements Runnable {
      * needed.
      * @param tetris The GameLogic to update.
      */
-    public MyGameLoop(KeyPressListener listener, Logic tetris) {
+    public UpdateLoop(KeyPressListener listener, Logic tetris) {
         this.continues = false;
         this.listener = listener;
         this.tetris = tetris;
@@ -48,12 +48,12 @@ public class MyGameLoop implements Runnable {
     public void run() {
         System.out.println("Game On");
         boolean[] keys = new boolean[4];
-        this.tetris.restart();
+        this.tetris.start();
         this.continues = true;
         try {
             Thread.sleep(400);
         } catch (InterruptedException ex) {
-            Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateLoop.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         int rounds = 0;
@@ -71,13 +71,13 @@ public class MyGameLoop implements Runnable {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(UpdateLoop.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(UpdateLoop.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }            
         }
@@ -86,7 +86,7 @@ public class MyGameLoop implements Runnable {
     /**
      * Starts the thread for this loop.
      */
-    public void createThreadAndStart() {
+    public void start() {
         System.out.println("Starting gameloop");
         if (t == null) {
             t = new Thread(this, "3");

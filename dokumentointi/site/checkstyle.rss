@@ -88,20 +88,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gameloop.MyGameLoop.java">fi/ilmaripohjola/ipitris/gameloop/MyGameLoop.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer.java">fi/ilmaripohjola/ipitris/utilities/MyFirstRenderer.java</a>
                 </td>
                 <td>
@@ -551,6 +537,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.interfaces.SliderConstructor.java">fi/ilmaripohjola/ipitris/interfaces/SliderConstructor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#fi.ilmaripohjola.ipitris.gameloop.UpdateLoop.java">fi/ilmaripohjola/ipitris/gameloop/UpdateLoop.java</a>
                 </td>
                 <td>
                   0

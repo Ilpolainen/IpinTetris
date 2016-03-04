@@ -73,6 +73,7 @@ public class GameScreen implements Runnable {
         setComponents(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
     public void setComponents(Container container) {

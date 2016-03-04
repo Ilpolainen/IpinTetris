@@ -40,11 +40,11 @@ public class PanelConstructor {
         GridLayout cl4 = new GridLayout();
         BorderLayout cl5 = new BorderLayout();
         GridLayout cl6 = new GridLayout();
-        cl1.setRows(4);
-        cl2.setRows(4);
-        cl3.setRows(5);
-        cl4.setRows(4);
-        cl6.setRows(5);
+        this.setLayoutRows(cl1, cl2, cl3, cl4, cl6);
+        this.createAndAttachPanels(panels, cl1, cl2, cl3, cl4, cl5, cl6);
+    }
+
+    private void createAndAttachPanels(JPanel[] panels, GridLayout cl1, GridLayout cl2, GridLayout cl3, GridLayout cl4, BorderLayout cl5, GridLayout cl6) {
         JPanel startPanel = new JPanel(cl1);
         JPanel optionsPanel = new JPanel(cl2);
         JPanel boardPanel = new JPanel(cl3);
@@ -57,5 +57,13 @@ public class PanelConstructor {
         panels[3] = visualOptionsPanel;
         panels[4] = colorPanel;
         panels[5] = keysPanel;
+    }
+
+    private void setLayoutRows(GridLayout cl1, GridLayout cl2, GridLayout cl3, GridLayout cl4, GridLayout cl6) {
+        cl1.setRows(4);
+        cl2.setRows(4);
+        cl3.setRows(5);
+        cl4.setRows(4);
+        cl6.setRows(5);
     }
 }

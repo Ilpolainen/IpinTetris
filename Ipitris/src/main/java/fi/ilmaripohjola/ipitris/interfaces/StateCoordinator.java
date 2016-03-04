@@ -1,7 +1,7 @@
 package fi.ilmaripohjola.ipitris.interfaces;
 
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
-import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
+import fi.ilmaripohjola.ipitris.gameloop.UpdateLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -39,7 +39,7 @@ public class StateCoordinator implements ActionListener {
         return this.gameCenterUnit.getTetris();
     }
 
-    public MyGameLoop getGameLoop() {
+    public UpdateLoop getGameLoop() {
         return this.gameCenterUnit.getGameLoop();
     }
 
@@ -87,7 +87,7 @@ public class StateCoordinator implements ActionListener {
                 this.gameCenterUnit.getTetris().unPause();
             }
         } else if (e.getActionCommand().equals("RESTART")) {
-            this.gameCenterUnit.getTetris().restart();
+            this.gameCenterUnit.getTetris().start();
         } else if (e.getActionCommand().equals("QUIT")) {
             this.gameCenterUnit.getTetris().endGame();
             this.gameCenterUnit.getGameScreen().getFrame().setVisible(false);

@@ -8,7 +8,7 @@ Reaaliaikainen tetris.
 
 [tuntikirjanpito](dokumentointi/tuntikirjanpito.md)
 
-[pit](dokumentointi/Pit/201603021348/index.html)
+[pit](dokumentointi/Pit/201603041203/index.html)
 
 [checkstyle](dokumentointi/site/checkstyle.html)
 

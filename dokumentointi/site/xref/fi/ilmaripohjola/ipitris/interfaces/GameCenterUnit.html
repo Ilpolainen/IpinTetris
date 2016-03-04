@@ -16,7 +16,7 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.entities.Table;
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator;
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.gamelogic.Logic;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.gameloop.UpdateLoop;
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> java.util.Random;
@@ -35,7 +35,7 @@
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../fi/ilmaripohjola/ipitris/utilities/MyFirstRenderer.html">MyFirstRenderer</a> renderer;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/GameScreen.html">GameScreen</a> gameScreen;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/MyRenderLoop.html">MyRenderLoop</a> renderLoop;
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/MyGameLoop.html">MyGameLoop</a> gameLoop;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/UpdateLoop.html">UpdateLoop</a> gameLoop;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>      <strong class="jxr_keyword">private</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/StateCoordinator.html">StateCoordinator</a> coordinator;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>      <em class="jxr_javadoccomment">/**</em>
@@ -59,10 +59,10 @@
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>          renderer = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/utilities/MyFirstRenderer.html">MyFirstRenderer</a>(tetris, coordinator.getStartingScreen().getScale());
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>          gameScreen = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/GameScreen.html">GameScreen</a>(width, height, coordinator.getStartingScreen().getScale(), renderer, kpl, coordinator);
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>          renderLoop = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/MyRenderLoop.html">MyRenderLoop</a>(renderer, tetris);
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>          gameLoop = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/MyGameLoop.html">MyGameLoop</a>(kpl, tetris);
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          gameLoop = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/UpdateLoop.html">UpdateLoop</a>(kpl, tetris);
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>      }
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/MyGameLoop.html">MyGameLoop</a> getGameLoop() {
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../fi/ilmaripohjola/ipitris/gameloop/UpdateLoop.html">UpdateLoop</a> getGameLoop() {
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">return</strong> gameLoop;
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      }
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  

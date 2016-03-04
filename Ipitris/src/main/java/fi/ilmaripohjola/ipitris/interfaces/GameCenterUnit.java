@@ -8,7 +8,7 @@ package fi.ilmaripohjola.ipitris.interfaces;
 import fi.ilmaripohjola.ipitris.entities.Table;
 import fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator;
 import fi.ilmaripohjola.ipitris.gamelogic.Logic;
-import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
+import fi.ilmaripohjola.ipitris.gameloop.UpdateLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyRenderLoop;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import java.util.Random;
@@ -27,7 +27,7 @@ public class GameCenterUnit {
     private MyFirstRenderer renderer;
     private GameScreen gameScreen;
     private MyRenderLoop renderLoop;
-    private MyGameLoop gameLoop;
+    private UpdateLoop gameLoop;
     private StateCoordinator coordinator;
 
     /**
@@ -51,10 +51,10 @@ public class GameCenterUnit {
         renderer = new MyFirstRenderer(tetris, coordinator.getStartingScreen().getScale());
         gameScreen = new GameScreen(width, height, coordinator.getStartingScreen().getScale(), renderer, kpl, coordinator);
         renderLoop = new MyRenderLoop(renderer, tetris);
-        gameLoop = new MyGameLoop(kpl, tetris);
+        gameLoop = new UpdateLoop(kpl, tetris);
     }
 
-    public MyGameLoop getGameLoop() {
+    public UpdateLoop getGameLoop() {
         return gameLoop;
     }
 
@@ -105,7 +105,7 @@ public class GameCenterUnit {
         this.gameScreen.getFrame().setVisible(true);
         renderLoop.start();
         this.coordinator.getStartingScreen().getFrame().setVisible(false);
-        gameLoop.createThreadAndStart();
+        gameLoop.start();
     }
 
     /**
@@ -121,6 +121,6 @@ public class GameCenterUnit {
         this.gameScreen.getFrame().setVisible(true);
         this.tetris.setTable(this.coordinator.getStartingScreen().getWidth(), this.coordinator.getStartingScreen().getHeight());
         this.generator.setTableWidth(this.coordinator.getStartingScreen().getWidth());
-        this.tetris.restart();
+        this.tetris.start();
     }
 }

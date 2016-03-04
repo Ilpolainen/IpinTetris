@@ -114,49 +114,55 @@
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>         }
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>         <strong class="jxr_keyword">this</strong>.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         <strong class="jxr_keyword">this</strong>.frame.setVisible(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L109" href="#L109">109</a>     }
-<a class="jxr_linenumber" name="L110" href="#L110">110</a> 
-<a class="jxr_linenumber" name="L111" href="#L111">111</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setUpComponents(Container container) {
-<a class="jxr_linenumber" name="L112" href="#L112">112</a>         <strong class="jxr_keyword">this</strong>.frame.addKeyListener(keyConfigurer);
-<a class="jxr_linenumber" name="L113" href="#L113">113</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelConstructor.html">PanelConstructor</a> panelConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelConstructor.html">PanelConstructor</a>();
-<a class="jxr_linenumber" name="L114" href="#L114">114</a>         panelConstructor.setUpPanels(container, panels);
-<a class="jxr_linenumber" name="L115" href="#L115">115</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ColorPanelOptionsConstructor.html">ColorPanelOptionsConstructor</a> colorPanelOptionsConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ColorPanelOptionsConstructor.html">ColorPanelOptionsConstructor</a>();
-<a class="jxr_linenumber" name="L116" href="#L116">116</a>         colorPanelOptionsConstructor.createColorOptions(stateCoordinator);
-<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a> buttonConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a>();
-<a class="jxr_linenumber" name="L118" href="#L118">118</a>         buttonConstructor.createButtons(panelNavigator, stateCoordinator, panels);
-<a class="jxr_linenumber" name="L119" href="#L119">119</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/SliderConstructor.html">SliderConstructor</a> sliderConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/SliderConstructor.html">SliderConstructor</a>();
-<a class="jxr_linenumber" name="L120" href="#L120">120</a>         sliderConstructor.createSliders(<strong class="jxr_keyword">this</strong>);
-<a class="jxr_linenumber" name="L121" href="#L121">121</a> 
-<a class="jxr_linenumber" name="L122" href="#L122">122</a>         CardLayout cl = <strong class="jxr_keyword">new</strong> CardLayout();
-<a class="jxr_linenumber" name="L123" href="#L123">123</a>         container.setLayout(cl);
-<a class="jxr_linenumber" name="L124" href="#L124">124</a>         container.add(panels[0], <span class="jxr_string">"startPanel"</span>);
-<a class="jxr_linenumber" name="L125" href="#L125">125</a>         container.add(panels[1], <span class="jxr_string">"optionsPanel"</span>);
-<a class="jxr_linenumber" name="L126" href="#L126">126</a>         container.add(panels[2], <span class="jxr_string">"boardPanel"</span>);
-<a class="jxr_linenumber" name="L127" href="#L127">127</a>         container.add(panels[3], <span class="jxr_string">"visualOptionsPanel"</span>);
-<a class="jxr_linenumber" name="L128" href="#L128">128</a>         container.add(panels[4], <span class="jxr_string">"colorPanel"</span>);
-<a class="jxr_linenumber" name="L129" href="#L129">129</a>         container.add(panels[5], <span class="jxr_string">"keyPanel"</span>);
-<a class="jxr_linenumber" name="L130" href="#L130">130</a>     }
-<a class="jxr_linenumber" name="L131" href="#L131">131</a> 
-<a class="jxr_linenumber" name="L132" href="#L132">132</a>     <strong class="jxr_keyword">public</strong> List&lt;Component&gt; getAllComponents(<strong class="jxr_keyword">final</strong> Container c) {
-<a class="jxr_linenumber" name="L133" href="#L133">133</a>         Component[] comps = c.getComponents();
-<a class="jxr_linenumber" name="L134" href="#L134">134</a>         List&lt;Component&gt; compList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
-<a class="jxr_linenumber" name="L135" href="#L135">135</a>         <strong class="jxr_keyword">for</strong> (Component comp : comps) {
-<a class="jxr_linenumber" name="L136" href="#L136">136</a>             compList.add(comp);
-<a class="jxr_linenumber" name="L137" href="#L137">137</a>             <strong class="jxr_keyword">if</strong> (comp instanceof Container) {
-<a class="jxr_linenumber" name="L138" href="#L138">138</a>                 compList.addAll(getAllComponents((Container) comp));
-<a class="jxr_linenumber" name="L139" href="#L139">139</a>             }
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>         }
-<a class="jxr_linenumber" name="L141" href="#L141">141</a>         <strong class="jxr_keyword">return</strong> compList;
-<a class="jxr_linenumber" name="L142" href="#L142">142</a>     }
-<a class="jxr_linenumber" name="L143" href="#L143">143</a> 
-<a class="jxr_linenumber" name="L144" href="#L144">144</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> start() <strong class="jxr_keyword">throws</strong> InterruptedException {
-<a class="jxr_linenumber" name="L145" href="#L145">145</a>         <strong class="jxr_keyword">if</strong> (t == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L146" href="#L146">146</a>             t = <strong class="jxr_keyword">new</strong> Thread(<strong class="jxr_keyword">this</strong>, <span class="jxr_string">"2"</span>);
-<a class="jxr_linenumber" name="L147" href="#L147">147</a>             t.start();
-<a class="jxr_linenumber" name="L148" href="#L148">148</a>         }
-<a class="jxr_linenumber" name="L149" href="#L149">149</a>     }
-<a class="jxr_linenumber" name="L150" href="#L150">150</a> 
-<a class="jxr_linenumber" name="L151" href="#L151">151</a> }
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>         <strong class="jxr_keyword">this</strong>.frame.pack();
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>         <strong class="jxr_keyword">this</strong>.frame.setLocationRelativeTo(<strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>     }
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> 
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> setUpComponents(Container container) {
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">this</strong>.frame.addKeyListener(keyConfigurer);
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelConstructor.html">PanelConstructor</a> panelConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/PanelConstructor.html">PanelConstructor</a>();
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         panelConstructor.setUpPanels(container, panels);
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ColorPanelOptionsConstructor.html">ColorPanelOptionsConstructor</a> colorPanelOptionsConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ColorPanelOptionsConstructor.html">ColorPanelOptionsConstructor</a>();
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         colorPanelOptionsConstructor.createColorOptions(stateCoordinator);
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a> buttonConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/ButtonConstructor.html">ButtonConstructor</a>();
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>         buttonConstructor.createButtons(panelNavigator, stateCoordinator, panels);
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>         <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/SliderConstructor.html">SliderConstructor</a> sliderConstructor = <strong class="jxr_keyword">new</strong> <a href="../../../../fi/ilmaripohjola/ipitris/interfaces/SliderConstructor.html">SliderConstructor</a>();
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>         sliderConstructor.createSliders(<strong class="jxr_keyword">this</strong>);
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         attachPanels();
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>     }
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>     
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> attachPanels() {
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>         CardLayout cl = <strong class="jxr_keyword">new</strong> CardLayout();
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>         Container container = <strong class="jxr_keyword">this</strong>.frame.getContentPane();
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>         container.setLayout(cl);
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>         container.add(panels[0], <span class="jxr_string">"startPanel"</span>);
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>         container.add(panels[1], <span class="jxr_string">"optionsPanel"</span>);
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>         container.add(panels[2], <span class="jxr_string">"boardPanel"</span>);
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         container.add(panels[3], <span class="jxr_string">"visualOptionsPanel"</span>);
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>         container.add(panels[4], <span class="jxr_string">"colorPanel"</span>);
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         container.add(panels[5], <span class="jxr_string">"keyPanel"</span>);
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>     }
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>     <strong class="jxr_keyword">public</strong> List&lt;Component&gt; getAllComponents(<strong class="jxr_keyword">final</strong> Container c) {
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>         Component[] comps = c.getComponents();
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         List&lt;Component&gt; compList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         <strong class="jxr_keyword">for</strong> (Component comp : comps) {
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>             compList.add(comp);
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>             <strong class="jxr_keyword">if</strong> (comp instanceof Container) {
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>                 compList.addAll(getAllComponents((Container) comp));
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>             }
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>         }
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>         <strong class="jxr_keyword">return</strong> compList;
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>     }
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> 
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> start() <strong class="jxr_keyword">throws</strong> InterruptedException {
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>         <strong class="jxr_keyword">if</strong> (t == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>             t = <strong class="jxr_keyword">new</strong> Thread(<strong class="jxr_keyword">this</strong>, <span class="jxr_string">"2"</span>);
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>             t.start();
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>         }
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>     }
+<a class="jxr_linenumber" name="L156" href="#L156">156</a> 
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2016. All rights reserved.</div>
