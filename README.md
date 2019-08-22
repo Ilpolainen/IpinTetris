@@ -2,7 +2,7 @@
 
 Reaaliaikainen tetris.
 
-##Dokumentaatio
+## Dokumentaatio
 
 [aiheen kuvaus](dokumentointi/aiheenKuvausJaRakenne.md)
 
@@ -12,4 +12,4 @@ Reaaliaikainen tetris.
 
 [checkstyle](dokumentointi/site/checkstyle.html)
 
-[pelin käyttöohjeet](dokumentointi/kayttoohjeet.md)
+[pelin kÃ¤yttÃ¶ohjeet](dokumentointi/kayttoohjeet.md)
