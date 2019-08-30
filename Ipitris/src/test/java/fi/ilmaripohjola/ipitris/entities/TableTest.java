@@ -18,9 +18,9 @@ import static org.junit.Assert.*;
  */
 public class TableTest {
     
-    Table table;
-    Table wrong;
-    Table negat;
+    GameTable table;
+    GameTable wrong;
+    GameTable negat;
     
     public TableTest() {
     }
@@ -28,9 +28,9 @@ public class TableTest {
     
     @Before
     public void setUp() {
-        table = new Table(10, 20);
-        wrong = new Table(2,2);
-        negat = new Table(-2,-6);
+        table = new GameTable(10, 20);
+        wrong = new GameTable(2,2);
+        negat = new GameTable(-2,-6);
     }
     
     @Test

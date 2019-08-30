@@ -3,11 +3,11 @@
  */
 package fi.ilmaripohjola.ipitris.utilities;
 
+import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.entities.Block;
-import fi.ilmaripohjola.ipitris.entities.Piece;
-import fi.ilmaripohjola.ipitris.entities.PieceI;
-import fi.ilmaripohjola.ipitris.entities.Table;
-import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+import fi.ilmaripohjola.ipitris.entities.pieces.Piece;
+import fi.ilmaripohjola.ipitris.entities.GameTable;
+import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -20,16 +20,12 @@ import javax.swing.JPanel;
  */
 public class MyFirstRenderer extends JPanel implements Renderer {
 
-    private Logic tetris;
-    private int scale;
+    private final GameState gameState;
+    private final GameConfiguration configuration;
 
-    public MyFirstRenderer(Logic tetris, int scale) {
-        this.tetris = tetris;
-        this.scale = scale;
-    }
-
-    public void setScale(int scale) {
-        this.scale = scale;
+    public MyFirstRenderer(GameState gameState, GameConfiguration configuration) {
+        this.gameState = gameState;
+        this.configuration = configuration;
     }
 
     @Override
@@ -39,91 +35,93 @@ public class MyFirstRenderer extends JPanel implements Renderer {
 
     @Override
     protected void paintComponent(Graphics g) {
+        int scale = this.configuration.getScale();
         super.paintComponent(g);
         g.setColor(Color.BLACK);
-        g.drawRect(0, 0, tetris.getTable().getWidth() * scale, (tetris.getTable().getHeight() - 4) * scale);
-        drawTable(g, tetris.getTable());
-        drawPiece(g, tetris.getCurrent(), 0, 0);
-        showInfo(g);
-        if (tetris.isEnded()) {
+        g.drawRect(0, 0, this.configuration.getBoardWidth() * scale, (gameState.getTable().getHeight() - 4) * scale);
+        drawTable(g, gameState.getTable(),scale);
+        if (gameState.getCurrent() != null) {
+            drawPiece(g, gameState.getCurrent(), 0, 0,scale);
+        }
+        
+        showInfo(g,scale,2);
+        if (gameState.isEnded()) {
             writeGameOver(g);
         }
     }
 
-    protected void drawBlock(Graphics g, Block block, int x, int y) {
+    protected void drawBlock(Graphics g, Block block, int x, int y, int scale) {
         g.setColor(Color.BLACK);
         g.drawRect((block.getX()) * scale + x, (block.getY() - 4) * scale + y, scale, scale);
         g.setColor(block.getColor());
         g.fillRect((block.getX()) * scale + 1 + x, (block.getY() - 4) * scale + 1 + y, scale - 1, scale - 1);
     }
 
-    protected void drawPiece(Graphics g, Piece p, int x, int y) {
+    protected void drawPiece(Graphics g, Piece p, int x, int y, int scale) {
         Block[] blocks = p.getBlocks();
         g.setColor(p.getColor());
         for (Block block : blocks) {
-            drawBlock(g, block, x, y);
+            drawBlock(g, block, x, y, scale);
         }
     }
 
-    protected void drawTable(Graphics g, Table t) {
+    protected void drawTable(Graphics g, GameTable t, int scale) {
         Block[][] blocks = t.getBlocks();
         for (int i = 0; i < t.getWidth(); i++) {
             for (int j = 4; j < t.getHeight(); j++) {
                 if (blocks[i][j] != null && blocks[i][j].getY() >= 4) {
-                    drawBlock(g, blocks[i][j], 0, 0);
+                    drawBlock(g, blocks[i][j], 0, 0,scale);
                 }
             }
         }
     }
 
     public void writeGameOver(Graphics g) {
-        Font f = new Font("Greek", 0, scale * 4 / 3);
+        Font f = new Font("Greek", 0, this.configuration.getScale() * 4 / 3);
         FontMetrics metrics = g.getFontMetrics(f);
         g.setFont(f);
         String GO = "GAME OVER";
         g.setColor(Color.BLACK);
-        g.drawString(GO, tetris.getTable().getWidth() * this.scale / 2 - (metrics.stringWidth(GO) / 2), tetris.getTable().getHeight() / 3 * this.scale);
+        g.drawString(GO, gameState.getTable().getWidth() * this.configuration.getScale() / 2 - (metrics.stringWidth(GO) / 2), gameState.getTable().getHeight() / 3 * this.configuration.getScale());
     }
 
-    public void showPoints(Graphics g) {
+    public void showPoints(Graphics g, int scale,int offset) {
         Font f = new Font("Greek", 0, scale);
         g.setFont(f);
-        String points = "POINTS: " + this.tetris.getPoints();
-        FontMetrics metrics = g.getFontMetrics(f);
+        String points = "POINTS: " + this.gameState.getPoints();
         g.setColor(Color.BLACK);
-        g.drawString(points, (tetris.getTable().getWidth() + 1) * scale, scale * 5/2);
+        g.drawString(points, (gameState.getTable().getWidth() + offset) * scale, scale * 5/2);
 
     }
 
-    public void showLevel(Graphics g) {
+    public void showLevel(Graphics g,int scale,int offset) {
         Font f = new Font("Greek", 0, scale);
         g.setFont(f);
-        String level = "LEVEL: " + this.tetris.getLevel();
-        FontMetrics metrics = g.getFontMetrics(f);
+        String level = "LEVEL: " + this.gameState.getLevel();
         g.setColor(Color.BLACK);
-        g.drawString(level, (tetris.getTable().getWidth() + 1) * scale, scale * 4/3);
+        g.drawString(level, (gameState.getTable().getWidth() + offset) * scale, scale * 4/3);
     }
 
-    public void showInfo(Graphics g) {
-        showLevel(g);
-        showPoints(g);
-        showNext(g);
+    public void showInfo(Graphics g, int scale, int offset) {
+        showLevel(g,scale,offset);
+        showPoints(g,scale,offset);
+        showNext(g,scale,offset);
     }
 
-    public void showNext(Graphics g) {
+    public void showNext(Graphics g, int scale,int offset) {
         g.setColor(Color.BLACK);
-        g.drawRect((1 + tetris.getTable().getWidth()) * scale, 3 * scale, 5 * scale, 5 * scale);
-        Piece p = tetris.getGenerator().getNext();
+        g.drawRect((offset + gameState.getTable().getWidth()) * scale, 3 * scale, 5 * scale, 5 * scale);
+        Piece p = gameState.getGenerator().getNext();
         if (p.getClass().getSimpleName().equals("PieceI")) {
-            drawPiece(g, p, (tetris.getTable().getWidth() - p.getX() + 3) * scale, 7 * scale + scale / 2);
+            drawPiece(g, p, (gameState.getTable().getWidth() - p.getX() + 2 + offset) * scale, 7 * scale + scale / 2,scale);
         } else if (p.getClass().getSimpleName().equals("PieceJ") || p.getClass().getSimpleName().equals("PieceZ")) {
-            drawPiece(g, p, (tetris.getTable().getWidth() - p.getX() + 3) * scale + scale / 2, 7 * scale);
+            drawPiece(g, p, (gameState.getTable().getWidth() - p.getX() + 2 + offset) * scale + scale / 2, 7 * scale,scale);
         } else if (p.getClass().getSimpleName().equals("PieceSquare")) {
-            drawPiece(g, p, (tetris.getTable().getWidth() - p.getX() + 3) * scale - scale / 2, 7 * scale - scale / 2);
+            drawPiece(g, p, (gameState.getTable().getWidth() - p.getX() + 2 + offset) * scale - scale / 2, 7 * scale - scale / 2,scale);
         } else if (p.getClass().getSimpleName().equals("PieceT")) {
-            drawPiece(g, p, (tetris.getTable().getWidth() - p.getX() + 3) * scale, 7 * scale - scale / 2);
+            drawPiece(g, p, (gameState.getTable().getWidth() - p.getX() + 2 + offset) * scale, 7 * scale - scale / 2,scale);
         } else {
-            drawPiece(g, p, (tetris.getTable().getWidth() - p.getX() + 3) * scale - scale / 2, 7 * scale);
+            drawPiece(g, p, (gameState.getTable().getWidth() - p.getX() + 2 + offset) * scale - scale / 2, 7 * scale,scale);
         }
     }
 

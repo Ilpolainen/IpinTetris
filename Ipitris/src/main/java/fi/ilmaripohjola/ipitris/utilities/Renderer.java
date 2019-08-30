@@ -5,7 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.utilities;
 
-import fi.ilmaripohjola.ipitris.gamelogic.Logic;
+import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 
 /**
  * Abstract class which is meant to be a baseclass for renderers. Only requires

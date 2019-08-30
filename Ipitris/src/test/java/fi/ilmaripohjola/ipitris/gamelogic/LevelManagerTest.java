@@ -5,6 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.gamelogic;
 
+import fi.ilmaripohjola.ipitris.gamelogic.LevelProgress;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,14 +19,14 @@ import static org.junit.Assert.*;
  */
 public class LevelManagerTest {
 
-    private LevelManager lm;
+    private LevelProgress lm;
 
     public LevelManagerTest() {
     }
 
     @Before
     public void setUp() {
-        lm = new LevelManager();
+        lm = new LevelProgress();
     }
 
     @Test

@@ -5,7 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.application;
 
-import fi.ilmaripohjola.ipitris.interfaces.StateCoordinator;
+import fi.ilmaripohjola.ipitris.application.logic.Application;
 
 /**
  *
@@ -17,8 +17,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws InterruptedException {
-        StateCoordinator stateCoordinator = new StateCoordinator();
-        stateCoordinator.start();
+        Application m = new Application();
+        m.run();
     }
     
 }
