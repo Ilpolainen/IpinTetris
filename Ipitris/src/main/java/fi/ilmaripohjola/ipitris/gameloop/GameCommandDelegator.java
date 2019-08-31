@@ -5,6 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.gameloop;
 
+import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionDown;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionLeft;
@@ -22,10 +23,12 @@ import java.util.EnumSet;
 public class GameCommandDelegator  {
     private final EnumMap<GameCommand,GameAction> gameActions;
     private final GameState gameState;
+    private final GameConfiguration configuration;
     
-    public GameCommandDelegator(GameState gameState) {
-        
+    public GameCommandDelegator(GameState gameState,GameConfiguration configuration) {
         this.gameState = gameState;
+        this.configuration = configuration;
+        this.gameState.reset(this.configuration.getBoardWidth(), this.configuration.getBoardHeight());
         this.gameActions = new EnumMap<>(GameCommand.class);
         this.gameActions.put(GameCommand.LEFT, new ActionLeft());
         this.gameActions.put(GameCommand.RIGHT, new ActionRight());
@@ -52,7 +55,8 @@ public class GameCommandDelegator  {
     }
     
     public void resetGame() {
-        this.gameState.reset();
+//        System.out.println("FROM GameCommandDelegator.resetGame() width: " +this.configuration.getBoardWidth());
+        this.gameState.reset(this.configuration.getBoardWidth(),this.configuration.getBoardHeight());
     }
     
     public void addGameTime(double deltaTime) {

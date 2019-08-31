@@ -5,6 +5,8 @@
  */
 package fi.ilmaripohjola.ipitris.gameloop;
 
+import fi.ilmaripohjola.ipitris.utilities.Renderer;
+
 /**
  *
  * @author Ilmari Pohjola
@@ -12,12 +14,14 @@ package fi.ilmaripohjola.ipitris.gameloop;
 public abstract class GameLoop  {
     protected final GameCommandDelegator commandDelegator;
     protected final CommandListener commandListener;
+    protected final Renderer renderer;
     protected boolean running;
 //    protected final Thread thread;
 
-    public GameLoop(GameCommandDelegator commandDelegator,CommandListener commandListener) {
+    public GameLoop(GameCommandDelegator commandDelegator,CommandListener commandListener,Renderer renderer) {
         this.commandDelegator = commandDelegator;
         this.commandListener = commandListener;
+        this.renderer = renderer; 
         this.running = false;
 //        this.thread= new Thread(this);
     }

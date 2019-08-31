@@ -37,18 +37,16 @@ public class PlayState {
         this.configuration = configuration;
         this.commandListener = new CommandListener(this.configuration);
         this.pieceGenerator = new PieceGenerator(this.configuration);
+        System.out.println("FROM PlayState() width:" + this.configuration.getBoardWidth());
         this.gameState = new GameState(new GameTable(this.configuration.getBoardWidth(),this.configuration.getBoardHeight()),this.pieceGenerator);
-        this.gameState.reset();
+        this.gameState.reset(this.configuration.getBoardWidth(),this.configuration.getBoardHeight());
         this.renderer = new MyFirstRenderer(this.gameState,this.configuration);  
         this.gameScreen = new GameScreen(this.configuration,this.renderer,this.commandListener);
-        this.gameCommandDelegator = new GameCommandDelegator(this.gameState);
+        this.gameCommandDelegator = new GameCommandDelegator(this.gameState,this.configuration);
         this.gameLoop = new MyGameLoop(gameCommandDelegator,commandListener,this.renderer);
     }
 
     public void start(Application application) {
-        for (Integer keyCode : this.configuration.keyConfiguration.keySet()) {
-            System.out.println("Key = " + keyCode +  ", Value = " + configuration.keyConfiguration.get(keyCode));
-        }
         try {
             this.gameScreen.start(application);
         } catch (InterruptedException ex) {

@@ -36,7 +36,7 @@ public class ActionDownTest {
     public void setUp() {
         this.gameTable = new GameTable(10, 25);
         this.gameState = new GameState(gameTable,new PieceGenerator(new GameConfiguration(10,25,30)));
-        this.gameState.reset();
+        this.gameState.reset(10 ,25);
         this.commandDown = new ActionDown();
         this.pieceI = new PieceI(Color.BLACK, 0, 1);
         this.gameState.setCurrent(pieceI);
@@ -78,7 +78,7 @@ public class ActionDownTest {
         for (int i = 0; i < 24; i++) {
             commandDown.runAction(gameState);
         }
-        assertEquals(1, gameState.getLevelManager().getPoints());
+        assertEquals(1, gameState.getLevelProgress().getPoints());
     }
     
     @Test

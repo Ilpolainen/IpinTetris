@@ -5,7 +5,6 @@
  */
 package fi.ilmaripohjola.ipitris.UI;
 
-import fi.ilmaripohjola.ipitris.UI.StartingScreen;
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -24,6 +23,7 @@ public class SliderCoordinator implements ChangeListener {
     /**
      * Sets the class variable StartingScreen to the given one.
      *
+     * @param configuration
      */
     public SliderCoordinator(GameConfiguration configuration) {
         this.configuration = configuration;

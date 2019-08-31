@@ -81,13 +81,13 @@ public class GameStateTest {
     
     @Test
     public void constructorSetsRowsDestroyedRight() {
-        assertEquals(0, gameState.getLevelManager().getRowsDestroyed());
+        assertEquals(0, gameState.getLevelProgress().getRowsDestroyed());
     }
     
     
     @Test
     public void costructorCreatesLevelManager() {
-        assertNotEquals(null, gameState.getLevelManager());        
+        assertNotEquals(null, gameState.getLevelProgress());        
     }
     
     
@@ -99,14 +99,14 @@ public class GameStateTest {
     
     @Test
     public void levelUpWorks() {
-        gameState.getLevelManager().levelUp();
+        gameState.getLevelProgress().levelUp();
         assertEquals(1, gameState.getLevel());
     }
     
     @Test
     public void levelStopsAt20() {
         for (int i = 0; i < 30; i++) {
-            gameState.getLevelManager().levelUp();
+            gameState.getLevelProgress().levelUp();
         }
         assertEquals(20, gameState.getLevel());
     }
@@ -122,12 +122,12 @@ public class GameStateTest {
             this.down.runAction(gameState);
         }
         for (int i = 0; i < 30; i++) {
-            gameState.getLevelManager().increasePoints(5);
+            gameState.getLevelProgress().increasePoints(5);
         }
-        gameState.reset();
+        gameState.reset(10, 25);
         assertEquals(0, gameState.getPoints());
         assertEquals(0, gameState.getLevel());
-        assertEquals(0, gameState.getLevelManager().getRowsDestroyed());
+        assertEquals(0, gameState.getLevelProgress().getRowsDestroyed());
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
                 assertEquals(null, table.getBlocks()[i][j]);

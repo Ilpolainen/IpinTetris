@@ -129,7 +129,7 @@ public abstract class Piece implements Movable {
 
     @Override
     public String toString() {
-        String result = "Orientation: " + "\n"
+        String result = "\n Color: " + this.color +  "Orientation: " + "\n"
                 + this.orientation + "\n"
                 + "Coordinates: " + "\n"
                 + "first block: (" + blocks[0].getX() + "," + blocks[0].getY() + ")" + "\n"

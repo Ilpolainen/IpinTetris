@@ -13,7 +13,7 @@ public class Block implements Movable {
 
     private int x;
     private int y;
-    private Color color;
+    private final Color color;
     
     /**
      * Constructs a Block with given values.

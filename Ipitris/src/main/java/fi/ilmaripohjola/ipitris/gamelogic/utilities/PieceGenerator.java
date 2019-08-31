@@ -105,6 +105,7 @@ public class PieceGenerator {
         }
         Piece gift = next;
         next = this.makeNext();
+        System.out.println("From PieceGenerator.givePiece() gift: " + gift.toString());
         return gift;
     }
 
@@ -141,5 +142,9 @@ public class PieceGenerator {
     private Piece makeZ() {
         PieceZ piece = new PieceZ(this.configuration.getColors()[6], this.configuration.getBoardWidth() / 2, 2);
         return piece;
+    }
+    
+    public void reset() {
+        next = this.givePiece();
     }
 }

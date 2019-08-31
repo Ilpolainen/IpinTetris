@@ -2,6 +2,7 @@ package fi.ilmaripohjola.ipitris.gamelogic.utilities;
 
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
+import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 import fi.ilmaripohjola.ipitris.gamelogic.LevelProgress;
 import java.util.ArrayList;
 
@@ -22,23 +23,26 @@ public class RowManager {
      * destroying rows.
      * @param table The table whose rows are affected.
      */
-    public static void destroyRows(LevelProgress levelManager, GameTable table) {
-        ArrayList<Integer> rowsToDestroy = searchFullRows(levelManager, table);
+    public static void destroyRows(GameState gameState) {
+        LevelProgress levelProgress = gameState.getLevelProgress();
+        GameTable table = gameState.getTable();
+        ArrayList<Integer> rowsToDestroy = searchFullRows(levelProgress, table);
         if (rowsToDestroy.size() == 1) {
-            levelManager.increasePoints(1);
+            levelProgress.increasePoints(1);
         }
         if (rowsToDestroy.size() == 2) {
-            levelManager.increasePoints(3);
+            levelProgress.increasePoints(3);
         }
         if (rowsToDestroy.size() == 3) {
-            levelManager.increasePoints(5);
+            levelProgress.increasePoints(5);
         }
         if (rowsToDestroy.size() == 4) {
-            levelManager.increasePoints(8);
+            levelProgress.increasePoints(8);
         }
         for (Integer row : rowsToDestroy) {
             destroyRow(row, table);
         }
+        gameState.setTickTime(3000/(2*levelProgress.getLevel()+2));
     }
 
     /**

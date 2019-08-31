@@ -48,7 +48,7 @@ public class LevelProgress {
      */
     public void increaseRowsDestroyed() {
         this.rowsDestroyed = this.rowsDestroyed + 1;
-        if (this.rowsDestroyed >= (this.level + 1) * 12) {
+        if (this.rowsDestroyed >= (this.level + 1) * 2) {
             levelUp();
         }
     }

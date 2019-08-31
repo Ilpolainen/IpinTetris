@@ -1,5 +1,4 @@
 package fi.ilmaripohjola.ipitris.gamelogic.commands;
-
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 import fi.ilmaripohjola.ipitris.gamelogic.utilities.LimitGuard;
@@ -42,13 +41,13 @@ public class ActionDown implements GameAction {
             }
             if (gameState.getContinues()) {
                 this.attachAndMakeNew(gameState);
-                RowManager.destroyRows(gameState.getLevelManager(), gameState.getTable());
+                RowManager.destroyRows(gameState);
             }
         }
         if (!LimitGuard.pieceWithinLimits(gameState.getCurrent(), gameState.getTable())) {
             gameState.getCurrent().moveUp();
             this.attachAndMakeNew(gameState);
-            RowManager.destroyRows(gameState.getLevelManager(), gameState.getTable());
+            RowManager.destroyRows(gameState);
         }
     }
     

@@ -50,9 +50,8 @@ public class GameScreen implements Runnable  {
         this.thread = new Thread(this);
     }
 
-    public void setWidth(int newWidth) {
-        int scale = this.configuration.getScale();
-        this.width = newWidth * scale + 7 * scale + scale * 4 / 11;
+    public void checkWidth() {
+        this.width = (this.configuration.getBoardWidth()+9) * this.configuration.getScale(); ;
         frame.setSize(this.width, this.height);
     }
 
@@ -80,6 +79,7 @@ public class GameScreen implements Runnable  {
     
     public void setActive(boolean active) {
         this.frame.setLocationRelativeTo(null);
+        this.checkWidth();
         this.frame.setVisible(active);
         this.frame.setAlwaysOnTop(active);
         this.frame.setFocusable(active);
@@ -88,6 +88,7 @@ public class GameScreen implements Runnable  {
             this.frame.requestFocus();
             this.frame.toFront();
         }
+        
     }
 
     public void setComponents(ActionListener actionListener) {
@@ -124,6 +125,7 @@ public class GameScreen implements Runnable  {
     }
 
     public void start(ActionListener actionListener) throws InterruptedException {
+        this.checkWidth();
         if (!this.thread.isAlive()) {
             setComponents(actionListener);
             thread.start();

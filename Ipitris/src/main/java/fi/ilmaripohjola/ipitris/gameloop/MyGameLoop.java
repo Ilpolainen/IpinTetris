@@ -16,19 +16,16 @@ import java.util.logging.Logger;
  * @author Ilmari Pohjola
  */
 public class MyGameLoop extends GameLoop implements Runnable{
-
-
-    private final Renderer renderer;
     private boolean paused;
     
     public MyGameLoop(GameCommandDelegator delegator,CommandListener commandListener,Renderer renderer) {
-        super(delegator,commandListener);
-        this.renderer = renderer;
+        super(delegator,commandListener,renderer);
         this.paused = false;
     }
 
     @Override
     public void start() {
+        this.commandDelegator.resetGame();
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -37,7 +34,7 @@ public class MyGameLoop extends GameLoop implements Runnable{
     
     private void loop() throws InterruptedException {
         long oldTime=System.currentTimeMillis();
-        this.commandDelegator.resetGame();
+//        this.commandDelegator.resetGame();
         super.running = true;
         while (super.running) {
             this.renderer.updateNow();
@@ -46,7 +43,7 @@ public class MyGameLoop extends GameLoop implements Runnable{
                 super.commandDelegator.processInput(commands);
             }
             try {
-                Thread.sleep(20);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(MyGameLoop.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -14,28 +14,32 @@ import fi.ilmaripohjola.ipitris.entities.GameTable;
  */
 public class GameState {
 
+    private final double initialTickTime;
     private double time;
     private double tickTime;
     private final GameTable table;
     private Piece current;
     private final PieceGenerator generator;
-    private boolean ended;
+    private boolean gameOver;
     private boolean continues;
     private final LevelProgress levelProgress;
 
     /**
      * Constructor set's up a tetris -game.It needs a table and a
- PieceGenerator. Creates it's own commands.
+ PieceGenerator.Creates it's own commands.
      *
      * @param table A Table -object given by caller.
+     * @param pieceGenerator
      */
     public GameState(GameTable table, PieceGenerator pieceGenerator) {
         this.time = 0;
-        this.tickTime = 1000;
+        this.levelProgress = new LevelProgress();
+        this.initialTickTime = 1000;
+        this.tickTime = 3*this.initialTickTime/(2*this.levelProgress.getLevel() + 2);
         this.table = table;
         this.generator = pieceGenerator;
+        this.generator.reset();
         this.current = null;
-        this.levelProgress = new LevelProgress();
     }
 
     /**
@@ -51,15 +55,19 @@ public class GameState {
      /**
      * Set's the table's blocks all null, calls LevelProgress to reset all stats,
      * asks a new current from generator and at the end set's continues true.
+     * @param width
+     * @param height
      */   
-    public void reset() {
+    public void reset(int width, int height) {
         this.time = 0;
-        this.tickTime = 1000;
+        this.generator.reset();
         this.current = this.generator.givePiece();
-        this.table.reset();
+        this.current = this.generator.givePiece();
+        this.table.setTable(width, height);
         this.levelProgress.reset();
+        this.tickTime = 3*this.initialTickTime/(2*this.levelProgress.getLevel() + 2);
         this.continues = true;
-        this.ended = false;
+        this.gameOver = false;
     }
 
     
@@ -87,7 +95,7 @@ public class GameState {
      * Sets boolean continues false.
      */
     public void endGame() {
-        this.ended = true;
+        this.gameOver = true;
         this.continues = false;
     }
 
@@ -109,7 +117,7 @@ public class GameState {
         return table;
     }
 
-    public LevelProgress getLevelManager() {
+    public LevelProgress getLevelProgress() {
         return levelProgress;
     }
 
@@ -130,7 +138,7 @@ public class GameState {
     }
 
     public boolean isEnded() {
-        return ended;
+        return gameOver;
     }
     
     public int getLevel() {
@@ -161,5 +169,6 @@ public class GameState {
     public void setTickTime(double tickTime) {
         this.tickTime = tickTime;
     }
+    
     
 }
