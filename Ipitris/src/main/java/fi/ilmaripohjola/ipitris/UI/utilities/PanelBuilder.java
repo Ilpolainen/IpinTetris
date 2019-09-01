@@ -53,7 +53,7 @@ public class PanelBuilder {
     }
 
     private static void setLayoutRows(GridLayout cl1, GridLayout cl2, GridLayout cl3, GridLayout cl4, GridLayout cl6) {
-        cl1.setRows(4);
+        cl1.setRows(3);
         cl2.setRows(4);
         cl3.setRows(5);
         cl4.setRows(4);

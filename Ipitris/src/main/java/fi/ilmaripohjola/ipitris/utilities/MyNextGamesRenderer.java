@@ -22,24 +22,23 @@ import javax.swing.JPanel;
  *
  * @author Ilmari Pohjola
  */
-public class MyNextGamesRenderer extends JPanel implements Renderer {
+public class MyNextGamesRenderer extends Renderer {
     
-    private GameState gameState;
-    private GameConfiguration configuration;
+
     private final Image logo;
     private Image scaledLogo;
     
     public MyNextGamesRenderer(GameState gameState, GameConfiguration configuration) {
-        this.gameState = gameState;
-        this.configuration = configuration;
-        String imPath = "images/logo.png";;
+        super(gameState,configuration);
+        String imPath = "images/logo.png";
         ImageIcon imIcon = new ImageIcon(imPath);
         this.logo = imIcon.getImage();
-        this.checkImageScale();
+        this.checkConfiguration();
     }
 
     
-    public final void checkImageScale() {
+    @Override
+    public final void checkConfiguration() {
         int newDim = this.configuration.getScale()-1;
         this.scaledLogo = this.logo.getScaledInstance(newDim, newDim, Image.SCALE_DEFAULT);
     }

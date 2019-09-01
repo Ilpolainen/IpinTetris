@@ -5,7 +5,9 @@
  */
 package fi.ilmaripohjola.ipitris.utilities;
 
+import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.gamelogic.GameState;
+import javax.swing.JPanel;
 
 /**
  * Abstract class which is meant to be a baseclass for renderers. Only requires
@@ -13,10 +15,32 @@ import fi.ilmaripohjola.ipitris.gamelogic.GameState;
  *
  * @author omistaja
  */
-public interface Renderer {
-
+public abstract class Renderer extends JPanel {
     /**
      * Meant to update the screen image.
      */
-    void updateNow();
+    
+    protected final GameState gameState;
+    protected final GameConfiguration configuration;
+
+    public Renderer(GameState gameState, GameConfiguration configuration) {
+        this.gameState = gameState;
+        this.configuration = configuration;
+    }
+    
+    
+    public void updateNow(){};
+    
+    public GameState getGameState() {
+        return this.gameState;
+    }
+
+    public GameConfiguration getConfiguration() {
+        return configuration;
+    }
+    
+    public void checkConfiguration() {
+        
+    }
+    
 }

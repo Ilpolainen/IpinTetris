@@ -12,20 +12,17 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
-import javax.swing.JPanel;
 
 /**
  *
  * @author omistaja
  */
-public class MyFirstRenderer extends JPanel implements Renderer {
+public class MyFirstRenderer extends Renderer {
 
-    private final GameState gameState;
-    private final GameConfiguration configuration;
+    
 
     public MyFirstRenderer(GameState gameState, GameConfiguration configuration) {
-        this.gameState = gameState;
-        this.configuration = configuration;
+        super(gameState,configuration);
     }
 
     @Override

@@ -8,7 +8,6 @@ package fi.ilmaripohjola.ipitris.UI;
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.application.logic.actions.ApplicationCommand;
 import fi.ilmaripohjola.ipitris.gameloop.GameCommandListener;
-import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import fi.ilmaripohjola.ipitris.utilities.MyNextGamesRenderer;
 import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.awt.BorderLayout;
@@ -27,7 +26,7 @@ import javax.swing.WindowConstants;
 public class GameScreen implements Runnable  {
 
     private final JFrame frame;
-    private final MyNextGamesRenderer renderer;
+    private final Renderer renderer;
     private final GameCommandListener commandListener;
     private final GameConfiguration configuration;
     private int width;
@@ -35,7 +34,7 @@ public class GameScreen implements Runnable  {
     private final int heightOffset;
     private final Thread thread;
 
-    public GameScreen(GameConfiguration configuration, MyNextGamesRenderer renderer, GameCommandListener commandListener) {
+    public GameScreen(GameConfiguration configuration, Renderer renderer, GameCommandListener commandListener) {
         this.configuration = configuration;
         this.width = this.configuration.getBoardWidth() * this.configuration.getScale() + 7 * this.configuration.getScale() + this.configuration.getScale() * 4 / 11;
         this.height = configuration.getBoardHeight();
@@ -122,7 +121,7 @@ public class GameScreen implements Runnable  {
         return frame;
     }
 
-    public MyNextGamesRenderer getRenderer() {
+    public Renderer getRenderer() {
         return renderer;
     }
 

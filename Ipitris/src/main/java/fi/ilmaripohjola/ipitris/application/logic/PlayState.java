@@ -15,7 +15,6 @@ import fi.ilmaripohjola.ipitris.gameloop.GameLoop;
 import fi.ilmaripohjola.ipitris.gameloop.MyGameLoop;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
 import fi.ilmaripohjola.ipitris.utilities.MyNextGamesRenderer;
-import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +28,7 @@ public class PlayState {
     private final GameState gameState;
     private final GameLoop gameLoop;
     private final GameConfiguration configuration;
-    private final MyNextGamesRenderer renderer;
+    private final MyFirstRenderer renderer;
     private final GameCommandListener commandListener;
     private final GameCommandDelegator gameCommandDelegator;
     private final PieceGenerator pieceGenerator;
@@ -39,9 +38,8 @@ public class PlayState {
         this.configuration = configuration;
         this.commandListener = new GameCommandListener(this.configuration);
         this.pieceGenerator = new PieceGenerator(this.configuration);
-        System.out.println("FROM PlayState() width:" + this.configuration.getBoardWidth());
         this.gameState = new GameState(new GameTable(this.configuration.getBoardWidth(),this.configuration.getBoardHeight()),this.pieceGenerator);
-        this.renderer = new MyNextGamesRenderer(this.gameState,this.configuration);  
+        this.renderer = new MyFirstRenderer(this.gameState,this.configuration);  
         this.gameScreen = new GameScreen(this.configuration,this.renderer,this.commandListener);
         this.gameCommandDelegator = new GameCommandDelegator(this.gameState,this.configuration);
         this.gameCommandDelegator.resetGame();
@@ -50,7 +48,7 @@ public class PlayState {
 
     public void start(Application application) {
         try {
-            this.renderer.checkImageScale();
+            this.renderer.checkConfiguration();
             this.gameScreen.start(application);
         } catch (InterruptedException ex) {
             Logger.getLogger(PlayState.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,7 +62,7 @@ public class PlayState {
     }
 
     public void setActive(Application app) {
-        this.renderer.checkImageScale();
+        this.renderer.checkConfiguration();
         this.commandListener.getCommands().clear();
         this.gameLoop.start();
         this.gameScreen.setActive(true);
