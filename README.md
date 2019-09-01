@@ -4,7 +4,7 @@ Reaaliaikainen tetris.
 
 ## Dokumentaatio
 
-[aiheen kuvaus ja UML -kaaviot](documentation/aiheenKuvausJaRakenne.md)
+[UML-diagrams](documentation/UML.md)
 
 
-[pelin käyttöohjeet](documentation/kayttoohjeet.md)
+[Instruictions](documentation/instructions.md)
