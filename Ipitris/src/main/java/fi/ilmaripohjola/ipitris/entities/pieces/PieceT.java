@@ -1,5 +1,6 @@
 package fi.ilmaripohjola.ipitris.entities.pieces;
 
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.Block;
 import java.awt.Color;
 

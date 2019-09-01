@@ -7,8 +7,10 @@ package fi.ilmaripohjola.ipitris.UI;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.application.logic.actions.ApplicationCommand;
-import fi.ilmaripohjola.ipitris.gameloop.CommandListener;
+import fi.ilmaripohjola.ipitris.gameloop.GameCommandListener;
 import fi.ilmaripohjola.ipitris.utilities.MyFirstRenderer;
+import fi.ilmaripohjola.ipitris.utilities.MyNextGamesRenderer;
+import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -25,15 +27,15 @@ import javax.swing.WindowConstants;
 public class GameScreen implements Runnable  {
 
     private final JFrame frame;
-    private final MyFirstRenderer renderer;
-    private final CommandListener commandListener;
+    private final MyNextGamesRenderer renderer;
+    private final GameCommandListener commandListener;
     private final GameConfiguration configuration;
     private int width;
     private int height;
     private final int heightOffset;
     private final Thread thread;
 
-    public GameScreen(GameConfiguration configuration, MyFirstRenderer renderer, CommandListener commandListener) {
+    public GameScreen(GameConfiguration configuration, MyNextGamesRenderer renderer, GameCommandListener commandListener) {
         this.configuration = configuration;
         this.width = this.configuration.getBoardWidth() * this.configuration.getScale() + 7 * this.configuration.getScale() + this.configuration.getScale() * 4 / 11;
         this.height = configuration.getBoardHeight();
@@ -120,7 +122,7 @@ public class GameScreen implements Runnable  {
         return frame;
     }
 
-    public MyFirstRenderer getRenderer() {
+    public MyNextGamesRenderer getRenderer() {
         return renderer;
     }
 

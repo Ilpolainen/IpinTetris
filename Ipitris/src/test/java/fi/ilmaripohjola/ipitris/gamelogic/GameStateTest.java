@@ -6,13 +6,12 @@
 package fi.ilmaripohjola.ipitris.gamelogic;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
-import fi.ilmaripohjola.ipitris.gamelogic.utilities.PieceGenerator;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionRotateRight;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionLeft;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionRight;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionRotateLeft;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionDown;
-import fi.ilmaripohjola.ipitris.entities.pieces.Piece;
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.pieces.PieceI;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
 import java.awt.Color;

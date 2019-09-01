@@ -7,8 +7,6 @@ package fi.ilmaripohjola.ipitris.gameloop;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.GameCommand;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.EnumSet;
@@ -17,13 +15,13 @@ import java.util.EnumSet;
  *
  * @author Ilmari Pohjola
  */
-public class CommandListener implements KeyListener {
+public class GameCommandListener implements KeyListener {
     
     private final GameConfiguration gameConfiguration;
     private final EnumSet commands;
     
     
-    public CommandListener(GameConfiguration gameConfiguration) {
+    public GameCommandListener(GameConfiguration gameConfiguration) {
         this.gameConfiguration = gameConfiguration;
         this.commands = EnumSet.allOf(GameCommand.class);
         this.commands.clear();

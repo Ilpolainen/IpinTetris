@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.ilmaripohjola.ipitris.gameloop;
+package fi.ilmaripohjola.ipitris.gamelogic;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.gamelogic.GameState;
@@ -55,7 +55,6 @@ public class GameCommandDelegator  {
     }
     
     public void resetGame() {
-//        System.out.println("FROM GameCommandDelegator.resetGame() width: " +this.configuration.getBoardWidth());
         this.gameState.reset(this.configuration.getBoardWidth(),this.configuration.getBoardHeight());
     }
     

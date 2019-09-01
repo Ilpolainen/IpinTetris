@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.ilmaripohjola.ipitris.gamelogic;
+package fi.ilmaripohjola.ipitris.gamelogic.commands;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
-import fi.ilmaripohjola.ipitris.gamelogic.utilities.PieceGenerator;
+import fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.ActionDown;
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.pieces.PieceI;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
+import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +37,6 @@ public class ActionDownTest {
     public void setUp() {
         this.gameTable = new GameTable(10, 25);
         this.gameState = new GameState(gameTable,new PieceGenerator(new GameConfiguration(10,25,30)));
-        this.gameState.reset(10 ,25);
         this.commandDown = new ActionDown();
         this.pieceI = new PieceI(Color.BLACK, 0, 1);
         this.gameState.setCurrent(pieceI);

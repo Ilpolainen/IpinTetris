@@ -51,7 +51,9 @@ public class ActionDown implements GameAction {
         }
     }
     
-    public void attachAndMakeNew(GameState gamestate) {
+    
+    
+    private void attachAndMakeNew(GameState gamestate) {
          for (Block block : gamestate.getCurrent().getBlocks()) {
             int x = block.getX();
             int y = block.getY();

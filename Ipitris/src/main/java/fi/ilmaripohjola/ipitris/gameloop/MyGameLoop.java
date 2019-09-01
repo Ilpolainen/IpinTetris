@@ -5,6 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.gameloop;
 
+import fi.ilmaripohjola.ipitris.gamelogic.GameCommandDelegator;
 import fi.ilmaripohjola.ipitris.gamelogic.commands.GameCommand;
 import fi.ilmaripohjola.ipitris.utilities.Renderer;
 import java.util.EnumSet;
@@ -16,11 +17,10 @@ import java.util.logging.Logger;
  * @author Ilmari Pohjola
  */
 public class MyGameLoop extends GameLoop implements Runnable{
-    private boolean paused;
+   
     
-    public MyGameLoop(GameCommandDelegator delegator,CommandListener commandListener,Renderer renderer) {
+    public MyGameLoop(GameCommandDelegator delegator,GameCommandListener commandListener,Renderer renderer) {
         super(delegator,commandListener,renderer);
-        this.paused = false;
     }
 
     @Override
@@ -64,16 +64,6 @@ public class MyGameLoop extends GameLoop implements Runnable{
         } else {
             this.paused = false;
         } 
-    }
-
-    @Override
-    public void reset() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void terminate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

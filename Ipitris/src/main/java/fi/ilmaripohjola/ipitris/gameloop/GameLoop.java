@@ -5,6 +5,7 @@
  */
 package fi.ilmaripohjola.ipitris.gameloop;
 
+import fi.ilmaripohjola.ipitris.gamelogic.GameCommandDelegator;
 import fi.ilmaripohjola.ipitris.utilities.Renderer;
 
 /**
@@ -13,16 +14,18 @@ import fi.ilmaripohjola.ipitris.utilities.Renderer;
  */
 public abstract class GameLoop  {
     protected final GameCommandDelegator commandDelegator;
-    protected final CommandListener commandListener;
+    protected final GameCommandListener commandListener;
     protected final Renderer renderer;
     protected boolean running;
-//    protected final Thread thread;
+    protected boolean paused;
 
-    public GameLoop(GameCommandDelegator commandDelegator,CommandListener commandListener,Renderer renderer) {
+
+    public GameLoop(GameCommandDelegator commandDelegator,GameCommandListener commandListener,Renderer renderer) {
         this.commandDelegator = commandDelegator;
         this.commandListener = commandListener;
         this.renderer = renderer; 
         this.running = false;
+        this.paused = false;
 //        this.thread= new Thread(this);
     }
     
@@ -32,6 +35,4 @@ public abstract class GameLoop  {
     public abstract void start();
     public abstract void stop();
     public abstract void pause();
-    public abstract void reset();
-    public abstract void terminate(); 
 }

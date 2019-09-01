@@ -1,22 +1,21 @@
 package fi.ilmaripohjola.ipitris.gamelogic;
 
-import fi.ilmaripohjola.ipitris.gamelogic.utilities.LimitGuard;
-import fi.ilmaripohjola.ipitris.gamelogic.utilities.PieceGenerator;
-import fi.ilmaripohjola.ipitris.entities.Block;
-import fi.ilmaripohjola.ipitris.entities.pieces.Piece;
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
 
 /**
- * Handles the rules and state of a tetris -game with the help of LimitGuard and
- * LevelManager.
- *
+ * GameState is presenting the current "worldstate" in the game world.
+ * It is essentially a passive class that is used by GameCommands. 
+ * The only small function it has, in addition to getters and setters, 
+ * is the reset() -command, which wraps the resetting of all it's components
+ * into a single function. 
  * @author omistaja
  */
 public class GameState {
 
-    private final double initialTickTime;
+    private final double initialTickLength;
     private double time;
-    private double tickTime;
+    private double tickLength;
     private final GameTable table;
     private Piece current;
     private final PieceGenerator generator;
@@ -25,8 +24,7 @@ public class GameState {
     private final LevelProgress levelProgress;
 
     /**
-     * Constructor set's up a tetris -game.It needs a table and a
- PieceGenerator.Creates it's own commands.
+     * .
      *
      * @param table A Table -object given by caller.
      * @param pieceGenerator
@@ -34,8 +32,8 @@ public class GameState {
     public GameState(GameTable table, PieceGenerator pieceGenerator) {
         this.time = 0;
         this.levelProgress = new LevelProgress();
-        this.initialTickTime = 1000;
-        this.tickTime = 3*this.initialTickTime/(2*this.levelProgress.getLevel() + 2);
+        this.initialTickLength = 1000;
+        this.tickLength = 3*this.initialTickLength/(2*this.levelProgress.getLevel() + 2);
         this.table = table;
         this.generator = pieceGenerator;
         this.generator.reset();
@@ -65,7 +63,7 @@ public class GameState {
         this.current = this.generator.givePiece();
         this.table.setTable(width, height);
         this.levelProgress.reset();
-        this.tickTime = 3*this.initialTickTime/(2*this.levelProgress.getLevel() + 2);
+        this.tickLength = 3*this.initialTickLength/(2*this.levelProgress.getLevel() + 2);
         this.continues = true;
         this.gameOver = false;
     }
@@ -163,11 +161,11 @@ public class GameState {
     }
 
     public double getTickTime() {
-        return tickTime;
+        return tickLength;
     }
 
     public void setTickTime(double tickTime) {
-        this.tickTime = tickTime;
+        this.tickLength = tickTime;
     }
     
     

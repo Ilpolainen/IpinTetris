@@ -1,7 +1,7 @@
 package fi.ilmaripohjola.ipitris.gamelogic.utilities;
 
 import fi.ilmaripohjola.ipitris.entities.Block;
-import fi.ilmaripohjola.ipitris.entities.pieces.Piece;
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
 
 /**

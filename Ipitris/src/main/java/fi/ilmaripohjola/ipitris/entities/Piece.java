@@ -1,4 +1,4 @@
-package fi.ilmaripohjola.ipitris.entities.pieces;
+package fi.ilmaripohjola.ipitris.entities;
 
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.Movable;

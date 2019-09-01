@@ -1,10 +1,12 @@
-package fi.ilmaripohjola.ipitris.gamelogic;
+package fi.ilmaripohjola.ipitris.gamelogic.utilities;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.gamelogic.utilities.RowManager;
 import fi.ilmaripohjola.ipitris.entities.Block;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
-import fi.ilmaripohjola.ipitris.gamelogic.utilities.PieceGenerator;
+import fi.ilmaripohjola.ipitris.gamelogic.GameState;
+import fi.ilmaripohjola.ipitris.gamelogic.LevelProgress;
+import fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator;
 import java.awt.Color;
 import java.util.ArrayList;
 import org.junit.Before;

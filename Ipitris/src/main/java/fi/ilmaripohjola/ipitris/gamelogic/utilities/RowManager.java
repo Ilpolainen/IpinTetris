@@ -19,14 +19,12 @@ public class RowManager {
      * searchFullRows, and calls levelmanager to handle scoring and levelling
      * accordingly.
      *
-     * @param levelManager The LevelManager whose points are updated while
-     * destroying rows.
-     * @param table The table whose rows are affected.
+     * @param gameState
      */
     public static void destroyRows(GameState gameState) {
         LevelProgress levelProgress = gameState.getLevelProgress();
         GameTable table = gameState.getTable();
-        ArrayList<Integer> rowsToDestroy = searchFullRows(levelProgress, table);
+        ArrayList<Integer> rowsToDestroy = RowManager.searchFullRows(levelProgress, table);
         if (rowsToDestroy.size() == 1) {
             levelProgress.increasePoints(1);
         }
@@ -39,9 +37,9 @@ public class RowManager {
         if (rowsToDestroy.size() == 4) {
             levelProgress.increasePoints(8);
         }
-        for (Integer row : rowsToDestroy) {
+        rowsToDestroy.forEach((row) -> {
             destroyRow(row, table);
-        }
+        });
         gameState.setTickTime(3000/(2*levelProgress.getLevel()+2));
     }
 
@@ -72,12 +70,12 @@ public class RowManager {
      * Searches every row in Tables block array with no null values, and adds
      * it's row-index to a list.
      *
-     * @param levelManager The LevelManager, whose destroyedRows is updated
+     * @param levelProgress The LevelManager, whose destroyedRows is updated
      * after collecting the correct rows.
      * @param table The Table whose rows are effected.
      * @return The list of indexes of rows with no null block -values.
      */
-    public static ArrayList<Integer> searchFullRows(LevelProgress levelManager, GameTable table) {
+    public static ArrayList<Integer> searchFullRows(LevelProgress levelProgress, GameTable table) {
         ArrayList<Integer> rowsToDestroy = new ArrayList<>();
         int piecesInRow = 0;
         for (int i = 0; i < table.getHeight(); i++) {
@@ -88,7 +86,7 @@ public class RowManager {
             }
             if (piecesInRow == table.getWidth()) {
                 rowsToDestroy.add(i);
-                levelManager.increaseRowsDestroyed();
+                levelProgress.increaseRowsDestroyed();
             }
             piecesInRow = 0;
         }

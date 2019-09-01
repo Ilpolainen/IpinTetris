@@ -1,33 +1,49 @@
-/**
- * Renderer handles drawing of tetris game*s current situation.
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package fi.ilmaripohjola.ipitris.utilities;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
 import fi.ilmaripohjola.ipitris.entities.Block;
-import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.GameTable;
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.gamelogic.GameState;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
  *
- * @author omistaja
+ * @author Ilmari Pohjola
  */
-public class MyFirstRenderer extends JPanel implements Renderer {
-
-    private final GameState gameState;
-    private final GameConfiguration configuration;
-
-    public MyFirstRenderer(GameState gameState, GameConfiguration configuration) {
+public class MyNextGamesRenderer extends JPanel implements Renderer {
+    
+    private GameState gameState;
+    private GameConfiguration configuration;
+    private final Image logo;
+    private Image scaledLogo;
+    
+    public MyNextGamesRenderer(GameState gameState, GameConfiguration configuration) {
         this.gameState = gameState;
         this.configuration = configuration;
+        String imPath = "images/logo.png";;
+        ImageIcon imIcon = new ImageIcon(imPath);
+        this.logo = imIcon.getImage();
+        this.checkImageScale();
     }
 
+    
+    public final void checkImageScale() {
+        int newDim = this.configuration.getScale()-1;
+        this.scaledLogo = this.logo.getScaledInstance(newDim, newDim, Image.SCALE_DEFAULT);
+    }
+    
     @Override
     public void updateNow() {
         this.repaint(); //To change body of generated methods, choose Tools | Templates.
@@ -51,10 +67,13 @@ public class MyFirstRenderer extends JPanel implements Renderer {
     }
 
     protected void drawBlock(Graphics g, Block block, int x, int y, int scale) {
+        int relativeX =(block.getX()) * scale + x;
+        int relativeY = (block.getY() - 4) * scale + y;
         g.setColor(Color.BLACK);
-        g.drawRect((block.getX()) * scale + x, (block.getY() - 4) * scale + y, scale, scale);
+        g.drawRect(relativeX, relativeY, scale, scale);
         g.setColor(block.getColor());
-        g.fillRect((block.getX()) * scale + 1 + x, (block.getY() - 4) * scale + 1 + y, scale - 1, scale - 1);
+        g.fillRect(relativeX+1, relativeY + 1, scale - 1, scale - 1);
+        g.drawImage(this.scaledLogo, relativeX+1, relativeY+1, null);
     }
 
     protected void drawPiece(Graphics g, Piece p, int x, int y, int scale) {

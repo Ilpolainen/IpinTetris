@@ -17,11 +17,11 @@ import static org.junit.Assert.*;
  *
  * @author omistaja
  */
-public class LevelManagerTest {
+public class LevelProgressTest {
 
     private LevelProgress lm;
 
-    public LevelManagerTest() {
+    public LevelProgressTest() {
     }
 
     @Before

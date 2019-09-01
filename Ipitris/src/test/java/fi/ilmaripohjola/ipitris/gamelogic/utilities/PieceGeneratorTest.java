@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fi.ilmaripohjola.ipitris.gamelogic;
+package fi.ilmaripohjola.ipitris.gamelogic.utilities;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
-import fi.ilmaripohjola.ipitris.gamelogic.utilities.PieceGenerator;
-import fi.ilmaripohjola.ipitris.entities.pieces.Piece;
+import fi.ilmaripohjola.ipitris.gamelogic.PieceGenerator;
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import java.awt.Color;
 import org.junit.After;
 import org.junit.Before;

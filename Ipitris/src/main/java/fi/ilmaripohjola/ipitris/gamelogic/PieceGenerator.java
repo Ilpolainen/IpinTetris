@@ -1,7 +1,7 @@
-package fi.ilmaripohjola.ipitris.gamelogic.utilities;
+package fi.ilmaripohjola.ipitris.gamelogic;
 
 import fi.ilmaripohjola.ipitris.application.logic.GameConfiguration;
-import fi.ilmaripohjola.ipitris.entities.pieces.Piece;
+import fi.ilmaripohjola.ipitris.entities.Piece;
 import fi.ilmaripohjola.ipitris.entities.pieces.PieceI;
 import fi.ilmaripohjola.ipitris.entities.pieces.PieceJ;
 import fi.ilmaripohjola.ipitris.entities.pieces.PieceL;
@@ -100,12 +100,11 @@ public class PieceGenerator {
      * @return Piece previous next
      */
     public Piece givePiece() {
-        if (next == null) {
-            next = this.makeNext();
+        if (this.next == null) {
+            this.next = this.makeNext();
         }
-        Piece gift = next;
-        next = this.makeNext();
-        System.out.println("From PieceGenerator.givePiece() gift: " + gift.toString());
+        Piece gift = this.next;
+        this.next = this.makeNext();
         return gift;
     }
 
