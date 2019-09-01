@@ -15,7 +15,7 @@
 - Palasen tippumisnopeuden lisääminen
 - Pelin keskeyttäminen
 
-![Active Game Components](Active Game Components.jepg)
+![Active Game Components](Active%20Game%20Components.jpegg)
 ![DestroyRowsSekvenssikaavio](DestroyRowsSequenceDiagram.jpg)
 
 ## Rakennekuvaus
