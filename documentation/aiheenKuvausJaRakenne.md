@@ -16,7 +16,7 @@
 - Pelin keskeyttäminen
 
 ![Active Game Components](Active%20Game%20Components.jpeg)
-![DestroyRowsSekvenssikaavio](DestroyRowsSequenceDiagram.jpg)
+![DestroyRowsSekvenssikaavio](Passive%20Game%20Object%20Structure.jpeg)
 
 ## Rakennekuvaus
 
