@@ -1,10 +1,8 @@
-# IpinTetris
+# Tetris
 
-Reaaliaikainen tetris.
+The game is normal tetris with some configuration possibilities. You can change the board height and width plus some rendering options.
 
-## Dokumentaatio
+## Documentation (On progress)
 
 [UML-diagrams](documentation/UML.md)
-
-
-[Instruictions](documentation/instructions.md)
+[Instructions](documentation/instructions.md)
