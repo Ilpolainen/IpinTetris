@@ -1,4 +1,4 @@
-# Käyttöohjeet
+# NOOOO!! FINNISH! (English Coming soon)
 
 ## Pelin säännöt ja ohjaaminen
 
